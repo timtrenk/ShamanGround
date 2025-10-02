@@ -1,0 +1,6 @@
+{
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.formatOnSave": true,
+  "github.copilot.enable": { "*": false }
+}

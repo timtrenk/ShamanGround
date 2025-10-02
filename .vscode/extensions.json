@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "GitHub.vscode-pull-request-github",
+    "eamodio.gitlens",
+    "ms-azuretools.vscode-docker",
+    "redhat.vscode-yaml",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "rangav.vscode-thunder-client",
+    "cssho.vscode-svgviewer"
+  ],
+  "unwantedRecommendations": ["GitHub.copilot","github.copilot-chat"]
+}
