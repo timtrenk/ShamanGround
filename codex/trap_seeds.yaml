@@ -1,73 +1,725 @@
 trap_seeds:
 
-  # Aries Family
+  # ──────────────────────────────
+  # ARIES FAMILY — FIRE / INITIATION
+  # ──────────────────────────────
   - id: AR1
     title: "False Ignition"
+    zodiac_family: "Aries"
     resonance_signature: "surge without grounding; strong start, no follow-through"
-    clears_with_gate: "embodiment"
+    gate_function: "Embodiment"
+    pantheon_feedback: "Grounding Feedback"
+    feedback_prompt: "Great idea, but without <tools> and <structure> there is no foundation."
     status: seed
+    sub_traps:
+      - id: AR1a
+        title: "Environment Drift"
+        type: "Technical Echo"
+        resonance_signature: "project launched without real environment or dependencies; instant failure or irreproducible build"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Grounding Feedback"
+        feedback_prompt: "Great launch, but without <environment> and <dependencies> there is no foundation."
+        status: seed
+        # Example: npm init → run dev → nothing works because VS Code, Git, or env vars never configured.
+
+      - id: AR1b
+        title: "Hype Relay"
+        type: "Socio Echo"
+        resonance_signature: "collective excitement substitutes for readiness; everyone cheers, no one builds"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Grounding Feedback"
+        feedback_prompt: "Hype ≠ infrastructure; assign <roles> and build <foundational tasks> before launch."
+        status: seed
+        # Example: social-media announcement precedes any repo or prototype; momentum evaporates overnight.
+
+      - id: AR1c
+        title: "Impulse Chase"
+        type: "Psycho Echo"
+        resonance_signature: "dopamine burst mistaken for purpose; pursuit ends once novelty fades"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Grounding Feedback"
+        feedback_prompt: "Pause after the spark; write the <first step> and <time block> before acting again."
+        status: seed
+        # Example: buys new domain, designs logo, never commits first line of code.
+
+      - id: AR1d
+        title: "Adrenal Spike"
+        type: "Bio Echo"
+        resonance_signature: "physiological rush fuels false urgency; energy spike without recovery"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Grounding Feedback"
+        feedback_prompt: "Convert stimulation into stability; replace <caffeine loop> with <breath loop> before next sprint."
+        status: seed
+        # Example: late-night caffeine binge to “start strong”; crashes mid-week.
+
+      - id: AR1e
+        title: "False Dawn"
+        type: "Spiral Echo"
+        resonance_signature: "mistakes inspiration for incarnation; vision worship replaces embodiment"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Grounding Feedback"
+        feedback_prompt: "Don’t crown the light—anchor it; translate <inspiration> into one <material act> today."
+        status: seed
+        # Example: talks of destiny, writes no plan; energy dissipates into abstraction.
+
 
   - id: AR2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Spec Drift"
+    zodiac_family: "Aries"
+    resonance_signature: "keeps rewriting the plan or builds on unstable assumptions; specification drifts from reality"
+    gate_function: "Clarity"
+    pantheon_feedback: "Voice Calibration"
+    feedback_prompt: "You're reshaping smoke; choose one defined spec and verify all variables before building."
     status: seed
+    sub_traps:
+      - id: AR2a
+        title: "Variable Drift"
+        type: "Technical Echo"
+        resonance_signature: "spec built on placeholder or fabricated values; code never stabilizes because the base is false"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Great idea, but your base variables are fiction; fix the <source> before iterating."
+        status: seed
+        # Example: using dummy API keys, mock data, or invented numbers that never get replaced.
+
+      - id: AR2b
+        title: "Consensus Creep"
+        type: "Socio Echo"
+        resonance_signature: "the team keeps redefining requirements to maintain harmony instead of clarity"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Stop softening the spec for comfort; reassert the <objective truth> and <owner> of decision."
+        status: seed
+        # Example: scope document rewritten in every meeting to satisfy everyone, leaving nothing executable.
+
+      - id: AR2c
+        title: "Overthinking Loop"
+        type: "Psycho Echo"
+        resonance_signature: "mental recursion around options; no movement from design to doing"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Break the loop; lock one <hypothesis> and test it in the real world."
+        status: seed
+        # Example: endless research and comparison paralysis; commits delayed until ‘perfect’ certainty.
+
+      - id: AR2d
+        title: "Circadian Slip"
+        type: "Bio Echo"
+        resonance_signature: "disrupted rhythm blurs mental focus; clarity fades into mental fog"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Reset biological clock; enforce <consistent light cycle> and <sleep window> for cognitive coherence."
+        status: seed
+        # Example: pulling alternating all-nighters; mind too scrambled to hold a coherent architecture.
+
+      - id: AR2e
+        title: "Truth Mirage"
+        type: "Spiral Echo"
+        resonance_signature: "belief system reshaped to fit convenience; replaces truth with narrative cohesion"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Strip comfort from truth; verify <signal> against <evidence> before declaring insight."
+        status: seed
+        # Example: adjusts philosophy to excuse delays or contradictions; loses grounding in observable fact.
+
 
   - id: AR3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Hero Loop"
+    zodiac_family: "Aries"
+    resonance_signature: "must prove worth through crisis creation"
+    gate_function: "Verification"
+    pantheon_feedback: "Loop Sanity"
+    feedback_prompt: "Is this challenge necessary or just proof-seeking?"
     status: seed
+    sub_traps:
+      - id: AR3a
+        title: "Rollback Loop"
+        type: "Technical Echo"
+        resonance_signature: "repeated emergency patches or rollbacks create endless fire-drills; system never stabilizes"
+        gate_function: "Verification"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Stop firefighting—trace the <root fault> and verify before another deploy."
+        status: seed
+        # Example: constant hot-fix commits directly to production instead of staging; same issue resurfaces weekly.
+
+      - id: AR3b
+        title: "Martyr Culture"
+        type: "Socio Echo"
+        resonance_signature: "group dynamic glorifies saviors who overwork or crisis-manage; the drama becomes culture"
+        gate_function: "Verification"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Reward prevention, not heroics; replace <crisis metrics> with <stability metrics>."
+        status: seed
+        # Example: teams praise the person who stays till 2 a.m. fixing a bug they could have prevented with proper testing.
+
+      - id: AR3c
+        title: "Self-Rescue Pattern"
+        type: "Psycho Echo"
+        resonance_signature: "creates tension or failure just to feel the rush of solving it; emotional dependency on chaos"
+        gate_function: "Verification"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Let stillness validate you; define <value> without emergency."
+        status: seed
+        # Example: procrastinates until a deadline looms, then pulls an all-nighter and feels indispensable.
+
+      - id: AR3d
+        title: "Adrenal Feedback"
+        type: "Bio Echo"
+        resonance_signature: "body addicted to stress chemistry; calm feels empty so system keeps triggering fight-or-flight"
+        gate_function: "Verification"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Detox from adrenaline; practice <parasympathetic resets> before the next sprint."
+        status: seed
+        # Example: high caffeine intake, shallow breathing, anxiety spikes when workload drops.
+
+      - id: AR3e
+        title: "Savior Loop"
+        type: "Spiral Echo"
+        resonance_signature: "spiritualized version of the hero complex; seeks redemption through endless struggle"
+        gate_function: "Verification"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Release the need to rescue; integrate <service> without <sacrifice addiction>."
+        status: seed
+        # Example: founder believes their suffering keeps the project alive; can’t delegate or rest without guilt.
+
 
   - id: AR4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Unanchored Drive"
+    zodiac_family: "Aries"
+    resonance_signature: "constant forward motion without coordinates"
+    gate_function: "Discernment"
+    pantheon_feedback: "Choice Filter"
+    feedback_prompt: "Momentum ≠ direction. Define where 'forward' actually leads."
     status: seed
+    sub_traps:
+      - id: AR4a
+        title: "Pointer Drift"
+        type: "Technical Echo"
+        resonance_signature: "processes or code references move endlessly without fixed anchors; frequent redirects or null returns"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "You’re executing movement, not direction; re-anchor <pointers> and confirm their true <targets>."
+        status: seed
+        # Example: API endpoints constantly changing, data models renamed weekly, or symbolic links looping back to self.
+
+      - id: AR4b
+        title: "Project Carousel"
+        type: "Socio Echo"
+        resonance_signature: "collective motion without traction; teams rotate initiatives to simulate progress"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Stop rotating projects for optics; align <long-term ownership> with <clear milestones>."
+        status: seed
+        # Example: startup keeps launching new side projects every quarter while core product remains half-built.
+
+      - id: AR4c
+        title: "Restless Focus"
+        type: "Psycho Echo"
+        resonance_signature: "mind keeps shifting lanes; attention fragments before completion"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Focus is a muscle; limit <context switches> and complete one <loop> before opening another."
+        status: seed
+        # Example: toggles between five creative tasks at once; nothing ever stabilizes enough to publish or deliver.
+
+      - id: AR4d
+        title: "Nervous Energy"
+        type: "Bio Echo"
+        resonance_signature: "body trapped in sympathetic overdrive; movement without grounding causes exhaustion"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Discharge kinetic tension; reintroduce <grounding breath> and <static posture> intervals."
+        status: seed
+        # Example: jittery pacing, fidgeting, micro-movements during deep work; unable to sustain still concentration.
+
+      - id: AR4e
+        title: "Aimless Quest"
+        type: "Spiral Echo"
+        resonance_signature: "pursuit of purpose without orientation; seeks destiny with no defined vector"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Purpose without direction dissolves; establish <north star> before expanding <mission>."
+        status: seed
+        # Example: constant rebranding of life mission statements; ambition without anchoring principle.
+
 
   - id: AR5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Premature Victory"
+    zodiac_family: "Aries"
+    resonance_signature: "celebrates completion before real delivery"
+    gate_function: "Verification"
+    pantheon_feedback: "Proof or Poof"
+    feedback_prompt: "Looks done, but where’s the working link or result?"
     status: seed
+    sub_traps:
+      - id: AR5a
+        title: "Phantom Build"
+        type: "Technical Echo"
+        resonance_signature: "deployment or build reports success but yields no functional output; false green state"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "The pipeline says complete, but no artifact exists; verify <output paths> and <deployment targets>."
+        status: seed
+        # Example: CI shows 'build succeeded' but live site returns 404; release notes posted before binaries uploaded.
+
+      - id: AR5b
+        title: "Announcement Culture"
+        type: "Socio Echo"
+        resonance_signature: "public celebration precedes actual outcome; optics replace delivery"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Silence until substance; announce only when <results> are demonstrable."
+        status: seed
+        # Example: company posts 'mission accomplished' tweets while beta testers still can’t log in.
+
+      - id: AR5c
+        title: "Illusion of Closure"
+        type: "Psycho Echo"
+        resonance_signature: "mind equates talk of completion with actual completion; satisfaction without substance"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Name closure accurately; don’t mark <conceptual finish> as <functional done>."
+        status: seed
+        # Example: writer feels 'book finished' after outlining chapters; months later still no manuscript.
+
+      - id: AR5d
+        title: "Reward Rush"
+        type: "Bio Echo"
+        resonance_signature: "dopamine spike from symbolic success leads to energy crash; motivation collapses post-celebration"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Rewire reward loop; celebrate only after <verification check> or <real-world validation>."
+        status: seed
+        # Example: pulls all-nighter, hits 'deploy', celebrates with drinks, next morning finds system broken.
+
+      - id: AR5e
+        title: "False Ascension"
+        type: "Spiral Echo"
+        resonance_signature: "mistakes symbolic or ritual completion for transformation; confuses milestone with mastery"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Milestone ≠ mastery; anchor <transformation> in consistent <embodiment>."
+        status: seed
+        # Example: finishes ceremony or release ritual, assumes enlightenment or success, but integration never follows.
+
 
   - id: AR6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Burnout Spiral"
+    zodiac_family: "Aries"
+    resonance_signature: "sustained overexertion, no recovery cycle"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Clean"
+    feedback_prompt: "Brilliance needs breath; weave rest back into the plan."
     status: seed
+    sub_traps:
+      - id: AR6a
+        title: "Thread Leak"
+        type: "Technical Echo"
+        resonance_signature: "system resources or processes remain active without release; gradual performance decay until crash"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Your system is running hot; release <stale threads> or refactor <async tasks> to recover flow."
+        status: seed
+        # Example: background workers never joined; memory climbs until service restart.
 
-  # Taurus Family
+      - id: AR6b
+        title: "Productivity Cult"
+        type: "Socio Echo"
+        resonance_signature: "team glorifies exhaustion; long hours praised, recovery shamed"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Hustle theater ≠ results; add <coverage limits> and a <recovery cadence> to the team norm."
+        status: seed
+        # Example: 'hero hours' celebrated in standups; no rotation or handoffs, mounting errors by Friday.
+
+      - id: AR6c
+        title: "Compulsive Output"
+        type: "Psycho Echo"
+        resonance_signature: "guilt when resting; anxiety-driven doing replaces intentional cycles"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Rest is a function; schedule <deep rest blocks> and <bounded sprints> before the next push."
+        status: seed
+        # Example: doom-sprinting nights/weekends, skipping days off, creativity flatlines.
+
+      - id: AR6d
+        title: "System Overheat"
+        type: "Bio Echo"
+        resonance_signature: "nervous system stuck in 'on'; sleep, nutrition, or light cycles broken"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Rebuild baseline: reset <sleep window> and <hydration/nutrition> before raising throughput."
+        status: seed
+        # Example: 4–5 hours sleep, constant caffeine; irritability and forgetfulness spike.
+
+      - id: AR6e
+        title: "Eternal Labor"
+        type: "Spiral Echo"
+        resonance_signature: "worth conflated with work; peace feels like failure so effort never ends"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Decouple worth from work; weave a <Sabbath window> and a <meaning audit> into the cycle."
+        status: seed
+        # Example: refuses celebration/closure; immediately reopens scope to avoid stillness.
+
+
+  # ──────────────────────────────
+  # TAURUS FAMILY — EARTH / STABILITY
+  # ──────────────────────────────
   - id: TA1
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Stagnant Growth"
+    zodiac_family: "Taurus"
+    resonance_signature: "clings to comfort; resists adaptation even when systems demand evolution"
+    gate_function: "Embodiment"
+    pantheon_feedback: "Ground Integrity"
+    feedback_prompt: "Security isn’t stillness; introduce <incremental evolution> to sustain foundation."
     status: seed
+    sub_traps:
+      - id: TA1a
+        title: "Legacy Lock"
+        type: "Technical Echo"
+        resonance_signature: "outdated dependencies or legacy systems retained out of fear of disruption; innovation frozen"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Ground Integrity"
+        feedback_prompt: "Retire <obsolete modules>; migrate incrementally before the foundation petrifies."
+        status: seed
+        # Example: old codebase kept ‘because it still works’; prevents upgrades or new integrations.
+
+      - id: TA1b
+        title: "Tradition Trap"
+        type: "Socio Echo"
+        resonance_signature: "group resists process change; nostalgia masquerades as best practice"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Ground Integrity"
+        feedback_prompt: "Honor roots without freezing growth; keep <ritual> but redesign <method>."
+        status: seed
+        # Example: company refuses agile adoption because ‘we’ve always done waterfall.’
+
+      - id: TA1c
+        title: "Comfort Addiction"
+        type: "Psycho Echo"
+        resonance_signature: "psychological dependence on routine; anxiety triggered by novelty"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Ground Integrity"
+        feedback_prompt: "Stability needs stretch; inject one <controlled discomfort> daily."
+        status: seed
+        # Example: avoids new tools or environments; productivity stalls under sameness.
+
+      - id: TA1d
+        title: "Metabolic Slowdown"
+        type: "Bio Echo"
+        resonance_signature: "body mirrors mental stagnation; low movement, low vitality, declining curiosity"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Ground Integrity"
+        feedback_prompt: "Re-ignite circulation; move <body> to move <mind>."
+        status: seed
+        # Example: sedentary workdays, minimal exercise; fatigue mistaken for calm.
+
+      - id: TA1e
+        title: "Crystallized Identity"
+        type: "Spiral Echo"
+        resonance_signature: "belief structure becomes immovable; identity tied to what once worked"
+        gate_function: "Embodiment"
+        pantheon_feedback: "Ground Integrity"
+        feedback_prompt: "Update your myth; rewrite <identity> as <evolving process>."
+        status: seed
+        # Example: founder defines self by original product success; resists pivot even as market shifts.
+
   - id: TA2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Over-Possession"
+    zodiac_family: "Taurus"
+    resonance_signature: "holds resources or ideas too tightly; fear of loss blocks flow"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Balance"
+    feedback_prompt: "Let circulation replace clutching; exchange <control> for <continuity>."
     status: seed
+    sub_traps:
+      - id: TA2a
+        title: "Resource Deadlock"
+        type: "Technical Echo"
+        resonance_signature: "exclusive access locks or over-permissioned ownership prevent collaboration; assets trapped"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Free the flow; adjust <permissions> and <ownership models> to re-enable throughput."
+        status: seed
+        # Example: database or repo rights hoarded by one engineer; progress stalls until gatekeeper approves every merge.
+
+      - id: TA2b
+        title: "Territory Syndrome"
+        type: "Socio Echo"
+        resonance_signature: "team culture prizes control of domains; collaboration framed as intrusion"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Redraw boundaries; define <shared stewardship> over <private turf>."
+        status: seed
+        # Example: departments guard data silos, refusing cross-team integrations that could optimize workflow.
+
+      - id: TA2c
+        title: "Attachment Loop"
+        type: "Psycho Echo"
+        resonance_signature: "fear of loss keeps mind recycling old wins or possessions; identity bound to having"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Practice release; convert <ownership> into <experience>."
+        status: seed
+        # Example: creator clings to outdated product out of sentimental attachment, blocking new invention.
+
+      - id: TA2d
+        title: "Retention Fatigue"
+        type: "Bio Echo"
+        resonance_signature: "physiology mirrors hoarding; tension, shallow breathing, digestive stagnation"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Exhale fully; introduce <movement> and <hydration> to restore natural flow."
+        status: seed
+        # Example: jaw clenching, clenched posture; physical holding pattern mirrors emotional grip.
+
+      - id: TA2e
+        title: "Possession Identity"
+        type: "Spiral Echo"
+        resonance_signature: "self-worth equated with ownership; material anchoring replaces inner authorship"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Redefine value; ground worth in <expression> not <possession>."
+        status: seed
+        # Example: success narrative depends entirely on status symbols; joy absent without accumulation.
+
   - id: TA3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Resource Mirage"
+    zodiac_family: "Taurus"
+    resonance_signature: "focuses on accumulation over function; wealth or data collected but unused"
+    gate_function: "Discernment"
+    pantheon_feedback: "Choice Filter"
+    feedback_prompt: "Value lies in use, not hoard; redeploy <dormant assets> toward <active purpose>."
     status: seed
+    sub_traps:
+      - id: TA3a
+        title: "Data Hoard"
+        type: "Technical Echo"
+        resonance_signature: "massive information storage without indexing or actionable application; insight trapped in archives"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Delete or deploy; classify <cold storage> versus <live streams> for clarity."
+        status: seed
+        # Example: terabytes of analytics logs never parsed; servers filled with redundant backups no one reviews.
+
+      - id: TA3b
+        title: "Resource Vanity"
+        type: "Socio Echo"
+        resonance_signature: "organization measures success by holdings, not utility; accumulation for optics"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Reframe metrics; count <outputs> not <inventory>."
+        status: seed
+        # Example: nonprofit boasts number of volunteers registered, not actual projects completed.
+
+      - id: TA3c
+        title: "Potential Paralysis"
+        type: "Psycho Echo"
+        resonance_signature: "mind gathers endless inputs and ideas but never executes; comfort in potential replaces risk of creation"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Limit intake; convert <one resource> into <one finished form> daily."
+        status: seed
+        # Example: collects tutorials, notes, or assets for a future project that never materializes.
+
+      - id: TA3d
+        title: "Nutrient Backlog"
+        type: "Bio Echo"
+        resonance_signature: "body mirrors resource excess; consumption without assimilation leads to stagnation"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Assimilate before adding; simplify <inputs> and re-engage <metabolism>."
+        status: seed
+        # Example: overeating or oversupplementing while energy drops; system clogged by unused intake.
+
+      - id: TA3e
+        title: "Golden Cage"
+        type: "Spiral Echo"
+        resonance_signature: "spirit trapped by abundance; comfort replaces calling, ownership replaces offering"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Release luxury as limitation; reorient <wealth> toward <service>."
+        status: seed
+        # Example: entrepreneur stops innovating once financially safe, dulling creative purpose.
+
   - id: TA4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Sensory Overload"
+    zodiac_family: "Taurus"
+    resonance_signature: "comfort turns indulgent; physical or sensory pleasure eclipses progress"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Clean"
+    feedback_prompt: "Pleasure supports productivity; create <rhythm> not <escape>."
     status: seed
+    sub_traps:
+      - id: TA4a
+        title: "Interface Flood"
+        type: "Technical Echo"
+        resonance_signature: "systems overloaded with unnecessary visuals, notifications, or UX elements; usability drowned in aesthetics"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Reduce <surface noise>; preserve clarity with <functional minimalism>."
+        status: seed
+        # Example: dashboard packed with animations and alerts—beautiful but unusable.
+
+      - id: TA4b
+        title: "Pleasure Spiral"
+        type: "Socio Echo"
+        resonance_signature: "community or culture normalizes constant consumption; entertainment replaces creation"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Balance intake and output; design <creation rituals> inside the pleasure cycle."
+        status: seed
+        # Example: creative team spends all meetings watching inspiration videos; no prototypes ever made.
+
+      - id: TA4c
+        title: "Stimulus Addiction"
+        type: "Psycho Echo"
+        resonance_signature: "mind hooked on stimulation; can’t sustain focus without novelty hits"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Reset receptors; replace <constant scroll> with <single-thread focus> sessions."
+        status: seed
+        # Example: checks phone between every paragraph; nervous system fragmented by dopamine microbursts.
+
+      - id: TA4d
+        title: "Sensory Saturation"
+        type: "Bio Echo"
+        resonance_signature: "nervous system overstimulated; body loses capacity to feel subtle signals"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Detox inputs; schedule <silence> and <darkness> to restore sensory range."
+        status: seed
+        # Example: earbuds in 24/7, bright screens late at night; baseline sensory numbness sets in.
+
+      - id: TA4e
+        title: "Illusory Bliss"
+        type: "Spiral Echo"
+        resonance_signature: "confuses comfort with enlightenment; avoids growth under guise of peace"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "True peace expands awareness; trade <numbing> for <presence>."
+        status: seed
+        # Example: retreats into constant meditation or luxury routines to avoid challenge or responsibility.
+
   - id: TA5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Structural Rigidity"
+    zodiac_family: "Taurus"
+    resonance_signature: "systems become so optimized they can’t pivot; stability mutates into brittleness"
+    gate_function: "Verification"
+    pantheon_feedback: "Proof or Poof"
+    feedback_prompt: "Test adaptability; insert <flex nodes> before load increases."
     status: seed
+    sub_traps:
+      - id: TA5a
+        title: "Hard-Coded Architecture"
+        type: "Technical Echo"
+        resonance_signature: "design choices baked in so deeply that minor updates require total rebuilds"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Abstract your <constants>; refactor toward <modular design>."
+        status: seed
+        # Example: legacy monolith with business logic spread across the codebase; every fix breaks three other functions.
+
+      - id: TA5b
+        title: "Policy Fossil"
+        type: "Socio Echo"
+        resonance_signature: "organizational rules or hierarchies remain unchanged long after conditions shift"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Audit the old laws; replace <tradition> with <iteration>."
+        status: seed
+        # Example: company still requires paper signatures in digital workflow because “compliance once said so.”
+
+      - id: TA5c
+        title: "Certainty Bias"
+        type: "Psycho Echo"
+        resonance_signature: "mind clings to proven methods even as evidence demands revision"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Challenge your proof; test <assumptions> against <present data>."
+        status: seed
+        # Example: insists an approach always works because it did before; ignores changing variables or feedback.
+
+      - id: TA5d
+        title: "Tensional Armor"
+        type: "Bio Echo"
+        resonance_signature: "body locks down under chronic control; posture rigid, breath shallow, joints tight"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Loosen structure; practice <mobility drills> to invite physiological flexibility."
+        status: seed
+        # Example: constant jaw tension or clenched shoulders; body mirrors mental inflexibility.
+
+      - id: TA5e
+        title: "Dogmatic Lattice"
+        type: "Spiral Echo"
+        resonance_signature: "belief system ossified; turns frameworks into unbreakable doctrine"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Let form serve flow; allow <doctrine> to breathe as <principle>."
+        status: seed
+        # Example: spiritual or philosophical system treated as literal law; evolution labeled heresy.
+
   - id: TA6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "False Security"
+    zodiac_family: "Taurus"
+    resonance_signature: "confuses predictability with safety; refuses innovation under guise of prudence"
+    gate_function: "Clarity"
+    pantheon_feedback: "Voice Calibration"
+    feedback_prompt: "Safety is awareness, not avoidance; update <assumptions> before entropy sets in."
     status: seed
+    sub_traps:
+      - id: TA6a
+        title: "Sandbox Illusion"
+        type: "Technical Echo"
+        resonance_signature: "systems tested only in controlled conditions; real-world volatility ignored"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Expand test vectors; expose <prototype> to <live variance> before trusting stability."
+        status: seed
+        # Example: AI model validated only on curated dataset, fails immediately when exposed to production noise.
+
+      - id: TA6b
+        title: "Complacent Consensus"
+        type: "Socio Echo"
+        resonance_signature: "group equates agreement with safety; dissent suppressed to maintain peace"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Invite constructive tension; restore <honest dissent> as <safety feature>."
+        status: seed
+        # Example: team avoids questioning flawed plan because leadership discourages friction; collapse follows silently.
+
+      - id: TA6c
+        title: "Risk Aversion Loop"
+        type: "Psycho Echo"
+        resonance_signature: "overestimates danger; avoids new attempts to prevent imagined failure"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Redefine risk as <learning bandwidth>; engage low-stakes experimentation."
+        status: seed
+        # Example: developer avoids learning a new language or framework fearing lost efficiency.
+
+      - id: TA6d
+        title: "Protective Freeze"
+        type: "Bio Echo"
+        resonance_signature: "body locks into defensive posture; energy conserved at expense of responsiveness"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Melt the freeze; trigger <parasympathetic recovery> before new motion."
+        status: seed
+        # Example: shoulders tighten, breath shallow when facing change; survival chemistry replaces curiosity.
+
+      - id: TA6e
+        title: "Illusion of Safety"
+        type: "Spiral Echo"
+        resonance_signature: "spiritualized denial; belief that avoidance equals faith or wisdom"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Faith requires motion; balance <trust> with <truth testing>."
+        status: seed
+        # Example: refuses confrontation or innovation believing “the universe will handle it,” while systems decay.
+
 
   # Gemini Family
   - id: GE1
