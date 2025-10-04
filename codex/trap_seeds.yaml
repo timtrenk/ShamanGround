@@ -1,0 +1,390 @@
+trap_seeds:
+
+  # Aries Family
+  - id: AR1
+    title: "False Ignition"
+    resonance_signature: "surge without grounding; strong start, no follow-through"
+    clears_with_gate: "embodiment"
+    status: seed
+
+  - id: AR2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  - id: AR3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  - id: AR4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  - id: AR5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  - id: AR6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Taurus Family
+  - id: TA1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: TA2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: TA3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: TA4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: TA5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: TA6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Gemini Family
+  - id: GE1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: GE2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: GE3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: GE4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: GE5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: GE6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Cancer Family
+  - id: CA1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CA2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CA3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CA4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CA5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CA6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Leo Family
+  - id: LE1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LE2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LE3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LE4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LE5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LE6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Virgo Family
+  - id: VI1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: VI2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: VI3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: VI4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: VI5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: VI6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Libra Family
+  - id: LI1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LI2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LI3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LI4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LI5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: LI6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Scorpio Family
+  - id: SC1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SC2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SC3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SC4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SC5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SC6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Sagittarius Family
+  - id: SA1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SA2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SA3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SA4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SA5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: SA6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Capricorn Family
+  - id: CP1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CP2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CP3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CP4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CP5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: CP6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Aquarius Family
+  - id: AQ1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: AQ2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: AQ3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: AQ4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: AQ5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: AQ6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+
+  # Pisces Family
+  - id: PI1
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: PI2
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: PI3
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: PI4
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: PI5
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
+  - id: PI6
+    title: ""
+    resonance_signature: ""
+    clears_with_gate: ""
+    status: seed
