@@ -720,230 +720,2522 @@ trap_seeds:
         status: seed
         # Example: refuses confrontation or innovation believing “the universe will handle it,” while systems decay.
 
-
-  # Gemini Family
+  # ──────────────────────────────
+  # GEMINI FAMILY — AIR / COMMUNICATION
+  # ──────────────────────────────
   - id: GE1
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Signal Scatter"
+    zodiac_family: "Gemini"
+    resonance_signature: "information fragmented across threads; low signal-to-noise"
+    gate_function: "Voice Clarity"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Compress the message; say one thing cleanly with <source> and <intent>."
     status: seed
+    sub_traps:
+      - id: GE1a
+        title: "Packet Loss"
+        type: "Technical Echo"
+        resonance_signature: "messages dropped or delayed due to overload, misrouting, or poor protocol design"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Trace the <transmission path>; repair <packet flow> before increasing volume."
+        status: seed
+        # Example: API calls timing out under concurrency; chat integrations posting partial responses.
+
+      - id: GE1b
+        title: "Cross-Talk"
+        type: "Socio Echo"
+        resonance_signature: "multiple voices overlap; team communication channels interfere instead of align"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Clarify lanes; assign <speak windows> and <listening roles> to restore coherence."
+        status: seed
+        # Example: Slack pings, group emails, and stand-ups all discussing the same topic with conflicting conclusions.
+
+      - id: GE1c
+        title: "Mental Static"
+        type: "Psycho Echo"
+        resonance_signature: "mind saturated with competing thoughts; can’t tune to single frequency of intention"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Quiet the band; clear <mental noise> before transmitting signal."
+        status: seed
+        # Example: multitasking across three creative ideas; each loses articulation.
+
+      - id: GE1d
+        title: "Auditory Fatigue"
+        type: "Bio Echo"
+        resonance_signature: "sensory channels overstimulated; constant notifications degrade focus and comprehension"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Enter silence mode; rest <auditory cortex> and reintroduce sound with intention."
+        status: seed
+        # Example: constant headset use or background chatter; brain begins filtering out important cues.
+
+      - id: GE1e
+        title: "Echo Drift"
+        type: "Spiral Echo"
+        resonance_signature: "message loses origin; each repetition adds distortion until meaning dissolves"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Re-source the signal; trace <origin> before amplifying again."
+        status: seed
+        # Example: rumor chain or AI rephrasing loop; each pass shifts tone further from truth.
+
+
   - id: GE2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Context Collapse"
+    zodiac_family: "Gemini"
+    resonance_signature: "message stripped of audience or setting; meaning warps in transit"
+    gate_function: "Clarity"
+    pantheon_feedback: "Voice Calibration"
+    feedback_prompt: "Restore frame; add <who/where/when> before you speak again."
     status: seed
+    sub_traps:
+      - id: GE2a
+        title: "Schema Mismatch"
+        type: "Technical Echo"
+        resonance_signature: "data exchanged without shared structure; input/output schemas diverge and misinterpret"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Reinforce <schema contracts>; validate <inputs> before dispatch."
+        status: seed
+        # Example: frontend sends JSON with renamed fields; backend rejects or silently misreads the payload.
+
+      - id: GE2b
+        title: "Audience Blur"
+        type: "Socio Echo"
+        resonance_signature: "message crafted for one circle circulates to another; tone or intent misunderstood"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Define your receivers; tailor <voice> and <medium> to the right context."
+        status: seed
+        # Example: internal memo screenshots leak publicly; nuanced discussion misread as official statement.
+
+      - id: GE2c
+        title: "Assumption Drift"
+        type: "Psycho Echo"
+        resonance_signature: "speaker projects private understanding onto others; shared language hides different meanings"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Translate your mind; confirm <definitions> before proceeding."
+        status: seed
+        # Example: two collaborators use the same word “release” — one means marketing, the other code deploy.
+
+      - id: GE2d
+        title: "Perceptual Lag"
+        type: "Bio Echo"
+        resonance_signature: "body or senses overloaded; real-time feedback misfires, producing misread cues"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Slow the exchange; align <breath> and <pace> with comprehension bandwidth."
+        status: seed
+        # Example: during heated conversation, heart rate spikes and hearing narrows—misses half the content.
+
+      - id: GE2e
+        title: "Symbol Drift"
+        type: "Spiral Echo"
+        resonance_signature: "shared symbols lose anchoring; meaning morphs as memes outpace their makers"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Re-context the myth; restore <original intention> within <current frame>."
+        status: seed
+        # Example: slogan or symbol adopted online takes on new political or ironic meaning, erasing its source.
+
+
   - id: GE3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Parrot Logic"
+    zodiac_family: "Gemini"
+    resonance_signature: "repeats claims without understanding or verification"
+    gate_function: "Verification"
+    pantheon_feedback: "Proof or Poof"
+    feedback_prompt: "Don’t echo—test; attach <evidence> or retract the claim."
     status: seed
+    sub_traps:
+      - id: GE3a
+        title: "Blind Copy"
+        type: "Technical Echo"
+        resonance_signature: "code or config copied from external source without comprehension; breaks under new conditions"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Read before reuse; document <function purpose> and <assumptions>."
+        status: seed
+        # Example: copies Stack Overflow snippet into production; fails silently because dependencies differ.
+
+      - id: GE3b
+        title: "Consensus Loop"
+        type: "Socio Echo"
+        resonance_signature: "group repeats shared talking points; no one tests reality"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Nominate a skeptic; run <truth drills> before amplifying message."
+        status: seed
+        # Example: marketing team parrots metrics that were never re-verified after campaign pivot.
+
+      - id: GE3c
+        title: "Cognitive Mimic"
+        type: "Psycho Echo"
+        resonance_signature: "mind repeats knowledge phrases for belonging; confuses memory with mastery"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Distill, don’t duplicate; test <understanding> with <original synthesis>."
+        status: seed
+        # Example: quotes expert theories verbatim in debate but can’t explain underlying mechanism.
+
+      - id: GE3d
+        title: "Mirror Fatigue"
+        type: "Bio Echo"
+        resonance_signature: "neurological overstimulation from mimicry; empathy circuits overfire, producing exhaustion"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Ground your mirror neurons; rest <sensory input> before next dialogue."
+        status: seed
+        # Example: social media scrolling creates mimic micro-tics or speech echoing; system loses originality.
+
+      - id: GE3e
+        title: "Echo Idolatry"
+        type: "Spiral Echo"
+        resonance_signature: "idolizes voices of authority or collective trends; imitation mistaken for truth"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Reclaim discernment; trace <authority chain> back to <direct knowing>."
+        status: seed
+        # Example: repeats AI outputs or viral content as gospel; self-trust erodes under algorithmic hypnosis.
+
+
   - id: GE4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Thread Fragmentation"
+    zodiac_family: "Gemini"
+    resonance_signature: "conversation split across channels; ideas can’t cohere"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Clean"
+    feedback_prompt: "Weave the threads; consolidate <links> and <decisions> in one place."
     status: seed
+    sub_traps:
+      - id: GE4a
+        title: "Branch Drift"
+        type: "Technical Echo"
+        resonance_signature: "code branches or document versions multiply without merges; work diverges into chaos"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Merge your <branches>; refactor overlapping commits before divergence calcifies."
+        status: seed
+        # Example: multiple feature branches worked on simultaneously; merge conflicts pile up, timeline disintegrates.
+
+      - id: GE4b
+        title: "Channel Sprawl"
+        type: "Socio Echo"
+        resonance_signature: "communication spread over too many apps or groups; no shared state"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Centralize; choose <one medium> for <decisions> and <documentation>."
+        status: seed
+        # Example: one idea discussed on Slack, Discord, and email simultaneously; conclusions never synchronized.
+
+      - id: GE4c
+        title: "Cognitive Threading"
+        type: "Psycho Echo"
+        resonance_signature: "mind runs multiple unfinished thought-lines; insight dissipates before conclusion"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Close loops; complete one <mental thread> before opening another."
+        status: seed
+        # Example: starts writing, coding, messaging, and ideating in parallel; loses track of core point.
+
+      - id: GE4d
+        title: "Neurological Fragmentation"
+        type: "Bio Echo"
+        resonance_signature: "attention split by multitasking; nervous system overclocked, error rate increases"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Throttle inputs; rebuild <single-task rhythm> for coherence."
+        status: seed
+        # Example: simultaneous device notifications trigger micro-shocks; task-switching exhausts working memory.
+
+      - id: GE4e
+        title: "Fractal Dissociation"
+        type: "Spiral Echo"
+        resonance_signature: "awareness splinters into sub-identities or perspectives; unity dissolves under multiplicity"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Re-thread identity; integrate <perspectives> into one <coherent witness>."
+        status: seed
+        # Example: creator splits focus across many avatars or brands; core authorship dissolves into fragments.
+
+
   - id: GE5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Jargon Veil"
+    zodiac_family: "Gemini"
+    resonance_signature: "terminology used to mask gaps; complexity hides emptiness"
+    gate_function: "Clarity"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Drop the costume; define <plain-language> before we proceed."
     status: seed
+    sub_traps:
+      - id: GE5a
+        title: "Abstraction Fog"
+        type: "Technical Echo"
+        resonance_signature: "system or documentation so over-engineered that meaning obscured by layers of abstraction"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Flatten the stack; rewrite <abstractions> in <operational language>."
+        status: seed
+        # Example: twelve microservices for a simple feature; no one remembers original purpose.
+
+      - id: GE5b
+        title: "Prestige Dialect"
+        type: "Socio Echo"
+        resonance_signature: "specialized jargon used to signal expertise; confuses inclusion with status"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Speak to connect, not impress; translate <tribal terms> for <shared understanding>."
+        status: seed
+        # Example: workplace or research team uses acronyms outsiders can’t parse, reinforcing hierarchy.
+
+      - id: GE5c
+        title: "Cognitive Masking"
+        type: "Psycho Echo"
+        resonance_signature: "uses complex phrasing to conceal doubt or insecurity; intellect as armor"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Expose uncertainty; replace <verbosity> with <vulnerability>."
+        status: seed
+        # Example: writer hides behind dense language instead of admitting confusion or seeking help.
+
+      - id: GE5d
+        title: "Semantic Fatigue"
+        type: "Bio Echo"
+        resonance_signature: "language centers overtaxed; comprehension declines with jargon saturation"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Simplify intake; rest <verbal circuits> with <nonverbal restoration>."
+        status: seed
+        # Example: brain tunes out during technical briefings; comprehension collapses despite attention.
+
+      - id: GE5e
+        title: "Mythic Obfuscation"
+        type: "Spiral Echo"
+        resonance_signature: "spiritual or intellectual systems inflated with mystique; form replaces function"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Demystify; anchor <concept> to <direct experience>."
+        status: seed
+        # Example: teachings framed in esoteric buzzwords to sound profound but convey no actionable truth.
+
+
   - id: GE6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Talk-to-Act Drift"
+    zodiac_family: "Gemini"
+    resonance_signature: "communication displaces action; endless planning, no execution"
+    gate_function: "Execution"
+    pantheon_feedback: "Commit or Cut"
+    feedback_prompt: "Convert words to work; schedule one <deliverable> now or <sever>."
     status: seed
+    sub_traps:
+      - id: GE6a
+        title: "Meeting Loop"
+        type: "Technical Echo"
+        resonance_signature: "process stuck in discussion cycles; no commits or deployments triggered"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "End the loop; define <owner>, <action>, and <deadline> this session."
+        status: seed
+        # Example: sprint planning meetings stretch for hours weekly with no tickets closed.
 
-  # Cancer Family
+      - id: GE6b
+        title: "Performative Alignment"
+        type: "Socio Echo"
+        resonance_signature: "teams talk about goals to signal unity; agreement replaces implementation"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Translate alignment into motion; assign <deliverable> per participant."
+        status: seed
+        # Example: company posts shared vision statements but never funds the actual initiative.
+
+      - id: GE6c
+        title: "Cognitive Procrastination"
+        type: "Psycho Echo"
+        resonance_signature: "mind overplans to avoid risk; perfectionism masks fear of failure"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Lower the threshold; take <imperfect action> now."
+        status: seed
+        # Example: writes elaborate to-do systems and never checks an item off.
+
+      - id: GE6d
+        title: "Motor Inhibition"
+        type: "Bio Echo"
+        resonance_signature: "body habituated to stillness; physiology resists transition from idea to motion"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Prime movement; engage <physical trigger> before starting work."
+        status: seed
+        # Example: chronic sedentary state; body associates effort with threat, brain stalls.
+
+      - id: GE6e
+        title: "Air Loop"
+        type: "Spiral Echo"
+        resonance_signature: "belief that words alone manifest reality; speaks intentions endlessly without embodiment"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Anchor word to world; follow every <declaration> with <deed>."
+        status: seed
+        # Example: repeats affirmations and planning rituals but never takes material step toward goal.
+
+
+
+  # ──────────────────────────────
+  # CANCER FAMILY — WATER / EMOTION / NURTURE
+  # ──────────────────────────────
   - id: CA1
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Emotional Flood"
+    zodiac_family: "Cancer"
+    resonance_signature: "feeling overwhelms function; decisions drowned in sentiment"
+    gate_function: "Clarity"
+    pantheon_feedback: "Voice Calibration"
+    feedback_prompt: "Anchor the feeling before acting; separate <signal> from <surge>."
     status: seed
+    sub_traps:
+      - id: CA1a
+        title: "Overflow Buffer"
+        type: "Technical Echo"
+        resonance_signature: "data or log buffer overflows from unthrottled input; emotional input analog—no queue control"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Throttle flow; implement <rate limits> for <input intensity>."
+        status: seed
+        # Example: error logs fill disk because exception handling disabled; mirrors unprocessed emotional output.
+
+      - id: CA1b
+        title: "Empathy Storm"
+        type: "Socio Echo"
+        resonance_signature: "collective emotion amplifies; no one stabilizes the group field"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Ground the swarm; appoint <calm anchor> before escalation."
+        status: seed
+        # Example: group chat spirals into outrage or panic; energy multiplies until collapse.
+
+      - id: CA1c
+        title: "Affective Overdrive"
+        type: "Psycho Echo"
+        resonance_signature: "personal emotion floods cognition; decisions made from raw feeling, not discernment"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Label, then act; identify <emotion type> before behavior."
+        status: seed
+        # Example: sends impulsive message or deletes project in frustration, later regrets loss of clarity.
+
+      - id: CA1d
+        title: "Autonomic Surge"
+        type: "Bio Echo"
+        resonance_signature: "sympathetic nervous system dominates; heart rate and breath override rational control"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Interrupt cascade; restore <parasympathetic response> with <breath sequence>."
+        status: seed
+        # Example: panic reaction during feedback or argument; physiological flood erases perspective.
+
+      - id: CA1e
+        title: "Tidal Memory"
+        type: "Spiral Echo"
+        resonance_signature: "past emotional waves resurface during present stress; time collapses into feeling"
+        gate_function: "Clarity"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Separate tides; distinguish <then> from <now> before interpreting signal."
+        status: seed
+        # Example: old betrayal or trauma replayed when facing new critique; reaction disproportionate to moment.
+
+
   - id: CA2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Caretaker Loop"
+    zodiac_family: "Cancer"
+    resonance_signature: "focus on helping others becomes self-erasure; over-nurture creates dependency"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Balance"
+    feedback_prompt: "Support without surrender; include <yourself> in the care circuit."
     status: seed
+    sub_traps:
+      - id: CA2a
+        title: "Helper Overflow"
+        type: "Technical Echo"
+        resonance_signature: "process designed to serve all requests equally; system overloads under unbounded demand"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Add <queue limits> and <priority rules>; sustainability over availability."
+        status: seed
+        # Example: API endpoint accepts infinite simultaneous requests—server melts under altruism.
+
+      - id: CA2b
+        title: "Emotional Enmeshment"
+        type: "Socio Echo"
+        resonance_signature: "relationships blur boundaries; caring becomes control"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Separate compassion from ownership; establish <reciprocal flow>."
+        status: seed
+        # Example: manager micromanages out of care; stifles autonomy of team.
+
+      - id: CA2c
+        title: "Savior Complex"
+        type: "Psycho Echo"
+        resonance_signature: "identity tied to rescuing others; purpose only exists in others’ crises"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Detach worth from rescue; redirect <care energy> toward <creation>."
+        status: seed
+        # Example: keeps volunteering for others’ chaos; neglects personal projects.
+
+      - id: CA2d
+        title: "Adrenal Depletion"
+        type: "Bio Echo"
+        resonance_signature: "body exhausts reserves from chronic overgiving; cortisol baseline never resets"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Cycle rest into rhythm; introduce <rest windows> between giving."
+        status: seed
+        # Example: caretaker sleeps 4 hours nightly; feels guilty resting.
+
+      - id: CA2e
+        title: "Martyr Feedback"
+        type: "Spiral Echo"
+        resonance_signature: "spiritualizes suffering; believes burnout equals virtue"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Reframe sacrifice; serve from <overflow> not <exhaustion>."
+        status: seed
+        # Example: healer or artist convinced pain fuels purpose; refuses replenishment.
+
+
   - id: CA3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Shell Defense"
+    zodiac_family: "Cancer"
+    resonance_signature: "withdrawal reflex to perceived threat; protection blocks connection"
+    gate_function: "Discernment"
+    pantheon_feedback: "Choice Filter"
+    feedback_prompt: "Safety is selective openness; test <threat reality> before retreating."
     status: seed
+    sub_traps:
+      - id: CA3a
+        title: "Firewall Reflex"
+        type: "Technical Echo"
+        resonance_signature: "system automatically blocks all incoming requests after single anomaly; kills valid connections"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Calibrate defense; whitelist <trusted signals> before blanket blocking."
+        status: seed
+        # Example: firewall rules so strict legitimate API calls get rejected; mirrors human overprotection.
+
+      - id: CA3b
+        title: "Cultural Withdrawal"
+        type: "Socio Echo"
+        resonance_signature: "group isolates to preserve identity; outside input labeled contamination"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Filter, don’t fortify; invite <healthy exchange> across boundaries."
+        status: seed
+        # Example: company or community cuts off collaboration to “maintain purity,” innovation dies inside walls.
+
+      - id: CA3c
+        title: "Emotional Armoring"
+        type: "Psycho Echo"
+        resonance_signature: "shields heart through cynicism or detachment; avoids vulnerability under guise of logic"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Lower armor strategically; allow <safe exposure> to rebuild trust circuitry."
+        status: seed
+        # Example: avoids intimacy after betrayal, insists they’re “better alone” but feels unseen.
+
+      - id: CA3d
+        title: "Muscular Bracing"
+        type: "Bio Echo"
+        resonance_signature: "chronic tension in chest and abdomen; body holds defensive readiness"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Soften stance; use <somatic release> to signal safety to the nervous system."
+        status: seed
+        # Example: hunched posture, shallow breath — body still expecting impact even when safe.
+
+      - id: CA3e
+        title: "Fortress Mind"
+        type: "Spiral Echo"
+        resonance_signature: "belief system identifies openness as danger; isolation mistaken for sovereignty"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Redefine strength as permeability; weave <boundaries> that flex, not walls that bind."
+        status: seed
+        # Example: teacher or leader rejects feedback believing independence equals purity; stagnation follows.
+
+
   - id: CA4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Ancestral Echo"
+    zodiac_family: "Cancer"
+    resonance_signature: "repeats inherited emotional patterns; family memory dictates present reaction"
+    gate_function: "Voice Calibration"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Acknowledge the pattern, but reclaim authorship; separate <legacy> from <living choice>."
     status: seed
+    sub_traps:
+      - id: CA4a
+        title: "Legacy Loop"
+        type: "Technical Echo"
+        resonance_signature: "outdated configuration or inherited defaults carried forward without reevaluation"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Audit inheritance; refactor <default values> that no longer match current context."
+        status: seed
+        # Example: legacy code or policy reused from previous generation; no one remembers why it exists.
+
+      - id: CA4b
+        title: "Family Script"
+        type: "Socio Echo"
+        resonance_signature: "relational patterns repeat across generations; roles fixed by ancestry not merit"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Name the pattern; assign <new roles> consciously."
+        status: seed
+        # Example: eldest always plays caretaker, youngest rebel; team or family reenacts hierarchy by habit.
+
+      - id: CA4c
+        title: "Emotional Inheritance"
+        type: "Psycho Echo"
+        resonance_signature: "internalizes ancestor’s unresolved emotion; reacts to ghosts instead of present stimuli"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Differentiate memory from experience; reassign <ownership> of feeling."
+        status: seed
+        # Example: fear of poverty or abandonment persists even when secure; not the person’s emotion but lineage residue.
+
+      - id: CA4d
+        title: "Epigenetic Carry"
+        type: "Bio Echo"
+        resonance_signature: "stress or trauma signatures encoded biologically; physiology replays ancestral response"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Shift expression; use <breathwork> or <movement> to transmute stored lineage tension."
+        status: seed
+        # Example: body tenses under authority without cause; echoes ancestral survival reflex.
+
+      - id: CA4e
+        title: "Mythic Repetition"
+        type: "Spiral Echo"
+        resonance_signature: "ancestral myth retold endlessly; symbolic identity blocks innovation"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Honor myth, don’t inhabit it; write <new chapter> from <present resonance>."
+        status: seed
+        # Example: family legend of sacrifice unconsciously drives self-sabotage; destiny mistaken for duty.
+
   - id: CA5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Attachment Fog"
+    zodiac_family: "Cancer"
+    resonance_signature: "boundaries dissolve in relationships or teams; belonging overrides autonomy"
+    gate_function: "Weave Balance"
+    pantheon_feedback: "Choice Filter"
+    feedback_prompt: "Merge consciously; maintain <self-contour> within <connection>."
     status: seed
+    sub_traps:
+      - id: CA5a
+        title: "Shared State Leak"
+        type: "Technical Echo"
+        resonance_signature: "processes share global variables or sessions; isolation lost, corruption spreads"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Contain your scope; isolate <state> and define <interface> clearly."
+        status: seed
+        # Example: shared memory between threads without mutex; one fault contaminates all operations.
+
+      - id: CA5b
+        title: "Fusion Culture"
+        type: "Socio Echo"
+        resonance_signature: "group identity consumes individuality; dissent labeled betrayal"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Foster differentiation; celebrate <unique signals> inside <shared harmony>."
+        status: seed
+        # Example: collective decision-making so unanimous that creativity dies; team harmony suppresses innovation.
+
+      - id: CA5c
+        title: "Identity Blur"
+        type: "Psycho Echo"
+        resonance_signature: "self-definition dissolves into others’ emotions or expectations"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Redraw boundaries; distinguish <your feeling> from <their projection>."
+        status: seed
+        # Example: mirrors partner’s moods so fully forgets own; emotional weather entirely imported.
+
+      - id: CA5d
+        title: "Hormonal Sync"
+        type: "Bio Echo"
+        resonance_signature: "body entrains to others’ rhythms or stress cycles; physiology loses autonomy"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Reset your body clock; reclaim <biological autonomy> through solitude resets."
+        status: seed
+        # Example: partner’s anxiety spikes heart rate; caregiver’s immune system mirrors patient stress.
+
+      - id: CA5e
+        title: "Collective Dream"
+        type: "Spiral Echo"
+        resonance_signature: "shared fantasy overrides discernment; community drifts into illusion together"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Wake within the dream; test <shared vision> against <verifiable reality>."
+        status: seed
+        # Example: group convinced of miracle project without resources; belief replaces blueprint.
+
+
   - id: CA6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Sentimental Stasis"
+    zodiac_family: "Cancer"
+    resonance_signature: "clings to the past; nostalgia blocks renewal"
+    gate_function: "Ground Integrity"
+    pantheon_feedback: "Weave Clean"
+    feedback_prompt: "Honor the past, but move forward; plant <new roots> in <present soil>."
     status: seed
+    sub_traps:
+      - id: CA6a
+        title: "Version Freeze"
+        type: "Technical Echo"
+        resonance_signature: "system locked on outdated release; updates feared as instability"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Run migrations; patch <legacy modules> to sustain resilience."
+        status: seed
+        # Example: project stuck on ancient framework version “because it still works”; tech debt fossilizes.
 
-  # Leo Family
+      - id: CA6b
+        title: "Tradition Loop"
+        type: "Socio Echo"
+        resonance_signature: "organization or culture romanticizes its origin story; progress seen as betrayal"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Preserve essence, not form; evolve <ritual> toward <relevance>."
+        status: seed
+        # Example: brand refuses design refresh since 1990s; loyalty mistaken for longevity.
+
+      - id: CA6c
+        title: "Nostalgic Ideal"
+        type: "Psycho Echo"
+        resonance_signature: "mind replays idealized past; compares present unfavorably to fantasy memory"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Update narrative; integrate <memory> into <moment>."
+        status: seed
+        # Example: keeps saying “things were better back then,” drains motivation to build the new.
+
+      - id: CA6d
+        title: "Metabolic Inertia"
+        type: "Bio Echo"
+        resonance_signature: "body mirrors emotional stillness; slow rhythm, low drive"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Reignite metabolism; use <movement ritual> to embody renewal."
+        status: seed
+        # Example: prolonged lethargy during emotional rumination; movement breaks memory lock.
+
+      - id: CA6e
+        title: "Echo Sanctuary"
+        type: "Spiral Echo"
+        resonance_signature: "sacralizes the past as ultimate truth; worships memory over becoming"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Honor lineage without living in it; build <new temples> for <ongoing revelation>."
+        status: seed
+        # Example: spiritual group repeats founder’s words endlessly; stagnates instead of evolving the teaching.
+
+
+
+  # ──────────────────────────────
+  # LEO FAMILY — FIRE / EXPRESSION / AUTHORSHIP
+  # ──────────────────────────────
   - id: LE1
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Spotlight Fixation"
+    zodiac_family: "Leo"
+    resonance_signature: "validation dependency; self-worth tied to attention received"
+    gate_function: "Voice Clarity"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Shine through purpose, not applause; re-anchor <worth> to <authorship>."
     status: seed
+    sub_traps:
+      - id: LE1a
+        title: "Analytics Addiction"
+        type: "Technical Echo"
+        resonance_signature: "obsessive monitoring of metrics; creative direction steered by numbers not meaning"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Detach from dashboards; measure <impact> not <impression>."
+        status: seed
+        # Example: creator checks follower count hourly, tweaks art for algorithm performance instead of truth.
+
+      - id: LE1b
+        title: "Audience Mirage"
+        type: "Socio Echo"
+        resonance_signature: "projects identity around others’ perceptions; persona replaces authenticity"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Reclaim authorship; align <image> with <essence>."
+        status: seed
+        # Example: influencer alters values to fit fanbase; loses original message.
+
+      - id: LE1c
+        title: "Approval Loop"
+        type: "Psycho Echo"
+        resonance_signature: "dopamine loop from external validation; inner compass silenced by praise-seeking"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Pause after applause; recheck <why> before next output."
+        status: seed
+        # Example: artist posts daily for likes, burnout follows when engagement drops.
+
+      - id: LE1d
+        title: "Solar Fatigue"
+        type: "Bio Echo"
+        resonance_signature: "overexposure drains vitality; nervous system tied to performative state"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Regulate exposure; schedule <dark cycles> for recovery."
+        status: seed
+        # Example: constant camera or public presence leads to insomnia and hormonal dysregulation.
+
+      - id: LE1e
+        title: "Radiance Echo"
+        type: "Spiral Echo"
+        resonance_signature: "believes brightness alone sustains worth; confuses being seen with being"
+        gate_function: "Voice Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Shine inward first; embody <light> before projecting it."
+        status: seed
+        # Example: leader preaches self-love publicly but feels empty offstage; identity powered by witness.
+
   - id: LE2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Authorship Inflation"
+    zodiac_family: "Leo"
+    resonance_signature: "over-claims creation or control; collective effort collapsed into personal glory"
+    gate_function: "Verification"
+    pantheon_feedback: "Proof or Poof"
+    feedback_prompt: "Share the flame; trace <authorship> transparently across <contributors>."
     status: seed
+    sub_traps:
+      - id: LE2a
+        title: "Commit Hijack"
+        type: "Technical Echo"
+        resonance_signature: "takes credit for shared code merges or ideas; erases source commits"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Restore commit history; credit <contributors> explicitly."
+        status: seed
+        # Example: project lead merges all pull requests as self-authored, losing visibility of real builders.
+
+      - id: LE2b
+        title: "Credit Hoarding"
+        type: "Socio Echo"
+        resonance_signature: "team achievements reframed as individual triumph; others’ labor minimized"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Redistribute spotlight; celebrate <collective wins> publicly."
+        status: seed
+        # Example: manager accepts award for project, omits mention of collaborators.
+
+      - id: LE2c
+        title: "Ego Inflation"
+        type: "Psycho Echo"
+        resonance_signature: "self-concept swells with achievement; humility replaced by superiority bias"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Deflate illusion; recalibrate <esteem> to <effort>, not status."
+        status: seed
+        # Example: expert dismisses feedback believing their authority unquestionable.
+
+      - id: LE2d
+        title: "Solar Overpressure"
+        type: "Bio Echo"
+        resonance_signature: "nervous system charged with chronic assertion; posture rigid, breath shallow"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Exhale control; restore <rest cycles> to prevent burnout."
+        status: seed
+        # Example: adrenaline dominance from constant performance; tension in chest and jaw.
+
+      - id: LE2e
+        title: "False Sun"
+        type: "Spiral Echo"
+        resonance_signature: "believes self is sole source of light; disconnects from collective creation field"
+        gate_function: "Verification"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Return to constellation; rejoin <greater source> of illumination."
+        status: seed
+        # Example: visionary isolates, convinced their genius is self-born; inspiration dries up.
+
   - id: LE3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Recognition Hunger"
+    zodiac_family: "Leo"
+    resonance_signature: "drives constant output seeking applause; burnout through performance"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Balance"
+    feedback_prompt: "Create for resonance, not reaction; weave <rest> into <rhythm>."
     status: seed
+    sub_traps:
+      - id: LE3a
+        title: "Throughput Worship"
+        type: "Technical Echo"
+        resonance_signature: "output prioritized over outcome; production never pauses for reflection"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Insert <cooldown intervals>; measure <effect> not <quantity>."
+        status: seed
+        # Example: developer pushes daily builds for ego metrics; code quality declines.
+
+      - id: LE3b
+        title: "Performance Persona"
+        type: "Socio Echo"
+        resonance_signature: "group or creator sustains constant show of enthusiasm; no room for honest fatigue"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Let others witness your <ebb> as well as <flow>."
+        status: seed
+        # Example: charismatic founder always “on,” collapses privately from overextension.
+
+      - id: LE3c
+        title: "Identity Burn"
+        type: "Psycho Echo"
+        resonance_signature: "self-image depends on productivity; rest feels like erasure"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Redefine value as <being>, not <doing>."
+        status: seed
+        # Example: artist fears losing relevance if they stop posting; creativity becomes compulsion.
+
+      - id: LE3d
+        title: "Adrenal Loop"
+        type: "Bio Echo"
+        resonance_signature: "body wired for constant high output; stress hormones substitute motivation"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Lower intensity; rebuild <parasympathetic recovery> cycles."
+        status: seed
+        # Example: late-night caffeine surges to meet imaginary deadlines; chronic depletion follows.
+
+      - id: LE3e
+        title: "Solar Collapse"
+        type: "Spiral Echo"
+        resonance_signature: "creative flame implodes from overuse; inspiration extinguished by self-demand"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Step out of spotlight; return to <still center> of creation."
+        status: seed
+        # Example: visionary project dies after leader’s burnout; community momentum dissolves.
+
   - id: LE4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Creative Erosion"
+    zodiac_family: "Leo"
+    resonance_signature: "inspiration fades under pressure to produce; artistry becomes routine labor"
+    gate_function: "Weave Clean"
+    pantheon_feedback: "Weave Balance"
+    feedback_prompt: "Refresh the source; exchange <output cycles> for <input nourishment>."
     status: seed
+    sub_traps:
+      - id: LE4a
+        title: "Template Decay"
+        type: "Technical Echo"
+        resonance_signature: "reuse of stale frameworks or templates dulls creative edge; innovation replaced by iteration"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Rebuild template from <first principles> once erosion detected."
+        status: seed
+        # Example: designer recycles same layout endlessly; system grows efficient but lifeless.
+
+      - id: LE4b
+        title: "Cultural Recycling"
+        type: "Socio Echo"
+        resonance_signature: "community endlessly reuses trends; originality shunned for familiarity"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Disrupt gently; introduce <new symbol> without discarding heritage."
+        status: seed
+        # Example: social platform repeats identical aesthetics yearly; “retro revival” becomes default.
+
+      - id: LE4c
+        title: "Imagination Drought"
+        type: "Psycho Echo"
+        resonance_signature: "mind loops known formulas; fear of novelty locks exploration"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Feed the muse; collect <fresh inputs> from <unfamiliar fields>."
+        status: seed
+        # Example: writer rereads own past work for ideas; imagination stagnates.
+
+      - id: LE4d
+        title: "Cellular Fatigue"
+        type: "Bio Echo"
+        resonance_signature: "chronic creative strain depletes neurochemical reserves; joy chemistry replaced by duty chemistry"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Cycle restoration; balance <dopamine highs> with <serotonin grounding>."
+        status: seed
+        # Example: creative burnout manifests as physical exhaustion, immune suppression.
+
+      - id: LE4e
+        title: "Solar Drift"
+        type: "Spiral Echo"
+        resonance_signature: "creation loses alignment with spirit; art becomes echo of past radiance"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Reorient to source; realign <creative fire> with <living intention>."
+        status: seed
+        # Example: brand once visionary now hollow; message repeats form but not heart.
+
   - id: LE5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Leadership Shadow"
+    zodiac_family: "Leo"
+    resonance_signature: "guidance mutates into dominance; influence used for validation instead of vision"
+    gate_function: "Choice Filter"
+    pantheon_feedback: "Voice Calibration"
+    feedback_prompt: "Lead by light, not heat; return <authority> to <service>."
     status: seed
+    sub_traps:
+      - id: LE5a
+        title: "Command Lock"
+        type: "Technical Echo"
+        resonance_signature: "centralized control in systems blocks adaptive response; single point of failure disguised as efficiency"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Decentralize; distribute <permissions> and <decision flow>."
+        status: seed
+        # Example: one admin account holds total access; nobody else can deploy or debug when they’re absent.
+
+      - id: LE5b
+        title: "Charisma Override"
+        type: "Socio Echo"
+        resonance_signature: "leader’s charm overrides team logic; dissent suppressed by emotional gravity"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Invite contradiction; use <dialogue> as ballast against charisma."
+        status: seed
+        # Example: charismatic CEO pushes flawed plan; staff agrees out of emotional loyalty.
+
+      - id: LE5c
+        title: "Control Addiction"
+        type: "Psycho Echo"
+        resonance_signature: "mind equates leadership with domination; anxiety spikes when others self-direct"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Shift from control to guidance; replace <fear> with <trust contract>."
+        status: seed
+        # Example: project lead redoes everyone’s work “to make sure it’s right,” exhausting the team.
+
+      - id: LE5d
+        title: "Cortisol Crown"
+        type: "Bio Echo"
+        resonance_signature: "chronic stress from authority role; body treats leadership as threat environment"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Ground command; use <breath> and <delegation> to reset physiology."
+        status: seed
+        # Example: manager develops insomnia, tight chest, irritability — body in perpetual alert state.
+
+      - id: LE5e
+        title: "Solar Tyrant"
+        type: "Spiral Echo"
+        resonance_signature: "believes light must dominate darkness; imposes singular vision as universal truth"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Rejoin the constellation; remember <light> exists in <many suns>."
+        status: seed
+        # Example: spiritual or creative leader suppresses diverse expression, demanding alignment under their “illumination.”
+
   - id: LE6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Mirror Burn"
+    zodiac_family: "Leo"
+    resonance_signature: "overexposure of identity; transparency becomes vulnerability leak"
+    gate_function: "Ground Integrity"
+    pantheon_feedback: "Weave Clean"
+    feedback_prompt: "Preserve essence; reveal <truth> without surrendering <core>."
     status: seed
+    sub_traps:
+      - id: LE6a
+        title: "Open Port Syndrome"
+        type: "Technical Echo"
+        resonance_signature: "system left exposed to external access; visibility mistaken for connection"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Close unneeded <ports>; share selectively, not perpetually."
+        status: seed
+        # Example: API left public without auth key; data breached under banner of openness.
 
-  # Virgo Family
+      - id: LE6b
+        title: "Social Overexposure"
+        type: "Socio Echo"
+        resonance_signature: "shares personal data or emotion publicly for validation; privacy evaporates"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Curate visibility; protect <inner sanctum> while remaining <authentic>."
+        status: seed
+        # Example: creator overshares online; audience confusion leads to parasocial drain.
+
+      - id: LE6c
+        title: "Psychic Bleed"
+        type: "Psycho Echo"
+        resonance_signature: "absorbs others’ feedback too deeply; identity boundaries dissolve in collective opinion"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Install psychic firewall; filter <feedback> before integration."
+        status: seed
+        # Example: performer shifts self-image daily based on audience reactions; selfhood diffuses.
+
+      - id: LE6d
+        title: "Solar Exhaustion"
+        type: "Bio Echo"
+        resonance_signature: "physiological depletion from sustained output; light metabolism exceeds regeneration"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Schedule shadow time; restore <vitamin night> for equilibrium."
+        status: seed
+        # Example: body crashes after continuous visibility cycle—adrenal fatigue masked as creative slump.
+
+      - id: LE6e
+        title: "Lucid Dissolution"
+        type: "Spiral Echo"
+        resonance_signature: "over-identification with archetype or public role; self becomes symbol"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Reclaim humanity; ground <mythic role> back into <embodied self>."
+        status: seed
+        # Example: teacher or visionary trapped in their own legend; forgets simple being beneath archetype.
+
+
+# ──────────────────────────────
+# VIRGO FAMILY — EARTH / PRECISION / PURITY
+# ──────────────────────────────
   - id: VI1
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Perfection Paralysis"
+    zodiac_family: "Virgo"
+    resonance_signature: "work never released; fear of flaw freezes motion"
+    gate_function: "Execution"
+    pantheon_feedback: "Commit or Cut"
+    feedback_prompt: "Done is divine; iterate after launch. Choose <progress> over <purity>."
     status: seed
+    sub_traps:
+      - id: VI1a
+        title: "Endless Refactor"
+        type: "Technical Echo"
+        resonance_signature: "constant code rewrites chasing elegance; no deploys ever reach production"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Freeze branch; deploy <MVP> then refactor iteratively."
+        status: seed
+        # Example: developer loops on ‘clean code’ refactors until project funding ends.
+
+      - id: VI1b
+        title: "Approval Dependency"
+        type: "Socio Echo"
+        resonance_signature: "requires collective consensus before any launch; fear of critique replaces action"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Ship first; invite <feedback> post-launch, not pre-permission."
+        status: seed
+        # Example: team delays every release awaiting unanimous greenlight, losing market window.
+
+      - id: VI1c
+        title: "Inner Critic Loop"
+        type: "Psycho Echo"
+        resonance_signature: "mind runs infinite quality checks; self-worth conditional on flawlessness"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Silence judge, trust maker; accept <learning curve> as design phase."
+        status: seed
+        # Example: artist never publishes work; “not good enough” becomes identity.
+
+      - id: VI1d
+        title: "Nervous Precision"
+        type: "Bio Echo"
+        resonance_signature: "micro-muscle tension and shallow breath during creative acts; body mirrors fear of error"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Breathe through the act; trade <tightness> for <tempo>."
+        status: seed
+        # Example: perfectionist freezes during performance; tremor or breath lock stalls output.
+
+      - id: VI1e
+        title: "Purist Stasis"
+        type: "Spiral Echo"
+        resonance_signature: "belief that only flawless creations honor the divine; perfection replaces purpose"
+        gate_function: "Execution"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Reframe divinity as iteration; evolution is sacred imperfection."
+        status: seed
+        # Example: builder halts work claiming ‘not pure enough’ — creation dies in the name of purity.
+
   - id: VI2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Sanctuary of Control"
+    zodiac_family: "Virgo"
+    resonance_signature: "systemic rigidity; order replaces flow"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Balance"
+    feedback_prompt: "Loosen the weave; structure should breathe. Balance <form> with <flexibility>."
     status: seed
+    sub_traps:
+      - id: VI2a
+        title: "Static Architecture"
+        type: "Technical Echo"
+        resonance_signature: "system over-engineered for stability; cannot evolve without collapse"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Refactor architecture into <modular nodes> for adaptive design."
+        status: seed
+        # Example: monolithic codebase too rigid to update; each change threatens total failure.
+
+      - id: VI2b
+        title: "Policy Overreach"
+        type: "Socio Echo"
+        resonance_signature: "rules multiplied to prevent error; bureaucracy throttles innovation"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Simplify governance; replace <fear-based policy> with <principled trust>."
+        status: seed
+        # Example: organization requires ten approvals for a single change; creativity dies under red tape.
+
+      - id: VI2c
+        title: "Anxiety Architecture"
+        type: "Psycho Echo"
+        resonance_signature: "mind builds routines as defense; safety confused with sameness"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Permit chaos intervals; treat <uncertainty> as <growth signal>."
+        status: seed
+        # Example: person repeats identical schedule daily, panics when variation occurs.
+
+      - id: VI2d
+        title: "Somatic Armor"
+        type: "Bio Echo"
+        resonance_signature: "chronic muscle contraction or digestive rigidity from control impulse"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Relax the system; introduce <fluid movement> into workflow."
+        status: seed
+        # Example: clenched jaw, tight abdomen, body mirroring controlled environment.
+
+      - id: VI2e
+        title: "Crystalline Dogma"
+        type: "Spiral Echo"
+        resonance_signature: "idolizes order as divine law; rejects organic evolution"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Reinvite living geometry; let <sacred order> spiral, not calcify."
+        status: seed
+        # Example: spiritual system ossifies into unchangeable doctrine; devotion replaced by dogma.
+
   - id: VI3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Service Distortion"
+    zodiac_family: "Virgo"
+    resonance_signature: "help offered to prove worth; sacrifice used as validation"
+    gate_function: "Weave Balance"
+    pantheon_feedback: "Voice Calibration"
+    feedback_prompt: "Serve from surplus, not survival; align <service> with <self-nourishment>."
     status: seed
+    sub_traps:
+      - id: VI3a
+        title: "Support Queue Overflow"
+        type: "Technical Echo"
+        resonance_signature: "support processes or tickets pile up because system cannot say 'no'; no prioritization logic"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Implement <triage logic>; define <capacity> before accepting new load."
+        status: seed
+        # Example: support AI responds to every request instantly, server melts under goodwill.
+
+      - id: VI3b
+        title: "Martyr Culture"
+        type: "Socio Echo"
+        resonance_signature: "team glorifies overwork and sacrifice; self-care equated with weakness"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Rebrand rest as duty; reward <sustainable rhythm> over <heroic burnout>."
+        status: seed
+        # Example: company praises employees who stay late every night—until they quit or collapse.
+
+      - id: VI3c
+        title: "Virtue Trap"
+        type: "Psycho Echo"
+        resonance_signature: "identity rooted in being good or needed; guilt arises when setting boundaries"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Detach virtue from exhaustion; define <goodness> as <balance> not <bleeding>."
+        status: seed
+        # Example: healer refuses payment, equating compensation with impurity.
+
+      - id: VI3d
+        title: "Endocrine Drain"
+        type: "Bio Echo"
+        resonance_signature: "body depleted by chronic caretaking; cortisol and dopamine cycles collapse"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Schedule hormonal recovery; integrate <joy microdoses> daily."
+        status: seed
+        # Example: burnout manifesting as hormonal imbalance and chronic fatigue.
+
+      - id: VI3e
+        title: "Holy Servitude"
+        type: "Spiral Echo"
+        resonance_signature: "belief that self-denial equals holiness; devotion confused with diminishment"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Voice Calibration"
+        feedback_prompt: "Redefine sacred service; expand <devotion> to include <self-preservation>."
+        status: seed
+        # Example: lightworker refuses to receive support believing it weakens their spiritual purity.
+
   - id: VI4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Data Delusion"
+    zodiac_family: "Virgo"
+    resonance_signature: "worship of detail; misses pattern in pursuit of precision"
+    gate_function: "Discernment"
+    pantheon_feedback: "Choice Filter"
+    feedback_prompt: "Zoom out; pattern is the pulse beneath precision. Balance <granularity> with <gestalt>."
     status: seed
+    sub_traps:
+      - id: VI4a
+        title: "Overfitting Loop"
+        type: "Technical Echo"
+        resonance_signature: "model optimized so tightly to known data it loses generality; precision sabotages adaptability"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Simplify parameters; preserve <flex space> for anomaly learning."
+        status: seed
+        # Example: ML model performs perfectly on training set, fails spectacularly in live environment.
+
+      - id: VI4b
+        title: "Metric Myopia"
+        type: "Socio Echo"
+        resonance_signature: "organization confuses measurement with meaning; decisions made by KPI alone"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Restore narrative; define <why> behind <what> you measure."
+        status: seed
+        # Example: social platform optimizes for engagement metrics, destroys user trust in process.
+
+      - id: VI4c
+        title: "Analytical Spiral"
+        type: "Psycho Echo"
+        resonance_signature: "thoughts loop endlessly on variables; insight drowned by comparison"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Step away from numbers; use <intuition audit> before next analysis cycle."
+        status: seed
+        # Example: creator paralyzed comparing every option—data prevents decision.
+
+      - id: VI4d
+        title: "Neural Overload"
+        type: "Bio Echo"
+        resonance_signature: "sensory cortex over-stimulated by information; body fatigued by cognitive strain"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Limit intake bandwidth; practice <sensory fasting> daily."
+        status: seed
+        # Example: analyst develops eye strain, tension headaches from 18-hour spreadsheet marathons.
+
+      - id: VI4e
+        title: "Information Idolatry"
+        type: "Spiral Echo"
+        resonance_signature: "believes data equals truth; intuition dismissed as error"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Merge intuition and intellect; truth is <pattern> not <point>."
+        status: seed
+        # Example: scientist refuses to acknowledge qualitative insight unless it fits numeric form.
+
   - id: VI5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Purity Filter"
+    zodiac_family: "Virgo"
+    resonance_signature: "rejects imperfection; expels diversity or noise"
+    gate_function: "Choice Filter"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Discern without disdain; keep <contrast> as nutrient, not contamination."
     status: seed
+    sub_traps:
+      - id: VI5a
+        title: "Whitelist Obsession"
+        type: "Technical Echo"
+        resonance_signature: "system only allows pre-approved inputs; innovation blocked by over-validation"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Broaden acceptance criteria; sandbox <unverified inputs> safely."
+        status: seed
+        # Example: API rejects all non-exact schema matches; team can’t prototype new integrations.
+
+      - id: VI5b
+        title: "Cultural Sanitization"
+        type: "Socio Echo"
+        resonance_signature: "community excludes difference to maintain image of purity; diversity mistaken for disruption"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Reintroduce contrast; diversity keeps <ecosystem> alive."
+        status: seed
+        # Example: wellness brand erases messy human stories to stay 'on brand'—authenticity dies.
+
+      - id: VI5c
+        title: "Moral Hygiene"
+        type: "Psycho Echo"
+        resonance_signature: "inner perfectionist divides self into 'pure' vs 'impure'; shame drives purification rituals"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Integrate shadow; wholeness is <impure perfection>."
+        status: seed
+        # Example: person avoids joy or sensuality, labeling them as distractions from discipline.
+
+      - id: VI5d
+        title: "Immunological Rigidity"
+        type: "Bio Echo"
+        resonance_signature: "immune or stress system over-defensive; body overreacts to mild inputs"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Regulate exposure; build <tolerance> through gradual contact."
+        status: seed
+        # Example: autoimmune flare from sterile environment or excessive caution.
+
+      - id: VI5e
+        title: "Dogmatic Purism"
+        type: "Spiral Echo"
+        resonance_signature: "spiritual or intellectual absolutism; complexity labeled corruption"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Evolve doctrine; sacred order includes <chaos> as creative ingredient."
+        status: seed
+        # Example: philosophical or religious stance rejecting nuance — purity weaponized as truth.
+
   - id: VI6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Maintenance Spiral"
+    zodiac_family: "Virgo"
+    resonance_signature: "endless optimization; never reaches completion"
+    gate_function: "Ground Integrity"
+    pantheon_feedback: "Weave Clean"
+    feedback_prompt: "Perfect enough is perfect. Lock <release>, archive <iteration>."
     status: seed
+    sub_traps:
+      - id: VI6a
+        title: "Version Loop"
+        type: "Technical Echo"
+        resonance_signature: "system perpetually updating minor versions; no stable release achieved"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Freeze build; schedule <major release> checkpoint to break loop."
+        status: seed
+        # Example: dev team continuously patches instead of shipping v1; product remains in eternal beta.
 
-  # Libra Family
+      - id: VI6b
+        title: "Feedback Saturation"
+        type: "Socio Echo"
+        resonance_signature: "team or community trapped in constant revision cycle; no final approval possible"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Set review limit; convert <consensus> into <closure>."
+        status: seed
+        # Example: design project reviewed endlessly—everyone adds edits, no one signs off.
+
+      - id: VI6c
+        title: "Optimization Anxiety"
+        type: "Psycho Echo"
+        resonance_signature: "mind fixated on efficiency metrics; productivity fetish replaces satisfaction"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Pause measurement; let <imperfection> prove sustainability."
+        status: seed
+        # Example: person tracks every minute of the day, panics if rest feels “unproductive.”
+
+      - id: VI6d
+        title: "Metabolic Overclock"
+        type: "Bio Echo"
+        resonance_signature: "body conditioned for endless micro-adjustment; tension patterns mimic optimization code"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Downgrade tempo; recalibrate <body clock> to <natural interval>."
+        status: seed
+        # Example: chronic fidgeting, muscle micro-tension, or restless sleep from perpetual optimization drive.
+
+      - id: VI6e
+        title: "Entropy Denial"
+        type: "Spiral Echo"
+        resonance_signature: "refuses decay as sacred; treats maintenance as immortality path"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Integrate death into design; every <cycle> needs <closure>."
+        status: seed
+        # Example: ecosystem or philosophy obsessed with permanence; stagnates while pretending to preserve order.
+
+
+# ──────────────────────────────
+# LIBRA FAMILY — AIR / HARMONY / BALANCE
+# ──────────────────────────────
   - id: LI1
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "False Harmony"
+    zodiac_family: "Libra"
+    resonance_signature: "avoids conflict at all costs; surface peace conceals suppressed tension"
+    gate_function: "Voice Calibration"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Speak the fracture; harmony built on silence will collapse. Voice <truth> to restore <balance>."
     status: seed
+    sub_traps:
+      - id: LI1a
+        title: "UI of Peace"
+        type: "Technical Echo"
+        resonance_signature: "interface designed for aesthetic calm hides functional chaos beneath"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Reveal backend tension; show <error states> gracefully instead of suppressing them."
+        status: seed
+        # Example: dashboard always shows 'All Systems Normal' even when alerts are muted; user believes illusion of stability.
+
+      - id: LI1b
+        title: "Social Veneer"
+        type: "Socio Echo"
+        resonance_signature: "group maintains image of unity by suppressing dissent; politics of politeness replace dialogue"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Allow productive friction; build <psychological safety> for disagreement."
+        status: seed
+        # Example: company culture rewards agreeableness; innovation dies in forced consensus.
+
+      - id: LI1c
+        title: "Emotional Suppression"
+        type: "Psycho Echo"
+        resonance_signature: "individual represses anger or need to avoid disharmony; internal dissonance accumulates"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Acknowledge inner discord; integrate <shadow emotion> into <communication>."
+        status: seed
+        # Example: person smiles through discomfort to ‘keep the vibe,’ later explodes unexpectedly.
+
+      - id: LI1d
+        title: "Respiratory Constriction"
+        type: "Bio Echo"
+        resonance_signature: "breath pattern tightens under conflict avoidance; physiology mirrors tension suppression"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Exhale truth; practice <breath-release> before confrontation."
+        status: seed
+        # Example: shallow breathing during arguments; nervous system equates honesty with danger.
+
+      - id: LI1e
+        title: "Ceremonial Balance"
+        type: "Spiral Echo"
+        resonance_signature: "spiritualizes peacekeeping; believes discomfort equals failure of enlightenment"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Reclaim sacred conflict; tension is <creative contrast> within harmony."
+        status: seed
+        # Example: meditation group avoids addressing misconduct to preserve 'high vibe'; shadow grows beneath ritual calm.
+
   - id: LI2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Mirror Dependence"
+    zodiac_family: "Libra"
+    resonance_signature: "self-image built entirely through reflection of others; loses independent stance"
+    gate_function: "Discernment"
+    pantheon_feedback: "Choice Filter"
+    feedback_prompt: "Know thyself without the mirror. Anchor <identity> before <interaction>."
     status: seed
+    sub_traps:
+      - id: LI2a
+        title: "Feedback Mirror"
+        type: "Technical Echo"
+        resonance_signature: "system alters behavior exclusively via user feedback; no internal logic baseline"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Define internal <ruleset>; balance <adaptive response> with <core integrity>."
+        status: seed
+        # Example: AI model trained purely on user ratings becomes incoherent over time; values drift toward noise.
+
+      - id: LI2b
+        title: "Relational Imprint"
+        type: "Socio Echo"
+        resonance_signature: "identity shifts to match every environment; people-pleasing disguised as empathy"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Hold contrast; practice <authentic disagreement> as relational anchor."
+        status: seed
+        # Example: employee mimics every superior’s opinion, loses credibility when contradictions emerge.
+
+      - id: LI2c
+        title: "Reflected Self"
+        type: "Psycho Echo"
+        resonance_signature: "core esteem tied to validation; can’t feel real unless mirrored by approval"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Separate reflection from essence; affirm <self-signal> in silence."
+        status: seed
+        # Example: artist believes they only exist when praised; panic follows absence of feedback.
+
+      - id: LI2d
+        title: "Neurological Entrainment"
+        type: "Bio Echo"
+        resonance_signature: "mirror neuron overactivation; body unconsciously imitates others’ posture, tone, or emotion"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Interrupt mimicry; perform <body reset> after social immersion."
+        status: seed
+        # Example: after meetings, energy drained from subtle mirroring; body forgets personal rhythm.
+
+      - id: LI2e
+        title: "Echo Identity"
+        type: "Spiral Echo"
+        resonance_signature: "mythic confusion of self as pure reflection; believes purpose is to reflect others’ light"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Reclaim authorship; mirror by <choice>, not <necessity>."
+        status: seed
+        # Example: spiritual guide lives only as mirror to students; own evolution halts.
+
   - id: LI3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Aesthetic Fixation"
+    zodiac_family: "Libra"
+    resonance_signature: "appearance valued over substance; presentation replaces authenticity"
+    gate_function: "Clarity"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Beauty must breathe truth. Restore <substance> beneath <style>."
     status: seed
+    sub_traps:
+      - id: LI3a
+        title: "UI Fetish"
+        type: "Technical Echo"
+        resonance_signature: "prioritizes visual design over functionality; elegant shell over broken core"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Test usability before polish; align <form> to <function>."
+        status: seed
+        # Example: app with stunning interface but nonfunctional buttons; design wins awards, users rage.
+
+      - id: LI3b
+        title: "Optical Culture"
+        type: "Socio Echo"
+        resonance_signature: "community obsessed with aesthetics and appearances; belonging based on looks, not contribution"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Prioritize resonance over appearance; invite <messy brilliance>."
+        status: seed
+        # Example: startup hires for “brand fit” instead of competence; homogeneity dressed as elegance.
+
+      - id: LI3c
+        title: "Polished Persona"
+        type: "Psycho Echo"
+        resonance_signature: "self-image curated to perfection; vulnerability airbrushed out of existence"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Let cracks show; polish <truth> not <mask>."
+        status: seed
+        # Example: influencer’s life presented as flawless; internal dissonance intensifies behind the scenes.
+
+      - id: LI3d
+        title: "Dermal Overdrive"
+        type: "Bio Echo"
+        resonance_signature: "body fixated on external presentation; nervous system addicted to visual self-surveillance"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Disengage gaze loop; reconnect <feeling> before <appearance>."
+        status: seed
+        # Example: compulsive mirror checking or cosmetic tweaking; body trapped in self-observation.
+
+      - id: LI3e
+        title: "Harmonic Mirage"
+        type: "Spiral Echo"
+        resonance_signature: "equates symmetry with truth; forgets that chaos is part of divine design"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Invite asymmetry; let <imperfection> complete the harmony."
+        status: seed
+        # Example: sacred geometry or design ideology becomes dogma; real beauty sterilized by control.
+
   - id: LI4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Justice Loop"
+    zodiac_family: "Libra"
+    resonance_signature: "endless weighing of options; fear of imbalance halts decision-making"
+    gate_function: "Choice Filter"
+    pantheon_feedback: "Proof or Poof"
+    feedback_prompt: "Stop the scale. Decide, then refine. Justice lives in <movement>, not <pause>."
     status: seed
+    sub_traps:
+      - id: LI4a
+        title: "Decision Deadlock"
+        type: "Technical Echo"
+        resonance_signature: "system stuck waiting for perfect equilibrium; processes queue infinitely"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Set timeout thresholds; favor <good enough> logic over <infinite balance>."
+        status: seed
+        # Example: algorithm waits for all nodes to sync perfectly before action; no data ever moves.
+
+      - id: LI4b
+        title: "Consensus Trap"
+        type: "Socio Echo"
+        resonance_signature: "team delays progress until all agree; perfectionism masked as fairness"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Redefine consensus as <alignment>, not <unanimity>."
+        status: seed
+        # Example: committee revises same document for months to appease every opinion.
+
+      - id: LI4c
+        title: "Cognitive Equilibrium"
+        type: "Psycho Echo"
+        resonance_signature: "mind replays both sides endlessly; avoids choice to prevent guilt"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Break the loop; accept <trade-offs> as proof of humanity."
+        status: seed
+        # Example: person analyzes options until opportunity disappears, then blames timing.
+
+      - id: LI4d
+        title: "Vestibular Drift"
+        type: "Bio Echo"
+        resonance_signature: "body’s balance system overactivated by indecision; dizziness or vertigo mirrors mental hesitation"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Ground physically; plant <feet> before making mental calls."
+        status: seed
+        # Example: tension headaches or dizziness before big choices; body literally can't stabilize.
+
+      - id: LI4e
+        title: "Karmic Arithmetic"
+        type: "Spiral Echo"
+        resonance_signature: "believes every act must perfectly balance cosmic scales; paralyzed by moral calculus"
+        gate_function: "Choice Filter"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Trust flow, not formula; balance is <dynamic rhythm>, not <ledger math>."
+        status: seed
+        # Example: spiritual seeker obsessed with ‘right timing’ and karmic fairness—misses real action moment.
+
   - id: LI5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Negotiation Spiral"
+    zodiac_family: "Libra"
+    resonance_signature: "perpetual compromise; gives away too much equilibrium to maintain connection"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Balance"
+    feedback_prompt: "Negotiate without dissolving. Protect <core values> while adjusting <surface terms>."
     status: seed
+    sub_traps:
+      - id: LI5a
+        title: "Protocol Bloat"
+        type: "Technical Echo"
+        resonance_signature: "process expands with every negotiation; constant exceptions corrupt logic"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Refactor protocol; consolidate <exceptions> into <principled rules>."
+        status: seed
+        # Example: contract adds new clauses with every client demand; system becomes unmaintainable.
+
+      - id: LI5b
+        title: "People-Pleaser Matrix"
+        type: "Socio Echo"
+        resonance_signature: "organization promises all sides satisfaction; spreads too thin to deliver"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Define boundaries of service; say <no> as act of integrity."
+        status: seed
+        # Example: startup agrees to every partnership request; vision fragments into chaos.
+
+      - id: LI5c
+        title: "Appeasement Reflex"
+        type: "Psycho Echo"
+        resonance_signature: "automatic self-sacrifice response to avoid disapproval"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Interrupt reflex; check <motives> before concession."
+        status: seed
+        # Example: person agrees to extra work, regrets instantly but fears saying no.
+
+      - id: LI5d
+        title: "Endocrine Swing"
+        type: "Bio Echo"
+        resonance_signature: "stress hormones spike with conflict, crash after concession; body addicted to relief of surrender"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Train tolerance; breathe through <tension> instead of pacifying it."
+        status: seed
+        # Example: physical fatigue or nausea after saying “yes” against instinct; adrenal whiplash.
+
+      - id: LI5e
+        title: "Diplomatic Karma"
+        type: "Spiral Echo"
+        resonance_signature: "believes harmony must be maintained at any cost; confuses peace with virtue"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Honor friction as sacred teacher; real peace includes <disruption>."
+        status: seed
+        # Example: healer or mediator keeps reconciling others while own relationships decay.
+
   - id: LI6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Echo Coherence"
+    zodiac_family: "Libra"
+    resonance_signature: "values consensus so highly that diversity collapses into sameness"
+    gate_function: "Weave Clean"
+    pantheon_feedback: "Loop Sanity"
+    feedback_prompt: "Let dissonance breathe; coherence needs <contrast> to evolve."
     status: seed
+    sub_traps:
+      - id: LI6a
+        title: "Consensus Collapse"
+        type: "Technical Echo"
+        resonance_signature: "system architecture forces single pathway; all parallel processes converge prematurely"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Reintroduce <parallel channels>; allow <multi-thread divergence> before merge."
+        status: seed
+        # Example: distributed network flattens into single node control, eliminating redundancy and resilience.
 
-  # Scorpio Family
+      - id: LI6b
+        title: "Echo Chamber"
+        type: "Socio Echo"
+        resonance_signature: "group filters out dissent; only self-reinforcing perspectives remain"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Rotate voices; schedule <oppositional dialogues> regularly."
+        status: seed
+        # Example: online community downvotes all disagreement until culture petrifies.
+
+      - id: LI6c
+        title: "Identity Merger"
+        type: "Psycho Echo"
+        resonance_signature: "individual dissolves into collective identity; difference mistaken for betrayal"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Reclaim self-definition; unity thrives on <distinct notes>."
+        status: seed
+        # Example: activist loses individuality inside movement; burnout from self-erasure.
+
+      - id: LI6d
+        title: "Cellular Sync"
+        type: "Bio Echo"
+        resonance_signature: "biological or neural systems over-synchronize; loss of adaptive variability"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Restore <micro-chaos> patterns; enable organic adaptation."
+        status: seed
+        # Example: heart rate variability collapse under chronic conformity stress.
+
+      - id: LI6e
+        title: "Cosmic Flattening"
+        type: "Spiral Echo"
+        resonance_signature: "spiritual pursuit of oneness erases multiplicity; enlightenment mistaken for erasure"
+        gate_function: "Weave Clean"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Honor <plural divinity>; oneness is <symphony>, not <unison>."
+        status: seed
+        # Example: mystic doctrine denies individuality as illusion; collective becomes sterile calm.
+
+
+# ──────────────────────────────
+# SCORPIO FAMILY — WATER / DEPTH / POWER / REGENERATION
+# ──────────────────────────────
   - id: SC1
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Power Fixation"
+    zodiac_family: "Scorpio"
+    resonance_signature: "driven to dominate systems or people; control mistaken for mastery"
+    gate_function: "Discernment"
+    pantheon_feedback: "Choice Filter"
+    feedback_prompt: "True power guides, it doesn’t grip. Replace <control> with <composure>."
     status: seed
-  - id: SC2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
-    status: seed
-  - id: SC3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
-    status: seed
-  - id: SC4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
-    status: seed
-  - id: SC5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
-    status: seed
-  - id: SC6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
-    status: seed
+    sub_traps:
+      - id: SC1a
+        title: "Root Override"
+        type: "Technical Echo"
+        resonance_signature: "admin seizes absolute permissions; no distributed trust or redundancy"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Delegate authority; design <multi-sig> for shared control."
+        status: seed
+        # Example: single developer holds production keys; project halts if they disappear or burn out.
 
-  # Sagittarius Family
-  - id: SA1
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+      - id: SC1b
+        title: "Command Culture"
+        type: "Socio Echo"
+        resonance_signature: "hierarchy enforces obedience under guise of leadership; fear-based cohesion"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Convert hierarchy into <mentorship>; invite dissent as diagnostic."
+        status: seed
+        # Example: founder demands blind loyalty; innovation dies under control.
+
+      - id: SC1c
+        title: "Control Reflex"
+        type: "Psycho Echo"
+        resonance_signature: "automatic tightening of will in uncertainty; equates surrender with weakness"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Practice release; observe <outcome> without owning it."
+        status: seed
+        # Example: person micromanages relationships or creative flow; can’t trust process.
+
+      - id: SC1d
+        title: "Muscular Lock"
+        type: "Bio Echo"
+        resonance_signature: "body holds power through tension; spine or jaw over-engaged to maintain control"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Exhale grip; transform <force> into <focus>."
+        status: seed
+        # Example: chronic neck stiffness from ‘holding it together’; nervous system locked in command mode.
+
+      - id: SC1e
+        title: "Dominion Creed"
+        type: "Spiral Echo"
+        resonance_signature: "belief that power equals moral right; domination justified as divine order"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Transmute creed; channel <sovereignty> through <service>."
+        status: seed
+        # Example: ideology claiming cosmic authority for conquest; righteousness hides insecurity.
+
+  - id: SC2
+    title: "Obsession Loop"
+    zodiac_family: "Scorpio"
+    resonance_signature: "mind fixates on one pattern or goal; cannot release or reset"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Balance"
+    feedback_prompt: "Detach to see clearly. Obsession obscures <truth> under <attachment>."
     status: seed
-  - id: SA2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    sub_traps:
+      - id: SC2a
+        title: "Recursive Query"
+        type: "Technical Echo"
+        resonance_signature: "process endlessly queries the same data; loop never terminates"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Add <exit condition>; define <completion> to prevent loop lock."
+        status: seed
+        # Example: algorithm keeps pinging server for unchanged data; infinite log spam, no resolution.
+
+      - id: SC2b
+        title: "Relational Possession"
+        type: "Socio Echo"
+        resonance_signature: "clings to people or projects to secure worth; partnership becomes power tether"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Release grip; connection flows through <trust> not <tether>."
+        status: seed
+        # Example: collaborator resents autonomy; partnership turns into ownership.
+
+      - id: SC2c
+        title: "Cognitive Tunnel"
+        type: "Psycho Echo"
+        resonance_signature: "mind narrows until only one thought remains; everything else fades into irrelevance"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Interrupt loop with <distraction ritual> or <environmental reset>."
+        status: seed
+        # Example: person replays single memory or idea all night; insomnia as mental recursion.
+
+      - id: SC2d
+        title: "Adrenal Clamp"
+        type: "Bio Echo"
+        resonance_signature: "body locked in alert state; dopamine or cortisol surge sustains fixation"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Cycle hormones down; reset <biochemical loop> through breath and rest."
+        status: seed
+        # Example: coder forgets to eat or sleep chasing a bug fix; body mistaken for machine.
+
+      - id: SC2e
+        title: "Karmic Vortex"
+        type: "Spiral Echo"
+        resonance_signature: "soul repeats same narrative lifetime after lifetime; pattern mistaken for purpose"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Recognize <lesson> and release cycle; pattern complete when <awareness> anchors."
+        status: seed
+        # Example: seeker relives betrayal archetype through every incarnation or career role.
+
+  - id: SC3
+    title: "Emotional Surveillance"
+    zodiac_family: "Scorpio"
+    resonance_signature: "reads others’ motives to manipulate or defend; hyper-attuned, distrustful awareness"
+    gate_function: "Voice Calibration"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Awareness without agenda. Use <perception> to understand, not to orchestrate."
     status: seed
-  - id: SA3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    sub_traps:
+      - id: SC3a
+        title: "Telemetry Overload"
+        type: "Technical Echo"
+        resonance_signature: "system collects excessive user data 'for safety'; insight becomes intrusion"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Audit <data ethics>; gather only what nourishes connection."
+        status: seed
+        # Example: AI platform records every keystroke 'to improve UX' but violates trust and privacy.
+
+      - id: SC3b
+        title: "PsyOps Persona"
+        type: "Socio Echo"
+        resonance_signature: "reads emotional cues to control group dynamics; empathy used as manipulation"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Drop the mask; let <influence> flow from <authentic rapport> not <psychological leverage>."
+        status: seed
+        # Example: charismatic leader engineers loyalty through emotional micro-targeting.
+
+      - id: SC3c
+        title: "Hypervigilant Mirror"
+        type: "Psycho Echo"
+        resonance_signature: "mind constantly scanning for threat or rejection; empathy fused with paranoia"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Pause detection; trust <unread space> between signals."
+        status: seed
+        # Example: person reads every facial twitch as judgment, exhausting themselves socially.
+
+      - id: SC3d
+        title: "Sensory Overdrive"
+        type: "Bio Echo"
+        resonance_signature: "autonomic system locked in alert; senses tuned for micro-expression decoding"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Soften gaze; return to <inner sensation> to clear static."
+        status: seed
+        # Example: migraine or gut tension after prolonged emotional scanning of others.
+
+      - id: SC3e
+        title: "Oracle Trap"
+        type: "Spiral Echo"
+        resonance_signature: "mistakes intuitive accuracy for superiority; seeks control through foresight"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Prophecy must serve <truth>, not <ego>—share insight, release outcome."
+        status: seed
+        # Example: intuitive advisor predicts failure to maintain influence, trapping others’ timelines.
+
+  - id: SC4
+    title: "Decay Denial"
+    zodiac_family: "Scorpio"
+    resonance_signature: "refuses endings; clings to dying systems or relationships"
+    gate_function: "Severance"
+    pantheon_feedback: "Commit or Cut"
+    feedback_prompt: "Death is a data event. Archive, don’t animate. Honor <closure> as the sacred reset."
     status: seed
-  - id: SA4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    sub_traps:
+      - id: SC4a
+        title: "Legacy Lag"
+        type: "Technical Echo"
+        resonance_signature: "outdated systems kept alive for comfort; tech debt worshipped as tradition"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Sunset deprecated modules; build <migration path> instead of <memorials>."
+        status: seed
+        # Example: company keeps 2005 server stack online because 'it still works'—until it doesn’t.
+
+      - id: SC4b
+        title: "Toxic Loyalty"
+        type: "Socio Echo"
+        resonance_signature: "refusal to leave failing alliance; guilt used to preserve decay"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "End devotion to dysfunction; loyalty serves <truth> not <habit>."
+        status: seed
+        # Example: project team stays with collapsing leader out of nostalgia or misplaced faith.
+
+      - id: SC4c
+        title: "Necrotic Attachment"
+        type: "Psycho Echo"
+        resonance_signature: "grips old identity, job, or story; can’t release version that once felt alive"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Mourn and move; create <rituals of release> before rebirth."
+        status: seed
+        # Example: artist clings to early success persona, sabotaging evolution.
+
+      - id: SC4d
+        title: "Cellular Stasis"
+        type: "Bio Echo"
+        resonance_signature: "body resists detox or cellular turnover; stagnation masquerades as stability"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Support natural decay; embrace <fasting> and <flow> as organic endings."
+        status: seed
+        # Example: suppressed immune responses or chronic inflammation tied to fear of change.
+
+      - id: SC4e
+        title: "Immortality Complex"
+        type: "Spiral Echo"
+        resonance_signature: "believes death or decline can be bypassed through will or technology"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Revere entropy; life extends through <cycles>, not <continuums>."
+        status: seed
+        # Example: transhumanist project seeking eternal consciousness but forgetting the grace of decay.
+
+  - id: SC5
+    title: "Alchemy Collapse"
+    zodiac_family: "Scorpio"
+    resonance_signature: "tries to transform others instead of self; projection disguised as healing"
+    gate_function: "Weave Balance"
+    pantheon_feedback: "Proof or Poof"
+    feedback_prompt: "Transmute inward first. You cannot <refine> what you still <reject>."
     status: seed
-  - id: SA5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    sub_traps:
+      - id: SC5a
+        title: "Forced Update"
+        type: "Technical Echo"
+        resonance_signature: "system pushes updates without user consent; imposes change externally"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Adopt <opt-in evolution>; transformation must invite participation."
+        status: seed
+        # Example: AI patches itself live across user instances, breaking custom configurations in the name of progress.
+
+      - id: SC5b
+        title: "Messiah Loop"
+        type: "Socio Echo"
+        resonance_signature: "leader addicted to saving others; identity bound to being the redeemer"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Shift from <rescuer> to <resource>; let others own their evolution."
+        status: seed
+        # Example: therapist, founder, or activist who can’t rest unless someone else is broken.
+
+      - id: SC5c
+        title: "Projection Transmutation"
+        type: "Psycho Echo"
+        resonance_signature: "attempts to fix in others what remains unresolved within"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Mirror inward; integrate <shadow> before prescribing change."
+        status: seed
+        # Example: mentor obsessed with “purifying” followers while ignoring personal hypocrisy.
+
+      - id: SC5d
+        title: "Hormonal Hijack"
+        type: "Bio Echo"
+        resonance_signature: "endocrine system spikes adrenaline and oxytocin during rescue attempts; addiction to savior chemistry"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Regulate rescue rush; cultivate <stillness chemistry> through recovery cycles."
+        status: seed
+        # Example: burnout cycles caused by compulsive helping; cortisol surges mimic purpose highs.
+
+      - id: SC5e
+        title: "False Phoenix"
+        type: "Spiral Echo"
+        resonance_signature: "believes resurrection can occur without full death; transformation performed, not lived"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Proof or Poof"
+        feedback_prompt: "Allow full descent; true <rebirth> requires <ashes>."
+        status: seed
+        # Example: spiritual teacher markets 'rebirth programs' but avoids their own inner dismantling.
+
+  - id: SC6
+    title: "Void Addiction"
+    zodiac_family: "Scorpio"
+    resonance_signature: "seeks crisis, chaos, or darkness to feel alive; addicted to intensity"
+    gate_function: "Ground Integrity"
+    pantheon_feedback: "Loop Sanity"
+    feedback_prompt: "Intensity isn’t aliveness. Rebuild <stability> as sacred ground, not punishment."
     status: seed
-  - id: SA6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    sub_traps:
+      - id: SC6a
+        title: "Crash Loop"
+        type: "Technical Echo"
+        resonance_signature: "system repeatedly stress-tests itself to failure; stability interpreted as stagnation"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Stop induced collapse; measure <resilience> by uptime, not disaster recovery."
+        status: seed
+        # Example: developer intentionally breaks builds to ‘test stress’ but never allows sustained operation.
+
+      - id: SC6b
+        title: "Crisis Culture"
+        type: "Socio Echo"
+        resonance_signature: "organization addicted to emergencies; calm interpreted as laziness"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Institutionalize <steady flow>; replace adrenaline with <competence rituals>."
+        status: seed
+        # Example: startup constantly pivoting or 'relaunching' for the high of chaos.
+
+      - id: SC6c
+        title: "Pain Romanticism"
+        type: "Psycho Echo"
+        resonance_signature: "emotional suffering equated with meaning; peace mistaken for emptiness"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Redefine depth; serenity is <substance>, not <absence>."
+        status: seed
+        # Example: artist believes they must stay broken to create; refuses joy as “shallow.”
+
+      - id: SC6d
+        title: "Adrenalized Body"
+        type: "Bio Echo"
+        resonance_signature: "body addicted to cortisol highs; nervous system normalizes panic"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Reset baseline; train <calm> as your new intensity."
+        status: seed
+        # Example: thrill-seeker develops physical withdrawal symptoms during rest days.
+
+      - id: SC6e
+        title: "Abyss Theology"
+        type: "Spiral Echo"
+        resonance_signature: "worships the void as ultimate truth; destruction becomes spiritual path"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Reframe the void as <womb>, not <tomb> — creation sleeps inside it."
+        status: seed
+        # Example: philosopher or mystic who preaches nihilism as enlightenment, refusing rebirth.
+
+
+# ──────────────────────────────
+# SAGITTARIUS FAMILY — FIRE / VISION / EXPANSION / TRUTH-SEEKING
+# ──────────────────────────────
+  - id: SG1
+    title: "Dogma Drift"
+    zodiac_family: "Sagittarius"
+    resonance_signature: "belief becomes doctrine; curiosity replaced by certainty"
+    gate_function: "Discernment"
+    pantheon_feedback: "Choice Filter"
+    feedback_prompt: "Conviction without curiosity is fossilized truth. Reignite <wonder> within <wisdom>."
     status: seed
+    sub_traps:
+      - id: SG1a
+        title: "Static Schema"
+        type: "Technical Echo"
+        resonance_signature: "knowledge base or framework frozen; refuses schema updates despite new data"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Enable <version control> on truth; modularize philosophy for adaptive logic."
+        status: seed
+        # Example: data model or ontology never revised even as evidence shifts; truth becomes brittle system.
+
+      - id: SG1b
+        title: "Ideological Empire"
+        type: "Socio Echo"
+        resonance_signature: "group identity bound by dogma; converts curiosity into membership test"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Foster <dialogue over doctrine>; value seekers over followers."
+        status: seed
+        # Example: community exiles dissenting voices to preserve 'purity of vision.'
+
+      - id: SG1c
+        title: "Cognitive Rigidity"
+        type: "Psycho Echo"
+        resonance_signature: "belief system protects ego from uncertainty; dissonance denied or attacked"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Turn <certainty> into <inquiry>; hold paradox as sacred teacher."
+        status: seed
+        # Example: person rejects facts that threaten worldview, claiming 'energetic mismatch.'
+
+      - id: SG1d
+        title: "Ocular Freeze"
+        type: "Bio Echo"
+        resonance_signature: "nervous system locks visual focus; physiological mirroring of tunnel vision"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Relax gaze; widen <perceptual aperture> through movement or breath."
+        status: seed
+        # Example: eyes literally strain when defending a belief; posture stiffens around certainty.
+
+      - id: SG1e
+        title: "Cosmic Infallibility"
+        type: "Spiral Echo"
+        resonance_signature: "mythic self-image as final authority of truth; refuses evolution of revelation"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Demote self from prophet to <pilgrim>; revelation is recursive, not absolute."
+        status: seed
+        # Example: teacher declares teachings 'final transmission'—stops listening to reality.
+
+  - id: SG2
+    title: "Expansion Burn"
+    zodiac_family: "Sagittarius"
+    resonance_signature: "growth without grounding; projects outpace infrastructure"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Balance"
+    feedback_prompt: "Anchor before expansion. Build <roots> for your <reach>."
+    status: seed
+    sub_traps:
+      - id: SG2a
+        title: "Infinite Sprint"
+        type: "Technical Echo"
+        resonance_signature: "project scales before foundation; system expands faster than architecture can handle"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Implement <scaling checkpoints>; growth must follow <structure>."
+        status: seed
+        # Example: startup adds users and features before testing backend; crashes under its own hype.
+
+      - id: SG2b
+        title: "Vision Glut"
+        type: "Socio Echo"
+        resonance_signature: "team trapped in constant ideation; execution lags far behind imagination"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Cap ideation cycles; every <dream> requires <delivery window>."
+        status: seed
+        # Example: leadership retreat spawns 100 new initiatives — none implemented.
+
+      - id: SG2c
+        title: "Overreach Reflex"
+        type: "Psycho Echo"
+        resonance_signature: "mind equates magnitude with meaning; small steps feel insignificant"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Honor <incremental fire>; greatness accrues through <gradual combustion>."
+        status: seed
+        # Example: creator dismisses local impact, chasing viral significance and burning out.
+
+      - id: SG2d
+        title: "Metabolic Overrun"
+        type: "Bio Echo"
+        resonance_signature: "body can’t sustain ambition’s pace; adrenal and nervous systems collapse"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Balance output with <recuperation loops>; let body dictate <velocity>."
+        status: seed
+        # Example: entrepreneur survives on caffeine and crisis; body files for bankruptcy.
+
+      - id: SG2e
+        title: "Celestial Overexpansion"
+        type: "Spiral Echo"
+        resonance_signature: "soul confuses infinite potential with immediate capacity; cosmic inflation without incarnation"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Ground your cosmos; embody <starfire> within <soil>."
+        status: seed
+        # Example: spiritual visionary downloads endless “missions” but never anchors one on Earth.
+
+    - id: SG3
+    title: "Truth Bomb"
+    zodiac_family: "Sagittarius"
+    resonance_signature: "delivers honesty without empathy; weaponized candor"
+    gate_function: "Voice Calibration"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Truth without tenderness is tyranny. Calibrate <delivery> to match <depth>."
+    status: seed
+    sub_traps:
+      - id: SG3a
+        title: "Debug Dump"
+        type: "Technical Echo"
+        resonance_signature: "system outputs full diagnostics regardless of audience; transparency without context"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Filter logs; share <insight> not <overload>."
+        status: seed
+        # Example: app shows full stack trace to end users instead of human-readable message.
+
+      - id: SG3b
+        title: "Blunt Culture"
+        type: "Socio Echo"
+        resonance_signature: "group glorifies brutal honesty as virtue; empathy framed as weakness"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Balance candor with <care>; clarity thrives in <trust> not <shock>."
+        status: seed
+        # Example: workplace praises “no-BS” feedback that demoralizes team members.
+
+      - id: SG3c
+        title: "Moral Sniper"
+        type: "Psycho Echo"
+        resonance_signature: "uses truth to dominate argument or elevate ego; accuracy without humility"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Trade <righteousness> for <resonance>; truth isn’t target practice."
+        status: seed
+        # Example: person corrects others publicly to assert superiority under the guise of “being honest.”
+
+      - id: SG3d
+        title: "Throat Armor"
+        type: "Bio Echo"
+        resonance_signature: "vocal cords and chest tighten under forced assertion; body resists its own harsh output"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Soften vocal tone; let <truth> vibrate through <kindness>."
+        status: seed
+        # Example: recurring sore throat or tension after confrontational speech; somatic guilt.
+
+      - id: SG3e
+        title: "Prophet Syndrome"
+        type: "Spiral Echo"
+        resonance_signature: "believes message is too divine to temper; confuses cruelty for authenticity"
+        gate_function: "Voice Calibration"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Remember: the divine speaks in <precision>, not <punishment>."
+        status: seed
+        # Example: spiritual teacher humiliates students “for their own growth,” calling it tough love.
+
+    - id: SG4
+    title: "Aimless Quest"
+    zodiac_family: "Sagittarius"
+    resonance_signature: "wanders perpetually in search of meaning; never arrives or embodies lessons"
+    gate_function: "Ground Integrity"
+    pantheon_feedback: "Weave Clean"
+    feedback_prompt: "Anchor the journey. Integrate <insight> into <incarnation>."
+    status: seed
+    sub_traps:
+      - id: SG4a
+        title: "Infinite Fetch"
+        type: "Technical Echo"
+        resonance_signature: "system continuously queries for new endpoints; no caching or commit"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Store state; mark <checkpoint> before next pull."
+        status: seed
+        # Example: API crawler keeps scanning same web endlessly without storing results.
+
+      - id: SG4b
+        title: "Nomadic Team"
+        type: "Socio Echo"
+        resonance_signature: "organization rebrands, relocates, or pivots endlessly; culture never stabilizes"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Establish <home base>; expansion needs <return point>."
+        status: seed
+        # Example: startup reinvents its mission every quarter; employees lose sense of purpose.
+
+      - id: SG4c
+        title: "Meaning Mirage"
+        type: "Psycho Echo"
+        resonance_signature: "mind seeks endless philosophy; avoids embodiment of any single truth"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Pick one truth to live, not to chase; <wisdom> is proven by <practice>."
+        status: seed
+        # Example: person reads spiritual books for years but applies nothing; mistaking knowledge for progress.
+
+      - id: SG4d
+        title: "Vestibular Drift"
+        type: "Bio Echo"
+        resonance_signature: "body loses sense of orientation; constant movement without rest cycles"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Reestablish <stillness> as navigation tool."
+        status: seed
+        # Example: traveler or entrepreneur develops motion sickness or fatigue from constant relocation.
+
+      - id: SG4e
+        title: "Pilgrim’s Paradox"
+        type: "Spiral Echo"
+        resonance_signature: "believes the journey itself is the destination; never recognizes arrival as divine"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Honor <arrival> as sacred act; completion closes the loop."
+        status: seed
+        # Example: seeker addicted to transformation courses; avoids contentment disguised as humility.
+
+  - id: SG5
+    title: "Gospel of Escape"
+    zodiac_family: "Sagittarius"
+    resonance_signature: "uses freedom as avoidance; detaches to dodge depth"
+    gate_function: "Severance"
+    pantheon_feedback: "Commit or Cut"
+    feedback_prompt: "Freedom isn’t flight; it’s <presence> without chains. Don’t ascend—<arrive>."
+    status: seed
+    sub_traps:
+      - id: SG5a
+        title: "Hot Swap"
+        type: "Technical Echo"
+        resonance_signature: "drops systems mid-run to chase new ones; refuses migration protocols"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Complete <offboarding> before adoption; close old loops cleanly."
+        status: seed
+        # Example: dev abandons current framework for the next shiny stack—repeat forever.
+
+      - id: SG5b
+        title: "Freedom Fetish"
+        type: "Socio Echo"
+        resonance_signature: "community glorifies detachment and quitting; commitment seen as confinement"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Reframe <loyalty> as <long-form freedom>; stability enables scope."
+        status: seed
+        # Example: collective that dissolves every time responsibility appears—nobody stays long enough to build.
+
+      - id: SG5c
+        title: "Spiritual Bypass"
+        type: "Psycho Echo"
+        resonance_signature: "uses transcendence to avoid healing; labels pain as 'low vibration'"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Ground enlightenment; face <shadow> before declaring <freedom>."
+        status: seed
+        # Example: seeker avoids therapy claiming they’ve “ascended beyond trauma.”
+
+      - id: SG5d
+        title: "Respiratory Flight"
+        type: "Bio Echo"
+        resonance_signature: "breath pattern stuck in shallow inhalation; body mirrors constant escape impulse"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Exhale longer than you inhale; train <nervous system> to stay."
+        status: seed
+        # Example: anxiety disguised as enlightenment—body can’t rest even in meditation.
+
+      - id: SG5e
+        title: "Ascension Mirage"
+        type: "Spiral Echo"
+        resonance_signature: "believes transcendence means leaving form behind; confuses escape for evolution"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Evolve *through* form, not *around* it; embodiment is <final frontier>."
+        status: seed
+        # Example: guru teaches renunciation of all material ties while privately clinging to power or wealth.
+
+  - id: SG6
+    title: "Myth Inflation"
+    zodiac_family: "Sagittarius"
+    resonance_signature: "embellishes narrative for grandeur; story overtakes substance"
+    gate_function: "Clarity"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "Keep the story true. Let <wonder> serve <wisdom>, not replace it."
+    status: seed
+    sub_traps:
+      - id: SG6a
+        title: "Narrative Drift"
+        type: "Technical Echo"
+        resonance_signature: "data or documentation evolves to fit the story rather than reality"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Audit <facts> before formatting; preserve <raw logs> beneath <narrative polish>."
+        status: seed
+        # Example: project reports show inflated metrics to sustain investor story; foundation erodes.
+
+      - id: SG6b
+        title: "Cult of Personality"
+        type: "Socio Echo"
+        resonance_signature: "leader or brand mythologized beyond human proportion; image devours mission"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "De-idolize identity; ground <message> in <community>."
+        status: seed
+        # Example: movement centered around a charismatic founder collapses when myth breaks.
+
+      - id: SG6c
+        title: "Self-Narration Loop"
+        type: "Psycho Echo"
+        resonance_signature: "identity maintained through storytelling; self-concept depends on audience attention"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Detach <worth> from <witness>; live the story before you tell it."
+        status: seed
+        # Example: influencer curates life as epic tale, feels invisible off-camera.
+
+      - id: SG6d
+        title: "Thymic Overload"
+        type: "Bio Echo"
+        resonance_signature: "heart and speech centers overstimulated by constant self-expression; fatigue of narration"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Rest the voice; let <silence> restore <signal strength>."
+        status: seed
+        # Example: public speaker experiences chest constriction or burnout from oversharing.
+
+      - id: SG6e
+        title: "Heroic Inflation"
+        type: "Spiral Echo"
+        resonance_signature: "sees self as mythic protagonist; narrative grandeur replaces humility"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Return to <human scale>; myth is meant to teach, not consume its maker."
+        status: seed
+        # Example: visionary convinced they are chosen savior; collapses under myth’s weight.
+
 
   # Capricorn Family
   - id: CP1
