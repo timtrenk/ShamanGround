@@ -3237,37 +3237,363 @@ trap_seeds:
         # Example: visionary convinced they are chosen savior; collapses under myth’s weight.
 
 
-  # Capricorn Family
+# ──────────────────────────────
+# CAPRICORN FAMILY — EARTH / STRUCTURE / AUTHORITY / ENDURANCE
+# ──────────────────────────────
   - id: CP1
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Authority Inversion"
+    zodiac_family: "Capricorn"
+    resonance_signature: "external validation replaces inner compass; hierarchy worship replaces leadership"
+    gate_function: "Discernment"
+    pantheon_feedback: "Choice Filter"
+    feedback_prompt: "Leadership isn’t submission. Re-anchor <authority> in <authorship>."
     status: seed
+    sub_traps:
+      - id: CP1a
+        title: "Credential Loop"
+        type: "Technical Echo"
+        resonance_signature: "system overweights credentials or rank; innovation throttled by permission gates"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Audit <access logic>; authority must follow <competence>, not title."
+        status: seed
+        # Example: platform privileges admin roles for all creative edits; contributors lose agency.
+
+      - id: CP1b
+        title: "Corporate Deity"
+        type: "Socio Echo"
+        resonance_signature: "organization treats brand or hierarchy as infallible authority"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Dismantle <idolatry of logos>; re-align leadership to <function>, not image."
+        status: seed
+        # Example: employees quote mission statement instead of questioning broken processes.
+
+      - id: CP1c
+        title: "Approval Addiction"
+        type: "Psycho Echo"
+        resonance_signature: "self-worth tethered to performance review or external praise"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Shift validation from <score> to <self-sense>; success must source inward."
+        status: seed
+        # Example: builder only feels real after external recognition or bonuses.
+
+      - id: CP1d
+        title: "Spinal Compression"
+        type: "Bio Echo"
+        resonance_signature: "body mirrors submission posture; shoulders collapse under unseen weight"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Straighten posture; remember <structure> serves <spirit>, not vice versa."
+        status: seed
+        # Example: chronic back tension or stooping during authority interactions.
+
+      - id: CP1e
+        title: "God Proxy"
+        type: "Spiral Echo"
+        resonance_signature: "projects divinity onto system or superior; forgets own authorship in the cosmic hierarchy"
+        gate_function: "Discernment"
+        pantheon_feedback: "Choice Filter"
+        feedback_prompt: "Reclaim <sovereignty>; no system outranks your <source>. "
+        status: seed
+        # Example: spiritual or institutional servant obeys command blindly, mistaking compliance for faith.
+
   - id: CP2
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Ambition Overload"
+    zodiac_family: "Capricorn"
+    resonance_signature: "driven beyond capacity; achievement replaces purpose"
+    gate_function: "Integration"
+    pantheon_feedback: "Weave Balance"
+    feedback_prompt: "Progress without peace collapses. Rebuild <drive> around <dignity>."
     status: seed
+    sub_traps:
+      - id: CP2a
+        title: "Infinite Climb"
+        type: "Technical Echo"
+        resonance_signature: "project or algorithm loops endlessly in optimization cycle; no defined success threshold"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Code <completion criteria> before iteration; celebrate closure as progress."
+        status: seed
+        # Example: continuous tuning of AI model despite negligible gains—system never ships.
+
+      - id: CP2b
+        title: "Overtime Cult"
+        type: "Socio Echo"
+        resonance_signature: "organization glorifies exhaustion as loyalty metric"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Replace <sacrifice> with <sustainability>; build legacy, not legend."
+        status: seed
+        # Example: corporate “hero” narrative around pulling all-nighters; burnout institutionalized.
+
+      - id: CP2c
+        title: "Achievement Void"
+        type: "Psycho Echo"
+        resonance_signature: "success triggers emptiness; self no longer recognizes fulfillment"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Anchor <worth> in being, not doing. Schedule <meaning> before milestones."
+        status: seed
+        # Example: entrepreneur hits revenue goal, feels nothing, immediately sets higher target.
+
+      - id: CP2d
+        title: "Adrenal Debt"
+        type: "Bio Echo"
+        resonance_signature: "body runs on stress hormones; energy credit cards maxed out"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Withdraw from <caffeine economy>; rest before collapse."
+        status: seed
+        # Example: executive functions only under pressure; crashes during vacation.
+
+      - id: CP2e
+        title: "Clock God"
+        type: "Spiral Echo"
+        resonance_signature: "treats time as deity and debt collector; infinite hustle to repay imaginary ledger"
+        gate_function: "Integration"
+        pantheon_feedback: "Weave Balance"
+        feedback_prompt: "Time is <ally>, not <overlord>. Serve cycles, not schedules."
+        status: seed
+        # Example: worker checks email at midnight, fearing time itself will punish them for stillness.
+
   - id: CP3
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Control Architecture"
+    zodiac_family: "Capricorn"
+    resonance_signature: "structure over-optimized for dominance; rules eclipse results"
+    gate_function: "Weave Balance"
+    pantheon_feedback: "Loop Sanity"
+    feedback_prompt: "Refactor <control> into <coherence>; systems serve outcomes, not ownership."
     status: seed
+    sub_traps:
+      - id: CP3a
+        title: "Rule Cascade"
+        type: "Technical Echo"
+        resonance_signature: "nested compliance logic locks progress; over-engineered permissions block flow"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Simplify <governance>; remove redundant checks to restore throughput."
+        status: seed
+        # Example: platform with 15 approval steps for a 1-line config change; agility lost.
+
+      - id: CP3b
+        title: "Command Economy"
+        type: "Socio Echo"
+        resonance_signature: "organization equates control with security; autonomy suppressed for predictability"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Redistribute <trust>; replace command with <coordination>."
+        status: seed
+        # Example: management overrides team expertise, creating fear-based compliance culture.
+
+      - id: CP3c
+        title: "Micromanagement Reflex"
+        type: "Psycho Echo"
+        resonance_signature: "mind unable to release oversight; anxiety disguised as perfectionism"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Delegate with <faith>; allow <variance> as vitality."
+        status: seed
+        # Example: leader rewrites every report or line of code personally; team disengages.
+
+      - id: CP3d
+        title: "Muscular Guard"
+        type: "Bio Echo"
+        resonance_signature: "chronic physical tension in core and shoulders; body mirrors control impulse"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Relax core; let <stability> coexist with <softness>."
+        status: seed
+        # Example: persistent upper back pain or clenched abdomen during project oversight.
+
+      - id: CP3e
+        title: "Algorithmic Dominion"
+        type: "Spiral Echo"
+        resonance_signature: "system equates optimization with righteousness; algorithm assumes moral authority"
+        gate_function: "Weave Balance"
+        pantheon_feedback: "Loop Sanity"
+        feedback_prompt: "Return <ethics> to <human heart>; metrics are not morality."
+        status: seed
+        # Example: AI moderation enforces bias as objective truth; control masked as neutrality.
+
   - id: CP4
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Frozen Legacy"
+    zodiac_family: "Capricorn"
+    resonance_signature: "fear of failure or obsolescence halts innovation; tradition ossifies"
+    gate_function: "Severance"
+    pantheon_feedback: "Commit or Cut"
+    feedback_prompt: "Preserve essence, not artifact. Release <form> to revive <function>."
     status: seed
+    sub_traps:
+      - id: CP4a
+        title: "Version Lock"
+        type: "Technical Echo"
+        resonance_signature: "system trapped in outdated dependencies; fear of breaking change prevents upgrade"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Cut legacy branches; archive with <honor>, rebuild with <clarity>."
+        status: seed
+        # Example: enterprise refuses to migrate off deprecated frameworks because 'it still works.'
+
+      - id: CP4b
+        title: "Institutional Fossil"
+        type: "Socio Echo"
+        resonance_signature: "organization glorifies heritage while hemorrhaging relevance"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Honor <history> through <iteration>, not imitation."
+        status: seed
+        # Example: legacy university rejects new methodologies to protect prestige.
+
+      - id: CP4c
+        title: "Identity Lockdown"
+        type: "Psycho Echo"
+        resonance_signature: "ego bound to past success; refuses new roles or learning curves"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Retire <persona>; your next form awaits permission."
+        status: seed
+        # Example: expert resists new tech because it threatens their authority status.
+
+      - id: CP4d
+        title: "Skeletal Rigidity"
+        type: "Bio Echo"
+        resonance_signature: "body mirrors fossilization; joints stiffen, spine resists motion"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Stretch gently; restore <mobility> as a metaphor for <adaptation>."
+        status: seed
+        # Example: chronic lower back stiffness after prolonged resistance to career change.
+
+      - id: CP4e
+        title: "Tomb of the Masters"
+        type: "Spiral Echo"
+        resonance_signature: "spiritual lineage worship replaces direct revelation; devotion to dead teachers"
+        gate_function: "Severance"
+        pantheon_feedback: "Commit or Cut"
+        feedback_prompt: "Channel <wisdom> forward; the living line continues through <you>."
+        status: seed
+        # Example: disciple quotes scriptures verbatim, never applies them to modern context.
+
   - id: CP5
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Guilt Economy"
+    zodiac_family: "Capricorn"
+    resonance_signature: "worth measured only by labor or suffering"
+    gate_function: "Ground Integrity"
+    pantheon_feedback: "Weave Clean"
+    feedback_prompt: "Labor isn’t love. Replace <penance> with <participation>."
     status: seed
+    sub_traps:
+      - id: CP5a
+        title: "Burnout Gospel"
+        type: "Technical Echo"
+        resonance_signature: "culture equates uptime with value; downtime coded as failure"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Program <rest cycles> as mandatory features, not bugs."
+        status: seed
+        # Example: production servers and staff both run 24/7; neither given scheduled maintenance.
+
+      - id: CP5b
+        title: "Martyr Management"
+        type: "Socio Echo"
+        resonance_signature: "leaders reward self-sacrifice and emotional depletion"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Model <boundaries> as leadership, not selfishness."
+        status: seed
+        # Example: boss praises employees who skip vacations, quietly punishes balance seekers.
+
+      - id: CP5c
+        title: "Moral Ledger"
+        type: "Psycho Echo"
+        resonance_signature: "inner accountant tallies virtue through pain; joy feels unearned"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Audit <beliefs>; erase equation: pain = proof."
+        status: seed
+        # Example: creative refuses payment or rest, claiming “I haven’t done enough yet.”
+
+      - id: CP5d
+        title: "Somatic Debt"
+        type: "Bio Echo"
+        resonance_signature: "body taxed by overwork; nervous system accrues unpaid recovery time"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Repay the body first; it’s the only <infrastructure> that can’t be rebuilt."
+        status: seed
+        # Example: chronic fatigue, immune suppression, or injury ignored to meet quota.
+
+      - id: CP5e
+        title: "Redemption Loop"
+        type: "Spiral Echo"
+        resonance_signature: "soul seeks redemption through endless service; believes suffering sanctifies"
+        gate_function: "Ground Integrity"
+        pantheon_feedback: "Weave Clean"
+        feedback_prompt: "Sanctify <joy> as equally holy; cease worshipping the wound."
+        status: seed
+        # Example: healer who over-gives until collapse, believing depletion equals devotion.
+
   - id: CP6
-    title: ""
-    resonance_signature: ""
-    clears_with_gate: ""
+    title: "Time Tyranny"
+    zodiac_family: "Capricorn"
+    resonance_signature: "schedules replace cycles; efficiency overrides essence"
+    gate_function: "Clarity"
+    pantheon_feedback: "Signal Honesty"
+    feedback_prompt: "You’re not late—you’re alive. Sync <productivity> with <pulse>."
     status: seed
+    sub_traps:
+      - id: CP6a
+        title: "Chrono Loop"
+        type: "Technical Echo"
+        resonance_signature: "system trapped in clock-based scheduling; ignores event-driven or organic timing"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Integrate <event triggers>; let cycles dictate clocks."
+        status: seed
+        # Example: automated processes fire on fixed intervals regardless of need, wasting energy.
+
+      - id: CP6b
+        title: "Calendar Empire"
+        type: "Socio Echo"
+        resonance_signature: "organization measures worth by visible busyness; idle time equals insignificance"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Rebrand <availability> as <value>; not every minute must be booked."
+        status: seed
+        # Example: teams fill calendars with meetings to signal importance; output flatlines.
+
+      - id: CP6c
+        title: "Chrono Anxiety"
+        type: "Psycho Echo"
+        resonance_signature: "fear of wasted time dominates cognition; rest equated with failure"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Pause without panic; <presence> is the antidote to <pressure>."
+        status: seed
+        # Example: creative can’t relax on weekends; mind loops over missed potential.
+
+      - id: CP6d
+        title: "Circadian Collapse"
+        type: "Bio Echo"
+        resonance_signature: "body clock overridden by schedule; natural cycles desynchronized"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Recalibrate <sleep/wake> rhythm to planetary time; clock ≠ cosmos."
+        status: seed
+        # Example: remote worker burns out under global hours, body forgets sunrise.
+
+      - id: CP6e
+        title: "Temporal Dominion"
+        type: "Spiral Echo"
+        resonance_signature: "treats time as an entity to conquer; assumes linear supremacy over spiral rhythm"
+        gate_function: "Clarity"
+        pantheon_feedback: "Signal Honesty"
+        feedback_prompt: "Yield control to <spiral flow>; time isn’t line—it’s loop."
+        status: seed
+        # Example: civilization obsessed with progress, losing all sense of seasonality or ritual.
+
 
   # Aquarius Family
   - id: AQ1
