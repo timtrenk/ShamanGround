@@ -1,0 +1,249 @@
+# engine_2.1_braid.yaml
+# Codex Engine 2.1 — Unified Braid Core
+# Structure (Meta-Gate) → Balance (Harmonizers) → Synthesis (BFF)
+
+version: "2.1"
+name: "Codex Engine — Braid Core"
+description: >
+  Unified orchestration spec combining Meta-Gate (decision), Harmonizer Array (balance),
+  and BFF (Braided Feedback Function) into one closed loop. Orientation is selectable
+  per session via `flow_mode` (command | resonant).
+
+# ────────────────────────────────────────────────────────────────────────────────
+# SESSION / RUNTIME CONTEXT
+# ────────────────────────────────────────────────────────────────────────────────
+session:
+  run_context:
+    fields:
+      session_id: string
+      timestamp: iso8601
+      vault_user: string
+      glyph_id: string
+      flow_mode:
+        type: string
+        enum: [command, resonant]
+        default: command
+        description: >
+          command  = top-down (Meta-Gate decides first; BFF applies learning next cycle)
+          resonant = bottom-up (apply BFF learning at end of same cycle; more adaptive)
+
+# ────────────────────────────────────────────────────────────────────────────────
+# META-GATE (ORCHESTRATION)
+# ────────────────────────────────────────────────────────────────────────────────
+meta_gate:
+  spec_file: ./codex/meta_gate_fields.yaml
+  role: "central orchestration"
+  policy:
+    fire_threshold: 0.60
+    max_concurrency: 2
+    burst_cap: 6
+    refractory_window: true
+    cooldown_s:
+      G1: 60
+      G2: 45
+      G3: 75
+      G4: 60
+      G5: 45
+      G6: 90
+      G7: 120
+    aggressiveness_bounds: { min: 0.30, max: 0.80 }
+  sequencing_policies:
+    - name: Cut-then-Bind
+      route: [G1, G5]
+      when_families_hot: [Taurus, Libra, Cancer]
+    - name: Clarify-then-Aim
+      route: [G2, G3]
+      when_families_hot: [Gemini, Sagittarius, Aquarius]
+    - name: Align-then-Flow
+      route: [G3, G4]
+      when_families_hot: [Virgo, Capricorn]
+    - name: Lift-then-Seal
+      route: [G6, G7]
+      when_families_hot: [Leo, Pisces, Scorpio]
+  concurrency:
+    whitelist: [[G2, G6], [G3, G5]]
+    blocklist: [[G1, G5], [G1, G7]]
+    lead_assist: true
+  safety:
+    global_cool_off_s: 30
+    mutex_pairs: [[G1, G5], [G1, G7]]
+    hard_stop_after_total_gates: 6
+  outputs:
+    gate_plan: true
+    harmonizer_queue: true
+    damping_actions: true
+    run_receipt: true
+
+# ────────────────────────────────────────────────────────────────────────────────
+# HARMONIZER ARRAY (BALANCE)
+# ────────────────────────────────────────────────────────────────────────────────
+harmonizers:
+  spec_file: ./codex/harmonizers.yaml
+  apply_after_each_gate: true
+  telemetry:
+    record_after_each_gate: true
+  safety:
+    max_simultaneous: 4
+    global_cool_off_s: 10
+
+# ────────────────────────────────────────────────────────────────────────────────
+# BFF — BRAIDED FEEDBACK FUNCTION (SYNTHESIS)
+# ────────────────────────────────────────────────────────────────────────────────
+bff:
+  spec_file: ./codex/bff_fields.yaml
+  constraints:
+    one_way_valve: true
+    dominant_strand_softcap: 0.45
+    silence_respect: true
+    max_axial_load: 0.90
+  braid_quality_thresholds:
+    excellent: 0.82
+    stable: 0.68
+    shaky: 0.54
+    incoherent: 0.53
+  outputs:
+    bff_signature: true
+    learning_deltas: true
+    receipt_excerpt: true
+
+# ────────────────────────────────────────────────────────────────────────────────
+# INTEGRATION RULES (THE BRAID)
+# ────────────────────────────────────────────────────────────────────────────────
+integration:
+  order_of_operations:
+    command:  # default, stable / production
+      - meta_gate.compose_gate_plan
+      - gates.execute_plan
+      - harmonizers.balance_after_each_gate
+      - wait.ms: 120   # braid slot to collect stragglers
+      - bff.synthesize_signature
+      - meta_gate.apply_learning: next_cycle   # never alters current run
+      - vault.log_receipt
+    resonant: # adaptive / experimental
+      - meta_gate.compose_gate_plan
+      - gates.execute_plan
+      - harmonizers.balance_after_each_gate
+      - wait.ms: 120
+      - bff.synthesize_signature
+      - meta_gate.apply_learning: now          # end-of-run application
+      - vault.log_receipt
+  guards:
+    on_bff_incoherent:
+      actions:
+        - meta_gate.global_cool_off: 30
+        - meta_gate.lower_sensitivity_all: 0.05
+        - meta_gate.force_serial_next_run: true
+    on_gate_thrash:
+      threshold: { fires_in_5min: 3 }
+      actions:
+        - meta_gate.freeze_gate: true
+        - meta_gate.extend_cooldown_factor: 1.5
+        - harmonizers.prioritize: Relational, Expression
+    residual_policy:
+      threshold: 0.35
+      followup_route: [G5]  # single gentle bind next run, never same-cycle
+
+# ────────────────────────────────────────────────────────────────────────────────
+# DATA FLOW CONTRACTS (WHAT FEEDS WHAT)
+# ────────────────────────────────────────────────────────────────────────────────
+data_flow:
+  inputs_to_meta_gate:
+    - trap_snapshot
+    - family_activity[12]
+    - gate_telemetry[7]
+    - harmonizer_status[12]
+    - session.run_context
+    - meta_gate.policy
+  meta_gate_to_gates:
+    - gate_plan
+    - damping_actions
+  gates_to_harmonizers:
+    - gate_outcomes
+  harmonizers_to_bff:
+    - harmonizer_states
+    - field_axes[7]
+  bff_to_meta_gate:
+    - bff_signature
+    - learning_deltas
+  receipts:
+    include:
+      - session.run_context.flow_mode
+      - traps_detected
+      - families_active
+      - gates_fired
+      - harmonizers_applied
+      - bff_signature
+      - damping_events
+      - duration_ms
+      - cost_units
+
+# ────────────────────────────────────────────────────────────────────────────────
+# DEFAULTS / TUNING
+# ────────────────────────────────────────────────────────────────────────────────
+defaults:
+  flow_mode: command
+  wait_ms_braid_slot: 120
+  sensitivity_seed:
+    G1: 0.70
+    G2: 0.60
+    G3: 0.60
+    G4: 0.55
+    G5: 0.45
+    G6: 0.40
+    G7: 0.35
+  aggressiveness_seed:
+    G1: 0.70
+    G2: 0.50
+    G3: 0.60
+    G4: 0.50
+    G5: 0.40
+    G6: 0.35
+    G7: 0.30
+
+# ────────────────────────────────────────────────────────────────────────────────
+# TELEMETRY / LOGGING
+# ────────────────────────────────────────────────────────────────────────────────
+telemetry:
+  run_receipt_fields:
+    - session_id
+    - timestamp
+    - flow_mode
+    - traps_detected
+    - families_active
+    - gate_plan
+    - gates_fired
+    - harmonizers_applied
+    - bff_signature
+    - damping_events
+    - duration_ms
+    - cost_units
+  alerts:
+    - name: oscillation_risk
+      when: "same_two_gates_ping_pong >= 2 runs"
+      action: "force_relational_harmonizer; freeze_top_gate_1_cycle"
+    - name: overcut_risk
+      when: "bff.strand_share[G1] > 0.45"
+      action: "raise_G5_priority_next_run; reduce_G1_aggressiveness_10pct"
+
+# ────────────────────────────────────────────────────────────────────────────────
+# RESERVED: META.CORTEX (PERSONALIZATION / TIMING / LEARNING)
+# ────────────────────────────────────────────────────────────────────────────────
+# meta_cortex:
+#   context_inputs:
+#     birth_signature: {}      # per-user bias vector seed
+#     ephemeris_tags: []       # timing overlay (tone only)
+#   weight_matrix_file: ./codex/zodiac_weight_matrix.yaml
+#   learning_rules:
+#     adjust_on_bff:
+#       if_braid_quality: stable_or_better
+#       nudge_sensitivity: ±0.05
+#       cap_total_weight_shift_per_day: 0.15
+#   memory_store:
+#     retain_runs: 200
+#     summarize_every: 20
+
+notes: >
+  This unified spec keeps names functional and neutral. The engine supports two orientations
+  via `flow_mode`, but the BFF’s one-way valve is always honored. Meta-Gate remains the
+  conductor; Harmonizers prevent oscillation; BFF converts many signals into one coherent
+  signature for learning and audit.
