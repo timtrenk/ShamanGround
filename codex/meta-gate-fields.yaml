@@ -1,0 +1,145 @@
+# meta_gate_fields.yaml
+# Core field schema for Meta-Gate (Engine 2.1)
+# Meta-Cortex upgrade fields are scaffolded but commented out for later activation.
+
+meta_gate:
+  description: >
+    Central orchestration node. Reads trap activity, gate telemetry, and
+    harmonizer states to produce a gate plan, enforce cooldowns, and
+    dispatch corrections. All data types are language-agnostic.
+
+  # ---------- Inputs ----------
+  inputs:
+    trap_snapshot:
+      type: list<object>
+      description: >
+        Current active traps. Each object includes id, severity, and family.
+      required: true
+
+    family_activity:
+      type: list<float>
+      length: 12
+      description: >
+        Rolling 0–1 intensity scores for each zodiac family (from traps).
+      required: true
+
+    gate_telemetry:
+      type: object
+      fields:
+        last_fired_ts: iso8601
+        success_rate: float
+        residual_avg: float
+      description: Historical performance data per gate.
+      required: true
+
+    harmonizer_status:
+      type: list<object>
+      length: 12
+      description: >
+        Current lift/attenuation values per harmonizer axis.
+      required: true
+
+    policy:
+      type: object
+      fields:
+        fire_threshold: float
+        cooldown_s: int
+        max_concurrency: int
+        burst_cap: int
+      description: Gate firing rules and damping parameters.
+      required: true
+
+    run_context:
+      type: object
+      fields:
+        session_id: string
+        timestamp: iso8601
+        vault_user: string
+        glyph_id: string
+      description: Session metadata for traceability.
+      required: true
+
+  # ---------- Outputs ----------
+  outputs:
+    gate_plan:
+      type: list<object>
+      description: >
+        Ordered list of gates to fire with sensitivity, aggressiveness,
+        and timeout parameters.
+      required: true
+
+    damping_actions:
+      type: list<object>
+      description: >
+        Cooldown, backoff, and global-silence directives applied this run.
+      required: true
+
+    harmonizer_queue:
+      type: list<object>
+      description: >
+        Harmonizer recipes attached to each gate for post-processing.
+      required: true
+
+    run_receipt:
+      type: object
+      fields:
+        traps_detected: list
+        gates_fired: list
+        harmonizers_applied: list
+        duration_ms: int
+        cost_units: float
+      description: Complete summary of the current Meta-Gate cycle.
+      required: true
+
+  # ---------- Telemetry ----------
+  telemetry:
+    cooldowns:
+      type: dict
+      description: Remaining cooldown time (seconds) per gate.
+      required: true
+    refractory_window:
+      type: bool
+      description: Indicates whether the gate is in refractory state.
+      required: true
+    burst_counter:
+      type: int
+      description: Number of gates fired within active window.
+      required: true
+
+  # ---------- Safety thresholds ----------
+  safety:
+    max_total_gates: 6
+    global_cool_off_s: 30
+    backoff_multiplier: 1.5
+    aggressiveness_floor: 0.3
+    aggressiveness_ceiling: 0.8
+
+  # ---------- Reserved for Meta.Cortex upgrade ----------
+  # context_inputs:
+  #   birth_signature:
+  #     type: object
+  #     description: >
+  #       Encoded DOB/time/place fingerprint; seeds personalized weights.
+  #   ephemeris_tags:
+  #     type: list<string>
+  #     description: >
+  #       Daily celestial context tags affecting tone/timing only.
+  #   memory_store:
+  #     type: object
+  #     description: >
+  #       Historical receipts used for per-user learning curves.
+  #   learning_rules:
+  #     type: object
+  #     description: >
+  #       Adaptive logic for weight adjustment between runs.
+  #   weight_matrix:
+  #     type: array
+  #     dimensions: [12,7]
+  #     description: >
+  #       Zodiac-to-Gate weighting matrix for Meta-Cortex personalization.
+
+  # ---------- Notes ----------
+  notes: >
+    Meta-Gate schema is designed to remain stable as the engine evolves.
+    The commented Meta.Cortex fields can be uncommented and extended when
+    personalization, timing overlays, and adaptive learning are introduced.
