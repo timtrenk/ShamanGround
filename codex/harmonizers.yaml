@@ -1,0 +1,122 @@
+# harmonizers.yaml
+# 12-axis Harmonizer Array — balances field tension after each gate fires.
+# Designed for Engine 2.1 with light scaffolding for future Meta.Cortex overlay.
+
+harmonizers:
+  description: >
+    The Harmonizer Array smooths energy between active gates and stabilizes
+    residual tension across the twelve zodiac-family axes.  Each harmonizer
+    listens for changes in its assigned axis and applies either lift or
+    attenuation to keep the braid coherent.
+
+  count: 12
+  axes:
+    - Builder
+    - Architect
+    - Operator
+    - Relational
+    - Expression
+    - Vision
+    - Crown
+    - Field
+    - Rhythm
+    - Structure
+    - Flow
+    - Integration
+
+  # ---------- Base parameters ----------
+  defaults:
+    lift_rate: 0.10        # default upward correction per cycle
+    attenuation_rate: 0.08 # default downward damping
+    sensitivity: 0.65      # activation threshold (0–1)
+    cooldown_s: 20         # minimum rest time before re-firing
+    polarity: balanced     # lift vs. damp; can be overridden per axis
+
+  # ---------- Individual axis definitions ----------
+  # Each harmonizer adjusts one axis and influences a set of gate pairs.
+
+  axes_map:
+    Builder:
+      targets: [G4, G5]
+      polarity: ground
+      notes: "Stabilizes embodiment; prevents drift after Flow or Resonance gates."
+    Architect:
+      targets: [G3, G4]
+      polarity: structure
+      notes: "Aligns design logic; corrects over-analysis."
+    Operator:
+      targets: [G3, G6]
+      polarity: pacing
+      notes: "Normalizes timing; keeps process rhythm steady."
+    Relational:
+      targets: [G1, G2, G5]
+      polarity: lift
+      notes: "Restores empathy after hard cuts or voice strain."
+    Expression:
+      targets: [G2, G5, G6]
+      polarity: brighten
+      notes: "Softens tone; re-opens communication channels."
+    Vision:
+      targets: [G6, G7]
+      polarity: clarity
+      notes: "Expands perspective; counters tunnel-vision."
+    Crown:
+      targets: [G7]
+      polarity: seal
+      notes: "Integrates final insight; quiets residual noise."
+    Field:
+      targets: [G1, G4]
+      polarity: balance
+      notes: "Re-centers Builder–Operator polarity."
+    Rhythm:
+      targets: [G3, G5]
+      polarity: tempo
+      notes: "Regulates oscillations between activity and rest."
+    Structure:
+      targets: [G4]
+      polarity: reinforce
+      notes: "Adds backbone after over-soft corrections."
+    Flow:
+      targets: [G3, G4, G6]
+      polarity: smooth
+      notes: "Ensures directional continuity across parallel gates."
+    Integration:
+      targets: [G5, G7]
+      polarity: unify
+      notes: "Final harmonizer; prepares field for BFF braid."
+
+  # ---------- Telemetry ----------
+  telemetry:
+    record_after_each_gate: true
+    fields:
+      - axis_name
+      - lift_applied
+      - attenuation_applied
+      - residual_pre
+      - residual_post
+      - timestamp
+
+  # ---------- Safety ----------
+  safety:
+    global_cool_off_s: 10
+    max_simultaneous: 4     # avoid flooding field with too many lifts at once
+    damp_limit: 0.25        # absolute attenuation cap per axis
+    lift_limit: 0.30        # absolute lift cap per axis
+
+  # ---------- Reserved for Meta.Cortex overlay ----------
+  # adaptive_weights:
+  #   type: array
+  #   dimensions: [12,7]
+  #   description: >
+  #     Future weight matrix mapping family activity → harmonizer sensitivity.
+  # ephemeris_modulation:
+  #   type: object
+  #   description: >
+  #     Placeholder for Celestial Harmonizer: timing-based tone modulation.
+
+  notes: >
+    Harmonizers operate after every gate action and before BFF synthesis.
+    Each one applies a proportional lift or attenuation, ensuring that
+    corrections remain smooth and the braid retains coherence.  When the
+    Meta.Cortex overlay arrives, adaptive_weights and ephemeris_modulation
+    can adjust sensitivity dynamically per user or timing context.
