@@ -58,7 +58,13 @@ meta_gate:
         glyph_id: string
       description: Session metadata for traceability.
       required: true
-
+    flow_mode:
+      type: string
+      enum: [command, resonant]
+      default: command
+      description: >
+        'command' = Meta-Gate decides first; BFF learning applies next cycle.
+        'resonant' = BFF learning can be applied in the same cycle (adaptive).
   # ---------- Outputs ----------
   outputs:
     gate_plan:

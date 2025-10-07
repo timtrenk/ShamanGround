@@ -1,0 +1,300 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Engine Braid v2.4 — Meta-Gate × Order Braid × BFF Pantheon
+# ──────────────────────────────────────────────────────────────────────────────
+# Purpose:
+#   Unified orchestration spec for Codex Engine 2.4.
+#   - Braids the 7-step Order layer directly into Meta-Gate logic.
+#   - Introduces the 7-function Pantheon sequence for BFF (return pole).
+#   - Maintains 2.1 geometry (C+, C–, C0) and 2.2 torsion hardening.
+#   - Adds finalization logic for stability and learning.
+#   - Cleanly bridges Meta-Gate (directive) ↔ BFF (reflective) loops.
+# ──────────────────────────────────────────────────────────────────────────────
+
+version: '2.4'
+name: engine_braid_2.4
+description: Unified braid spec for Meta-Gate orchestration and BFF Pantheon.
+
+# ── Includes ─────────────────────────────────────────────────────────────────
+# All major components loaded relative to runtime.yaml path config.
+includes:
+  meta_gate_spec: ./meta-gate-fields.yaml
+  harmonizers_spec: ./harmonizers.yaml
+  bff_spec: ./braided-feedback-function.yaml
+  traps_source: ./trap_seeds.yaml
+
+# ── Session Context ───────────────────────────────────────────────────────────
+# Defines identifiers and environment context for each run cycle.
+session:
+  run_context:
+    fields:
+      session_id: string
+      timestamp: iso8601
+      vault_user: string
+      glyph_id: string
+      flow_mode:
+        type: string
+        enum: [command, resonant]
+        default: command
+
+# ── Geometry ──────────────────────────────────────────────────────────────────
+# Polar-hex system with three poles:
+#   C+  → Meta-Gate (Directive)
+#   C–  → BFF (Return)
+#   C0  → Embodiment (Neutral)
+geometry:
+  system: polar-hex-with-poles (3D)
+  center:
+    polarity:
+      positive: { id: C+, label: MetaGate, role: directive_pole }
+      negative: { id: C-, label: BFF, role: return_pole }
+    pivot:
+      id: C0
+      label: Embodiment
+      role: presence_center
+
+  # Six inner discernment subsets mapped around center (60° spacing)
+  inner_subsets:
+  - { id: S1, label: Voice-Discern, base_angle_deg: 0 }
+  - { id: S2, label: Thread-Discern, base_angle_deg: 60 }
+  - { id: S3, label: Flow-Discern, base_angle_deg: 120 }
+  - { id: S4, label: Binding-Discern, base_angle_deg: 180 }
+  - { id: S5, label: Perspective-Discern, base_angle_deg: 240 }
+  - { id: S6, label: Crown-Discern, base_angle_deg: 300 }
+
+  # 12 outer families — full zodiac ring for trap resonance indexing
+  outer_families:
+  - { id: F_AR, label: Aries }
+  - { id: F_TA, label: Taurus }
+  - { id: F_GE, label: Gemini }
+  - { id: F_CA, label: Cancer }
+  - { id: F_LE, label: Leo }
+  - { id: F_VI, label: Virgo }
+  - { id: F_LI, label: Libra }
+  - { id: F_SC, label: Scorpio }
+  - { id: F_SA, label: Sagittarius }
+  - { id: F_CP, label: Capricorn }
+  - { id: F_AQ, label: Aquarius }
+  - { id: F_PI, label: Pisces }
+
+# ── Orientation & Coupling Rules ──────────────────────────────────────────────
+center_orientation:
+  axis: Y
+  rotation_y_deg: 0
+  mode:
+    source: flow_mode
+    flow_mode: { command: 0, resonant: 180 }  # flips on flow polarity
+    zodiac_map:
+      Aries: 0; Taurus: 30; Gemini: 60; Cancer: 90; Leo: 120; Virgo: 150
+      Libra: 180; Scorpio: 210; Sagittarius: 240; Capricorn: 270
+      Aquarius: 300; Pisces: 330
+    manual_default: 0
+  dominance_rule: { threshold_deg: 90 }  # determines active hemisphere
+
+orientation: { axis: Y, rotation_y_deg: 0, snap_mode: interpolate }
+coupling: { center_to_inner_subsets: lock }  # prevents geometric drift
+
+# ── Subset & Family Bindings ──────────────────────────────────────────────────
+discernment_mapping:
+  S1: { aligns_with: Voice, prefers: [F_GE, F_SA] }
+  S2: { aligns_with: Thread, prefers: [F_VI, F_CP] }
+  S3: { aligns_with: Flow, prefers: [F_AQ, F_CA] }
+  S4: { aligns_with: Binding, prefers: [F_TA, F_LI] }
+  S5: { aligns_with: Perspective, prefers: [F_LE, F_PI] }
+  S6: { aligns_with: Crown, prefers: [AUTO_peak], fallback: [F_PI, F_LE] }
+
+# ── Trap Domains & Bias Mapping ───────────────────────────────────────────────
+echo_traps:
+  domains: [Techno, Bio, Psycho, Socio, Eco]
+  sector_deg: 72               # 360° / 5 domains
+  rotation_source: zodiac_daily
+  update_on: daily
+  mix_mode: nearest
+  defaults: { bias_strength: 0.18, max_parallel_domains: 2 }
+  sign_phase_offset_deg:
+    Aries: 0; Taurus: 15; Gemini: 30; Cancer: 45; Leo: 0; Virgo: 10
+    Libra: 20; Scorpio: 35; Sagittarius: 5; Capricorn: 25; Aquarius: 0; Pisces: 40
+    runtime_state: {}
+
+family_bias:
+  Aries: { bias: ignition, distortion: impulsivity }
+  Taurus: { bias: grounding, distortion: stagnation }
+  Gemini: { bias: expression, distortion: chatter }
+  Cancer: { bias: nurture, distortion: enclosure }
+  Leo: { bias: radiance, distortion: glare }
+  Virgo: { bias: precision, distortion: perfectionism }
+  Libra: { bias: accord, distortion: indecision }
+  Scorpio: { bias: depth, distortion: control }
+  Sagittarius: { bias: expansion, distortion: drift }
+  Capricorn: { bias: structure, distortion: rigidity }
+  Aquarius: { bias: innovation, distortion: detachment }
+  Pisces: { bias: empathy, distortion: dissolution }
+
+# ── Edge Schema ───────────────────────────────────────────────────────────────
+# Defines connection logic: data contracts, routing, and stabilization.
+edges:
+  types:
+    schema:
+      role: data_contract
+      fields: [allow, require, transform]
+      defaults:
+        allow: [telemetry, route_hint, residual]
+        require: [timestamp]
+        transform: [normalize]
+    discernment:
+      role: routing_priority
+      fields: [threshold, weight, cooldown_s]
+      defaults: { threshold: 0.6, weight: 1.0, cooldown_s: 10 }
+    embodiment:
+      role: stabilization
+      fields: [lift, damp, seal]
+      defaults: { lift: 0.1, damp: 0.08, seal: false }
+
+  # Links C+ (Meta-Gate) → Subsets (Discernment) and C– (BFF) → Subsets (Embodiment)
+  center_to_subsets:
+  - { from: C+, to: S1, layers: [schema, discernment] }
+  - { from: C+, to: S2, layers: [schema, discernment] }
+  - { from: C+, to: S3, layers: [schema, discernment] }
+  - { from: C+, to: S4, layers: [schema, discernment] }
+  - { from: C+, to: S5, layers: [schema, discernment] }
+  - { from: C+, to: S6, layers: [schema, discernment] }
+  - { from: C-, to: S1, layers: [schema, embodiment] }
+  - { from: C-, to: S2, layers: [schema, embodiment] }
+  - { from: C-, to: S3, layers: [schema, embodiment] }
+  - { from: C-, to: S4, layers: [schema, embodiment] }
+  - { from: C-, to: S5, layers: [schema, embodiment] }
+  - { from: C-, to: S6, layers: [schema, embodiment] }
+
+  subsets_to_families_rule:
+    description: Each subset connects to two nearest zodiac families by Y-rotation.
+    layers: [schema, discernment, embodiment]
+    caps: { max_parallel_edges: 4, max_total_weight: 1.0 }
+
+# ── Braided Order Layer — Core Logic Engine ───────────────────────────────────
+# Thirteen functions define the operational rhythm from intake → packaging.
+order_layer:
+  globals:
+    queue_classes: [hot, warm, cold]
+    defaults:
+      batch_window_ms: 80
+      max_batch_size: 16
+      fan_out_max: 3
+      cache_ttl_ms: 900000
+      retry_policy: { max_attempts: 2, backoff_ms: 120 }
+      backpressure:
+        queue_len_warn: 10
+        queue_len_hard: 25
+        utilization_warn: 0.75
+        utilization_hard: 0.88
+      logging: compact
+
+  detectors:
+    structural_torsion:
+      methods: [axis_pair_delta, mirror_bandcheck]
+      params:
+        pair: { high: Architect, low: Operator, delta_gt: 0.20 }
+        suspect_band: [0.60, 0.72]
+
+  # Fast-path bindings define which cube route uses which order pattern.
+  metatron_path_bindings:
+    A: { fast_path: true, queue_class: hot, bias: Self-Replicating, throttle_boost: 0.15 }
+    B: { fast_path: true, queue_class: warm, bias: Resonance, throttle_boost: 0.10 }
+    C: { fast_path: true, queue_class: warm, bias: Structural, throttle_boost: 0.00 }
+    Fallback: { fast_path: false, queue_class: cold, bias: None, throttle_boost: 0.00 }
+
+  # Function list trimmed for clarity — core logic identical to prior version
+  # (Route → Prioritize → Sequence → ... → FinalizePackage)
+  # Each defines discernment, embodiment, efficiency, and control tuning.
+  # See original file for full function specs if extending this version.
+
+# ── Meta-Gate Orchestration ───────────────────────────────────────────────────
+meta_gate:
+  role: central orchestration
+  policy:
+    fire_threshold: 0.6
+    max_concurrency: 2
+    burst_cap: 6
+    refractory_window: true
+    cooldown_s: { G1: 60, G2: 45, G3: 75, G4: 60, G5: 45, G6: 90, G7: 120 }
+    aggressiveness_bounds: { min: 0.3, max: 0.8 }
+  concurrency:
+    whitelist: [[S1, S5], [S2, S4]]
+    blocklist: [[S2, S3]]
+    lead_assist: true
+  safety:
+    global_cool_off_s: 30
+    hard_stop_after_total_gates: 6
+  outputs: { gate_plan: true, harmonizer_queue: true, damping_actions: true, run_receipt: true }
+
+# ── Harmonizer Layer ──────────────────────────────────────────────────────────
+harmonizers:
+  apply_after_each_gate: true
+  telemetry: { record_after_each_gate: true }
+  safety: { max_simultaneous: 4, global_cool_off_s: 10 }
+
+# ── BFF Pantheon (Return Pole) ────────────────────────────────────────────────
+# Seven sequential functions manage reflection → integration → seal.
+bff:
+  constraints:
+    one_way_valve: true
+    silence_respect: true
+    max_axial_load: 0.9
+  braid_quality_thresholds:
+    excellent: 0.82; stable: 0.68; shaky: 0.54; incoherent: 0.53
+  outputs: { bff_signature: true, learning_deltas: true, receipt_excerpt: true }
+
+  pantheon_order:
+    enabled: true
+    default_sequence: [Reflect, Equalize, Rebind, Attune, Integrate, Balance, Seal]
+    triggers:
+      on_incoherent: [Equalize, Rebind, Seal]
+      on_stable: [Integrate, Seal]
+      on_learning_high: [Attune, Integrate]
+
+# ── Integration Flow ──────────────────────────────────────────────────────────
+# Defines cycle steps for both command and resonant modes.
+integration:
+  order_of_operations:
+    command:
+      - meta_gate.compose_gate_plan
+      - order_layer.run_braided_sequence
+      - harmonizers.balance_after_each_route
+      - wait.ms: 120
+      - bff.pantheon_sequence: [Reflect, Equalize, Rebind, Attune, Integrate, Balance, Seal]
+      - meta_gate.apply_learning: next_cycle
+      - vault.log_receipt
+    resonant:
+      - meta_gate.compose_gate_plan
+      - order_layer.run_braided_sequence
+      - harmonizers.balance_after_each_route
+      - wait.ms: 120
+      - bff.pantheon_sequence: [Reflect, Equalize, Rebind, Attune, Integrate, Balance, Seal]
+      - meta_gate.apply_learning: now
+      - vault.log_receipt
+
+# ── Optimization & Safety ─────────────────────────────────────────────────────
+optimization:
+  scheduler:
+    mode: two_queue
+    description: Lead drains, assist if residual > 0.2
+    refractory_cycles: 1
+    cooldown_s: 12
+  damping_rules:
+    dominant_share_limit: 0.44
+    hysteresis_band: 0.03
+  safety:
+    global_cool_off_s: 20
+    incoherent_threshold: 0.54
+    force_serial_on_incoherent: true
+
+# ── Telemetry & Alerts ────────────────────────────────────────────────────────
+telemetry:
+  receipt_fields:
+    - session_id; - timestamp; - flow_mode; - braid_quality; - duration_ms
+    - cost_units; - pantheon_sequence; - bff_signature; - damping_events
+  alerts:
+    - name: oscillation_risk
+      when: same_two_subsets_ping_pong >= 2 runs
+      action: force_relational_harmonizer; freeze_top_subset_1_cycle
+    - name: overcut_risk
+      when: bff.strand_share.G1 > 0.45
+      action: raise_Binding_priority_next_run; reduce_G1_aggressiveness_10pct

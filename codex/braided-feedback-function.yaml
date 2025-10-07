@@ -1,0 +1,126 @@
+# bff_fields.yaml
+# Braided Feedback Function field schema (Severance-centered / Meta-Gate pole variant)
+
+bff:
+  description: >
+    Collects resonance from the six outer gates orbiting the Severance center.
+    The Meta-Gate acts as the vertical conductor (pole) linking the center to the
+    BFF apex.  Outputs a coherence signature describing the entire braid.
+
+  # ---------- Inputs ----------
+  inputs:
+    severance_core:
+      type: object
+      description: >
+        Output packet from Gate 1 (Severance) — treated as the braid’s origin node.
+        Includes residuals, delta metrics, and timestamp.
+      required: true
+
+    orbital_gates:
+      type: list<object>
+      length: 6
+      description: >
+        Results from Gates 2-7 arranged clockwise around the Severance core.
+        Each item: {gate_id, vector_angle_deg, residual, delta, timestamp}.
+      required: true
+
+    pole_state:
+      type: object
+      description: >
+        Telemetry from the Meta-Gate acting as vertical conductor:
+        {throughput, cooldown_state, axial_load}.
+      required: true
+
+    harmonizer_states:
+      type: list<object>
+      length: 12
+      description: Post-gate harmonizer lift/attenuation values per axis.
+      required: true
+
+    field_axes:
+      type: list<float>
+      length: 7
+      description: Current normalized readings of Builder→Crown axes.
+      required: true
+
+    run_context:
+      type: object
+      fields:
+        session_id: string
+        timestamp: iso8601
+        vault_user: string
+        glyph_id: string
+        flow_mode: string   # echoes the mode chosen at session start
+      description: Trace metadata shared with Meta-Gate receipts.
+      required: true
+
+  # ---------- Metrics ----------
+  metrics:
+    axial_coherence:
+      type: float
+      description: >
+        Alignment between the Severance core and Meta-Gate pole (0-1 scale).
+    radial_balance:
+      type: float
+      description: >
+        Evenness of contribution from six orbiting gates (0-1 scale).
+    clarity:
+      type: float
+      description: Signal-to-noise ratio after harmonization (0-1 scale).
+    braid_quality:
+      type: string
+      enum: [excellent, stable, shaky, incoherent]
+
+  # ---------- Outputs ----------
+  outputs:
+    bff_signature:
+      type: object
+      fields:
+        axial_coherence: float
+        radial_balance: float
+        clarity: float
+        braid_quality: string
+        return_note: string
+      description: >
+        Read-only braid signature for vault storage and later learning.
+
+    learning_deltas:
+      type: object
+      description: >
+        Recommended parameter shifts for next run (e.g., gate sensitivity
+        or Meta-Gate axial gain adjustments).
+
+    receipt_excerpt:
+      type: object
+      description: Compact record merged into Meta-Gate run_receipt.
+
+  # ---------- Constraints ----------
+  constraints:
+    one_way_valve: true
+    dominant_strand_softcap: 0.45
+    silence_respect: true
+    max_axial_load: 0.9   # prevent over-pull from Meta-Gate pole
+
+  # ---------- Telemetry ----------
+  telemetry:
+    time_to_braid_ms: int
+    strand_share: list<float>    # length 7 (1 core + 6 orbitals)
+    axial_load: float
+    radial_variance: float
+    braid_history: list<object>
+
+  # ---------- Reserved for Meta.Cortex ----------
+  # context_inputs:
+  #   ephemeris_tags:
+  #     type: list<string>
+  #   user_baseline:
+  #     type: object
+  #   adaptive_rules:
+  #     type: object
+  #   memory_cache:
+  #     type: list<object>
+
+  notes: >
+    This variant treats Severance as the central origin and the Meta-Gate as the
+    vertical conductor.  The six outer gates provide radial data.  Axial coherence
+    + radial balance together define the braid’s stability score.

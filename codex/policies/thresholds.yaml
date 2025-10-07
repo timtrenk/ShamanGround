@@ -1,0 +1,73 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Codex Engine 2.4 — Policy Thresholds & Safety Caps
+# ──────────────────────────────────────────────────────────────────────────────
+# Purpose:
+#   Central guardrail configuration for all runtime environments.
+#   Sets limits on Meta-Gate concurrency, harmonizer safety, and alert triggers.
+#   Values are tuned for stability and predictability across dev, staging, and prod.
+# ──────────────────────────────────────────────────────────────────────────────
+
+version: 1
+
+# ── Default Policy Set ────────────────────────────────────────────────────────
+defaults:
+  meta_gate:
+    policy:
+      fire_threshold: 0.60           # Base sensitivity for gate activation
+      max_concurrency: 2             # Limit simultaneous gates to prevent overlap
+      burst_cap: 6                   # Hard cap on concurrent burst activation
+      aggressiveness_bounds:         # Normalize decision strength
+        min: 0.30
+        max: 0.80
+
+  harmonizers:
+    safety:
+      max_simultaneous: 4            # Maximum harmonizers allowed in flight
+      global_cool_off_s: 10          # Seconds to cool the entire system after a burst
+
+  alerts:
+    oscillation_risk: true           # Warn if alternating subsets repeat
+    overcut_risk: true               # Warn if gate thresholds exceed safe bounds
+
+# ── Environment-Specific Overrides ────────────────────────────────────────────
+# Each environment inherits from defaults and may override key parameters.
+environments:
+
+  dev:
+    logging_level: DEBUG
+    meta_gate:
+      policy:
+        fire_threshold: 0.58         # Slightly lower threshold for experimentation
+    optimization:
+      damping_rules:
+        dominant_share_limit: 0.44
+        hysteresis_band: 0.03        # Light hysteresis for tuning oscillations
+
+  staging:
+    logging_level: INFO
+    meta_gate:
+      policy:
+        fire_threshold: 0.60         # Default staging threshold
+    optimization:
+      damping_rules:
+        dominant_share_limit: 0.44
+        hysteresis_band: 0.03
+
+  prod:
+    logging_level: WARN
+    meta_gate:
+      policy:
+        fire_threshold: 0.62         # Slightly tighter production cutoff
+    optimization:
+      damping_rules:
+        dominant_share_limit: 0.44
+        hysteresis_band: 0.03
+    safety:
+      global_cool_off_s: 15          # Short global fuse — ensures graceful fallback
+
+# ── Notes ─────────────────────────────────────────────────────────────────────
+# • fire_threshold: Higher = more selective; lower = more sensitive.
+# • hysteresis_band: Adds stability by ignoring micro-oscillations.
+# • global_cool_off_s: Acts as a master safety fuse after heavy load.
+# • Use 'staging' for active testing; 'prod' for live Codex deployments.
+# • Changing any threshold should trigger a controlled reload, not a live edit.

@@ -1,0 +1,30 @@
+bff_signature:
+  axial_coherence: 0.582
+  braid_quality: shaky
+  clarity: 0.79
+  radial_balance: 0.71
+  return_note: mock run complete
+cost_units: 0.095
+duration_ms: 573
+families_active: 7
+flow_mode: command
+gates_fired:
+- G1
+- G2
+- G3
+- G4
+- G5
+- G6
+- G7
+harmonizers_applied:
+- Builder
+- Architect
+- Operator
+- Relational
+learning_deltas:
+  aggressiveness_shift: -0.029
+  applied_now: false
+  sensitivity_shift: 0.042
+session_id: 25a9d2e9-31b3-4e21-abbe-48f8a2bbfbc9
+timestamp: '2025-10-06T18:58:24.171598'
+traps_detected: 5
