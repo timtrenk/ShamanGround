@@ -1,0 +1,39 @@
+{
+  "codex_engine": {
+    "version": "2.4.0",
+    "description": "Codex Engine 2.4 runtime manifest for vault integration",
+    "endpoint": {
+      "protocol": "http",
+      "host": "127.0.0.1",
+      "port": 8080,
+      "path": "/run"
+    },
+    "engine_folder": {
+      "uri": "file:///srv/api/codex/engine-2.4",
+      "lockfile": "ENGINE.lock",
+      "lockfile_sha256": "6db8015c35b66ee624f2ad78762e29b4c1499c41eccba21fb67ca34e92970cab",
+      "entrypoints": {
+        "runtime": "config/runtime.yaml",
+        "engine_braid": "engine_braid_2.4.yaml",
+        "meta_gate_fields": "meta-gate-fields.yaml",
+        "harmonizers": "harmonizers.yaml",
+        "bff": "braided-feedback-function.yaml",
+        "trap_seeds": "trap_seeds.yaml"
+      }
+    },
+    "policy_defaults": {
+      "rate_limit_per_min": 6,
+      "max_concurrency": 1,
+      "allowed_functions": [
+        "Severance",
+        "VoiceClarity"
+      ]
+    },
+    "authorship": {
+      "glyph_id": "coccyx",
+      "owner": "root@shamanground",
+      "signature": "placeholder"
+    },
+    "created_at": "2025-10-07T06:25:00Z"
+  }
+}

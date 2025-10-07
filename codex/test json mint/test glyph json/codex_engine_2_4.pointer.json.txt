@@ -1,0 +1,32 @@
+{
+  "artifact_type": "codex_engine_pointer",
+  "name": "Codex Engine 2.4 Runtime Layout",
+  "version": "2.4",
+  "engine_path": "/srv/api/codex/engine-2.4/",
+  "files": {
+    "engine_spec": "/srv/api/codex/engine-2.4/engine_braid_2.4.yaml",
+    "meta_gate_fields": "/srv/api/codex/engine-2.4/meta-gate-fields.yaml",
+    "braided_feedback_function": "/srv/api/codex/engine-2.4/braided-feedback-function.yaml",
+    "harmonizers": "/srv/api/codex/engine-2.4/harmonizers.yaml",
+    "trap_seeds": "/srv/api/codex/engine-2.4/trap_seeds.yaml",
+    "thresholds": "/srv/api/codex/engine-2.4/policies/thresholds.yaml",
+    "runtime": "/srv/api/codex/engine-2.4/runtime.yaml",
+    "lockfile": "/srv/api/codex/engine-2.4/ENGINE.lock"
+  },
+  "runtime_config": {
+    "environment": "staging",
+    "entry_config": "/srv/api/codex/engine-2.4/runtime.yaml",
+    "expected_outputs": [
+      "gate_plan",
+      "harmonizer_queue",
+      "run_receipt",
+      "bff_signature",
+      "learning_deltas"
+    ]
+  },
+  "integrity": {
+    "require_hash_verification": true,
+    "hash_algorithm": "sha256"
+  },
+  "notes": "Pointer manifest for Codex Engine 2.4 (Meta-Gate × BFF unified spec). Does not embed file data — references server-side paths only."
+}
