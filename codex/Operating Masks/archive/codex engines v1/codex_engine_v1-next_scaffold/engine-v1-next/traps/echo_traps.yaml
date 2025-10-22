@@ -1,0 +1,578 @@
+# traps/echo_traps.yaml
+traps:
+  - id: T01
+    name: Trap 1
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T02
+    name: Trap 2
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T03
+    name: Trap 3
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T04
+    name: Trap 4
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T05
+    name: Trap 5
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T06
+    name: Trap 6
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T07
+    name: Trap 7
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T08
+    name: Trap 8
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T09
+    name: Trap 9
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T10
+    name: Trap 10
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T11
+    name: Trap 11
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T12
+    name: Trap 12
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T13
+    name: Trap 13
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T14
+    name: Trap 14
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T15
+    name: Trap 15
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T16
+    name: Trap 16
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T17
+    name: Trap 17
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T18
+    name: Trap 18
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T19
+    name: Trap 19
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T20
+    name: Trap 20
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T21
+    name: Trap 21
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T22
+    name: Trap 22
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T23
+    name: Trap 23
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T24
+    name: Trap 24
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T25
+    name: Trap 25
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T26
+    name: Trap 26
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T27
+    name: Trap 27
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T28
+    name: Trap 28
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T29
+    name: Trap 29
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T30
+    name: Trap 30
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T31
+    name: Trap 31
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T32
+    name: Trap 32
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T33
+    name: Trap 33
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T34
+    name: Trap 34
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T35
+    name: Trap 35
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T36
+    name: Trap 36
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T37
+    name: Trap 37
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T38
+    name: Trap 38
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T39
+    name: Trap 39
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T40
+    name: Trap 40
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T41
+    name: Trap 41
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T42
+    name: Trap 42
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T43
+    name: Trap 43
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T44
+    name: Trap 44
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T45
+    name: Trap 45
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T46
+    name: Trap 46
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T47
+    name: Trap 47
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T48
+    name: Trap 48
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T49
+    name: Trap 49
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T50
+    name: Trap 50
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T51
+    name: Trap 51
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T52
+    name: Trap 52
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T53
+    name: Trap 53
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T54
+    name: Trap 54
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T55
+    name: Trap 55
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T56
+    name: Trap 56
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T57
+    name: Trap 57
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T58
+    name: Trap 58
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T59
+    name: Trap 59
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T60
+    name: Trap 60
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T61
+    name: Trap 61
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T62
+    name: Trap 62
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T63
+    name: Trap 63
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T64
+    name: Trap 64
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T65
+    name: Trap 65
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T66
+    name: Trap 66
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T67
+    name: Trap 67
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T68
+    name: Trap 68
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T69
+    name: Trap 69
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T70
+    name: Trap 70
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T71
+    name: Trap 71
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium
+  - id: T72
+    name: Trap 72
+    definition: "TODO: describe pattern."
+    resonance_pattern: "TODO: concise fingerprint"
+    disruption_pattern: "TODO: counter-signal / break logic"
+    example: "TODO: short natural-language example"
+    family: TODO: techno|socio|psycho|spiral|other
+    severity: medium

@@ -1,0 +1,59 @@
+version: 1.0
+label: "Thoth OM — Self-Learning Policy"
+# Purpose: controlled, auditable adjustments to runtime based on observed coherence.
+# Design: non-destructive; applies small, clamped deltas only when safety conditions pass.
+
+enabled: true
+
+schedule:
+  # How often to attempt updates. The loader or a periodic task can read this.
+  update_interval: daily          # daily | hourly | manual
+  window: 24h                     # aggregation window for metrics
+
+signals:
+  # These are boolean expressions over your runtime metrics.
+  reward:  "coherence >= 0.88 and mirror_residual <= 0.35"
+  penalty: "coherence < 0.55 or mirror_residual > 0.50"
+
+metrics:
+  # Define the sources of metrics. Your engine should populate these.
+  source: "runtime_telemetry"     # e.g., /thread/state.json or in-memory counters
+  min_samples: 20                 # require enough samples before adjusting
+
+adjustments:
+  # Safe, clamped nudges. Each 'do' entry is an expression the policy executor understands.
+  - when: reward
+    do:
+      - "routing.call_harmonizers_below -= 0.02 clamp[0.40,0.70]"
+      - "routing.early_severance_below += 0.01 clamp[0.20,0.35]"
+      - "safety.max_gate_iterations -= 0.0 clamp[1,3]"  # no-op placeholder, keeps bounds visible
+  - when: penalty
+    do:
+      - "routing.force_serial_on_incoherent = true"
+      - "routing.call_harmonizers_below += 0.02 clamp[0.45,0.80]"
+      - "routing.early_severance_below -= 0.01 clamp[0.18,0.32]"
+
+safety:
+  require_manifest_ok: true       # only run if memory_fingerprint.json verifies
+  dry_run: false                  # if true, log proposed changes without applying
+  max_delta_per_day:
+    routing.call_harmonizers_below: 0.04
+    routing.early_severance_below: 0.02
+
+logging:
+  file: "/mnt/data/thread/learning_log.md"
+  include_snapshot_of: ["thresholds", "routing", "safety"]
+  keep_last: 50
+  include_metrics_summary: true
+
+contracts:
+  # Guardrails the executor must respect. Violations should abort the update.
+  clamps:
+    routing.call_harmonizers_below: [0.40, 0.80]
+    routing.early_severance_below:  [0.18, 0.35]
+    safety.max_gate_iterations:     [1, 3]
+  invariants:
+    - "safety.hard_stop_after_total_gates == 7"
+    - "routing.total_gate_cap == 7"
+    - "thresholds.path exists"
+  fail_on_violation: true

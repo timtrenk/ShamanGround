@@ -1,0 +1,10 @@
+# gates/meta-gate-fields.yaml
+meta_gate:
+  description: Minimal dispatch for chained gates.
+  params:
+    max_concurrency: 2
+    rotate_on_tie: true
+    starvation_guard_ms: 250
+  metrics:
+    throughput_window: 16
+    residual_decay: 0.92

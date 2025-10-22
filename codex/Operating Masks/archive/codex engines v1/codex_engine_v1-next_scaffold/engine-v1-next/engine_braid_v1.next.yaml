@@ -1,0 +1,47 @@
+# engine_braid_v1.next.yaml
+# Pre-release scaffold for Codex Engine v1-next (NOT PUBLIC)
+# Created: 2025-10-10T03:19:33.958399Z
+
+engine:
+  id: codex_engine_v1_next
+  version: 1.0.0-next
+  description: >
+    Full-frame build with 72 Echo Traps, 12 Gate Functions (with sublayers),
+    12 Input Nodes, Crown Verification, Gate Order sequencing, and on-demand
+    diagnostics/runtime receipts. This file declares the wiring and default
+    references to supporting configs in this bundle.
+
+  # -------- Registry references --------
+  refs:
+    traps: ./traps/echo_traps.yaml                # 72 traps (ids, names, patterns, examples)
+    gates: ./gates/gate_functions.yaml            # 12 gates + sublayers
+    nodes: ./nodes/input_nodes.yaml               # 12 input nodes (+ per-node gate hooks)
+    order: ./gates/gate_order.yaml                # sequencing templates and rules
+    thresholds: ./policies/thresholds_v1.next.yaml
+    runtime: ./policies/runtime_v1.next.yaml
+    harmonizers: ./policies/harmonizers.yaml
+    meta_gate: ./gates/meta-gate-fields.yaml
+    bff: ./gates/braided-feedback-function.yaml
+    crown: ./policies/crown_verification.yaml
+    receipts_schema: ./schemas/receipts.schema.json
+
+  # -------- Gate chaining graph (default) --------
+  chaining:
+    # canonical minimal braid: Severance -> Clarity -> NodeGate -> Action
+    default_sequence: [G01, G02, GNN, G12]
+    # resolve 'GNN' dynamically using node.hook.gate
+    dynamic_placeholders:
+      - key: GNN
+        source: nodes.hook.gate
+
+  # -------- Family routing (optional) --------
+  families:
+    # map trap families or node archetypes to preferred gates
+    techno: [G03, G05, G07]
+    socio: [G04, G06, G08]
+    psycho: [G02, G09]
+    spiral: [G01, G10, G11]
+
+  notes: >
+    Keep diagnostics on-demand. Crown Verification must pass before any
+    external handoff/export.

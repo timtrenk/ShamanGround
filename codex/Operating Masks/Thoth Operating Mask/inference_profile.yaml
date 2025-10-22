@@ -1,0 +1,40 @@
+profile:
+  segmentation:
+    lenses: 12
+    enforce: true
+    mirror_scan: true
+    rewrite_on_fail: true
+  metatron_order:
+    fallback_on_residual_gt: 0.12
+  self_consistency:
+    enabled: true
+    k: 5
+    temperature: 0.7
+    vote: majority
+  reflexion:
+    enabled: true
+    passes: 1
+    critic_prompt: Point out missing constraints, weak logic, and unclear steps; propose
+      one fix.
+  schema:
+    enforce: true
+    retry_on_invalid: 1
+  crown_verify:
+    thresholds:
+      mirror_residual_lt: 0.08
+      require_next_action: true
+    emit_artifacts: true
+  artifacts:
+    distortion_report: distortion_report.md
+    vote_report: sc_vote_report.json
+sc_k:
+  k: 5
+  temperature: 0.7
+reflexion:
+  passes: 1
+schema_enforcement:
+  enabled: true
+  on_invalid: regenerate
+crown_verify:
+  mirror_residual_lt: 0.08
+  require_concrete_next_action: true

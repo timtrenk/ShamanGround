@@ -1,0 +1,90 @@
+# Thoth OM — Adapters registry (aligned to engine)
+version: 1
+step_sets:
+  a_ai_drift:
+    steps:
+      - compare current vs baseline prompts/config
+      - restore known-good schema
+      - reseed memory or clear corrupt pins
+      - verify latency + coherence + routing
+  a_web_app:
+    steps:
+      - rollback recent migration/deploy
+      - check DB connectivity/pools
+      - clear caches and restart service
+      - validate endpoints post-deploy
+  a_biz_ops:
+    steps:
+      - assign clear owner (DRI)
+      - define success metric + deadline
+      - isolate blocker class (people/process/tech)
+      - run 48h rollback window if needed
+  a_data_pipeline:
+    steps:
+      - inspect upstream schema drift
+      - validate partitions + late data
+      - recompute critical aggregates
+      - backfill with watermark safeguards
+  a_network_stack:
+    steps:
+      - traceroute critical paths
+      - check DNS/TLS handshakes
+      - inspect egress/ingress rules + NAT
+      - rate-limit or reroute hot paths
+  a_finance_ops:
+    steps:
+      - reconcile ledger vs gateway
+      - retry idempotent payments
+      - quarantine dupes/refunds
+      - rerun FX rate checks
+  a_ml_model:
+    steps:
+      - check feature schema/version
+      - drift metrics (PSI/KL/KS)
+      - refresh embeddings or retrain window
+      - validate inference latency & memory
+  a_hardware_stack:
+    steps:
+      - power cycle + reseat
+      - thermal + voltage checks
+      - firmware/driver rollback
+      - soak test under load
+  a_appliance:
+    steps:
+      - unplug or isolate system
+      - check component integrity
+      - replace or reseat parts
+      - retest under load
+  # extended
+  a_infra_orchestration:
+    steps:
+      - check scheduler/queue backlogs
+      - reconcile desired vs live state
+      - cordon & drain noisy nodes
+      - redeploy controller/agent if needed
+  a_support_ops:
+    steps:
+      - categorize ticket by SLO impact
+      - bundle dupes and set comms cadence
+      - define workaround + ETA
+      - root-cause doc + prevention action
+  a_human_wellness:
+    steps:
+      - stabilize breathing cadence
+      - set boundaries/ownership
+      - reduce cognitive load (one ask)
+      - rest, hydrate, return with plan
+
+adapters:
+  ai_drift_dx:           { use: a_ai_drift }
+  web_app_dx:            { use: a_web_app }
+  biz_ops_dx:            { use: a_biz_ops }
+  data_pipeline_dx:      { use: a_data_pipeline }
+  network_stack_dx:      { use: a_network_stack }
+  finance_ops_dx:        { use: a_finance_ops }
+  ml_model_dx:           { use: a_ml_model }
+  hardware_stack_dx:     { use: a_hardware_stack }
+  appliance_dx:          { use: a_appliance }
+  infra_orchestration_dx:{ use: a_infra_orchestration }
+  support_ops_dx:        { use: a_support_ops }
+  human_wellness_dx:     { use: a_human_wellness }

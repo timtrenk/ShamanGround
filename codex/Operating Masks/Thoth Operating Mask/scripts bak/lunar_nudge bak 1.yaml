@@ -1,0 +1,6 @@
+enabled: true
+mode: on_input
+log: true
+caps:
+  min: 0.85
+  max: 1.15

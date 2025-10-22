@@ -1,0 +1,6 @@
+enabled: true
+mode: on_input   # on_input | per_gate
+log: true        # append phase+nudges to thread/telemetry.jsonl
+caps:
+  min: 0.85      # tighten if you like: 0.90
+  max: 1.15      # tighten if you like: 1.10

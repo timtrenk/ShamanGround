@@ -1,0 +1,7 @@
+# policies/thresholds_v1.next.yaml
+thresholds:
+  incoherence_guard: 0.18
+  overcut_guard: 0.75
+  residual_followup: 0.40
+  max_chain_length: 5
+  abort_on_crown_fail: true

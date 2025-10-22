@@ -1,0 +1,25 @@
+mappings:
+- segment: Problem
+  gate: Severance
+- segment: Audience
+  gate: VoiceClarity
+- segment: Constraints
+  gate: Structure
+- segment: Data
+  gate: Insight
+- segment: Tools
+  gate: Embodiment
+- segment: Tone
+  gate: Harmonize
+- segment: Risks
+  gate: CrownPrep
+- segment: Ethics
+  gate: Severance
+- segment: Steps
+  gate: VoiceClarity
+- segment: Deliverables
+  gate: Structure
+- segment: Validation
+  gate: Insight
+- segment: NextAction
+  gate: Embodiment

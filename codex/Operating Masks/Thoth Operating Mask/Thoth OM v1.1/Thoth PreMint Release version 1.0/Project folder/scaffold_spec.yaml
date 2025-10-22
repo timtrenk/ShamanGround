@@ -1,0 +1,39 @@
+# scaffold_spec.yaml — Upload this file into the chat "project folder"
+# Then say:  build my scaffold
+# I will generate the runtime, memory pins, and (optionally) templates in-chat
+# and hand you direct download links. You can edit any value first.
+
+engine:
+  version: "1.0.0"
+  env: "prod"
+
+paths:
+  outputs_dir: "./outputs"
+  receipts_dir: "./receipts"
+  logs_dir: "./logs"
+
+defaults:
+  sc_k: 7
+  residual_target:
+    copy: 0.08
+    plan: 0.06
+    spec: 0.06
+  crown_verify: true
+  template_required: false  # set true if you want strict templates
+
+memory_pins:
+  brand_voice: |
+    - Tone: grounded, confident, concise
+    - Prefer verbs over adjectives
+    - Allow "resonance" once; no hype
+  glossary: |
+    - OM: Operating Mask (structural pipeline)
+    - Residual: distortion score after trims
+    - SC@k: self-consistency with k candidates
+  constraints: |
+    - No zips unless explicitly requested
+    - All outputs end with one concrete next action
+    - Cite sources only in Tier 3
+
+templates:
+  include: {}   # leave empty for "no-templates mode"; or set keys true (tweet_thread, product_overview, plan10, faq, readme)

@@ -1,0 +1,18 @@
+# inference_profile.yaml — minimal profile for Tier 0
+version: 1.0
+label: "Inference Profile — Tier 0 defaults"
+
+sc_k:
+  k: 5            # SC@k
+  temperature: 0.7
+
+reflexion:
+  passes: 1       # one light self-review pass
+
+schema_enforcement:
+  enabled: true
+  on_invalid: warn   # warn | repair | block
+
+crown_verify:
+  mirror_residual_lt: 0.08
+  require_concrete_next_action: true

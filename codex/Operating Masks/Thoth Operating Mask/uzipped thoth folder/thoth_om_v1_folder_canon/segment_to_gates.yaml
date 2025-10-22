@@ -1,0 +1,34 @@
+# mappings/segment_to_gates.yaml — Thoth OM v1
+version: 1.0
+# Choose one block: 7‑gate (default) or 12‑gate (uncomment if used).
+
+# --- 7 GATES (default) ---
+gates_7:
+  Severance:      [N2, N7]          # cut contradictions, remove forbidden
+  Clarity:        [N1, N3, N4, N6]  # sharpen goal, audience, context, unknowns
+  Action:         [N12]             # produce concrete steps/deliverables
+  Structure:      [N8]              # enforce sections/schema
+  Evidence:       [N5, N10]         # sources, data, retrieval/browse
+  Style:          [N9]              # brand voice + tone fit
+  Evaluation:     [N11]             # rubric/checks baked into output
+
+# --- 12 GATES (optional) ---
+# gates_12:
+#   Severance:      [N2, N7]
+#   Voice_Clarity:  [N1, N3]
+#   Context:        [N4]
+#   Inquiry:        [N6]
+#   Evidence:       [N5, N10]
+#   Structure:      [N8]
+#   Style:          [N9]
+#   Planning:       [N12]
+#   Verification:   [N11]
+#   Synthesis:      [N1, N8, N12]
+#   Translation:    [N3, N9]
+#   Integration:    [N4, N5, N11]
+
+metatron_order:
+  mode: "rule+fallback"
+  fallback:
+    trigger: "residual_distortion > 0.12"
+    insert: ["Severance","Clarity"]

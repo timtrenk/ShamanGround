@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "v1-next receipts",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string"
+    },
+    "traps_triggered": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "gates_fired": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "node_selected": {
+      "type": "string"
+    },
+    "braid_quality": {
+      "type": "number"
+    },
+    "residual_index": {
+      "type": "number"
+    },
+    "crown_status": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "session_id",
+    "timestamp"
+  ]
+}

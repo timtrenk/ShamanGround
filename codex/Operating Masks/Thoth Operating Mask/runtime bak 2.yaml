@@ -1,0 +1,119 @@
+version: 1.2
+env: staging
+flow_mode: resonant
+paths:
+  engine_spec: Thoth_engine_1.0.yaml
+  meta_gate_fields: metatron_function.yaml
+  harmonizers: harmonizers.extended.yaml
+  bff: braided-feedback-function.yaml
+  traps: trap_seeds.yaml
+  policies: thresholds_1.1.yaml
+infrastructure:
+  redis_url: redis://localhost:6379/2
+  db_dsn: postgres://engine:engine_pass@localhost:5432/engine2
+logging:
+  level: INFO
+  json: true
+  redact_keys:
+  - api_key
+  - password
+  - token
+features:
+  ephemeris_mode: false
+  adaptive_cooloff: true
+  receipts_api: true
+  compress_braid_history: true
+  write_receipts_to_disk: true
+diagnostics:
+  visibility: on_demand
+  emit_on:
+    thread_end: true
+    explicit_flag: true
+    commands:
+    - show diagnostics
+    - diagnostics
+    - print receipt
+  receipt:
+    enabled: true
+    dir: ./receipts
+    filename_pattern: activation_receipt_{session_id}.json
+    redact_payloads: true
+    include_fields:
+    - session_id
+    - timestamp
+    - flow_mode
+    - center_rotation_deg
+    - dominant_pole
+    - subsets_fired
+    - families_activated
+    - traps_triggered
+    - order_sequence
+    - pantheon_sequence
+    - bff_signature
+    - coherence_hash
+    - braid_quality
+    - residual_index
+    - duration_ms
+    - cost_units
+    - order_metrics
+    - receipt_version
+runtime_overrides:
+  meta_gate:
+    safety:
+      global_cool_off_s: 0
+      hard_stop_after_total_gates: 6
+    policy:
+      fire_threshold: 0.6
+      max_concurrency: 2
+      burst_cap: 6
+  optimization:
+    damping_rules:
+      dominant_share_limit: 0.44
+      hysteresis_band: 0.03
+    subset_defaults:
+      sensitivity: 0.62
+      cooldown_s: 12
+    residual_followup:
+      threshold: 0.35
+      next_run: Binding
+      same_cycle: false
+  fairness:
+    meta_gate:
+      anti_starvation: true
+      rotate_on_tie: true
+      max_consecutive_leads_per_subset: 2
+    harmonizers:
+      ensure_family_coverage: true
+      cap_parallel_edges_per_family: 3
+telemetry:
+  receipt_fields_keep:
+  - session_id
+  - timestamp
+  - flow_mode
+  - center_rotation_deg
+  - dominant_pole
+  - subsets_fired
+  - families_activated
+  - traps_triggered
+  - order_sequence
+  - pantheon_sequence
+  - bff_signature
+  - coherence_hash
+  - braid_quality
+  - residual_index
+  - duration_ms
+  - cost_units
+  - order_metrics
+  - receipt_version
+  health:
+    enabled: true
+    path: /health
+runtime:
+  active_profile: tier0
+  artifacts:
+    distortion_report: ./distortion_report.md
+    sc_vote_report: ./sc_vote_report.json
+  thresholds_source: thresholds_tier0
+  inputs:
+    segment_map: segment_gate_map
+    inference_profile: inference_profile

@@ -1,0 +1,28 @@
+version: 1.0
+env: staging
+
+imports:
+  segmentation: segmentation_12_nodes.yaml
+  segments_schema: segments.schema.json
+  segment_to_gates: segment_to_gates.yaml
+
+metatron_function:
+  orderer: rule_based_with_fallback
+  inputs: ["segments","mirror_flags","constraints"]
+  rules_file: segment_to_gates.yaml
+  residual_trigger: 0.12
+  fallback_sequence: ["Severance","Clarity"]
+
+profile:
+  reasoning:
+    self_consistency: {enabled: true, k: 5, temperature: 0.7}
+    reflexion: {enabled: true, rounds: 1}
+    schema: {enforce: true, on_invalid: regenerate_once}
+    reports: {vote_report: true}
+  crown_verify:
+    checklist: [all_constraints_met, "mirror_residual < 0.08", schema_valid, one_concrete_next_action]
+    failure_policy: one_more_pass_then_stop
+
+thresholds:
+  mirror_residual_cap: 0.08
+  residual_fallback_trigger: 0.12

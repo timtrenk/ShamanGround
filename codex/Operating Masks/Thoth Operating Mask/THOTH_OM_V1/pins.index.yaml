@@ -1,0 +1,23 @@
+version: '0.1'
+created_at: 1760919290
+pins:
+  constraints:
+    path: memory/constraints.md
+    sha256: 0c124e6074aced7de92bec389f392d6c62cfcd88812547bfbd0de91e583dc0f3
+    mtime: 1760918245.188263
+    casebook_key: constraints
+  glossary:
+    path: memory/glossary.md
+    sha256: 7c6defa00e8403e6856df393cb27a8f2efdc921d6cb73e86e9cb0e892eb09057
+    mtime: 1760918245.180433
+    casebook_key: glossary
+  brand_voice:
+    path: memory/brand_voice.md
+    sha256: 0f1b4694d38a83ca4dc97ffb93551729a8969ff9b9adb1b3476f7516e13e94e4
+    mtime: 1760918244.7816668
+    casebook_key: brand_voice
+  prompts:
+    path: memory/prompts.md
+    sha256: 6541d36cc10e769b552deb35af9db30b52d0b2a38c4f4733f891b8091248fb26
+    mtime: 1760918249.3728652
+    casebook_key: prompts

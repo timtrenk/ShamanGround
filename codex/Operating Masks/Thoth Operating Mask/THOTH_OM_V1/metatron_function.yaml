@@ -1,0 +1,90 @@
+version: 1.1
+env: production
+metagate:
+  gates:
+  - id: G1
+    name: Severance
+  - id: G2
+    name: VoiceClarity
+  - id: G3
+    name: Structure
+  - id: G4
+    name: Insight
+  - id: G5
+    name: Embodiment
+  - id: G6
+    name: Harmonize
+  - id: G7
+    name: CrownPrep
+  inputs:
+    source:
+    - severance_core
+    - nodes_bundle
+    - bff_packet
+  prepasses:
+    - polarity_inversion
+  routing_rules:
+  - name: priority-sort
+    description: Sort nodes by metagate_routing_hint.priority (desc), then by id (asc).
+  - name: tag-affinity
+    description: "Map node tags to gate affinities:\n  setup/objective \u2192 G1,G2\n\
+      \  partition \u2192 G3\n  prep/resources \u2192 G3,G5\n  facts \u2192 G4\n \
+      \ plan \u2192 G3,G4\n  build \u2192 G5\n  braid/quality \u2192 G6\n  refine\
+      \ \u2192 G2,G6\n  guard \u2192 G6,G7\n  merge \u2192 G6\n  finalize \u2192 G7\n\
+      \  deliver \u2192 G7\n"
+  - name: coherence-bump
+    description: "If bff_packet.coherence < thresholds.nodes.bff.coherence_min, bump\
+      \ early gates (G3\u2192G5) before G7."
+  algorithm:
+    steps:
+    - collect all node hints
+    - for each node, compute candidate gate list from tag-affinity
+    - 'score gates per node: score = hint.priority / 100 + (affinity_weight)'
+    - sum scores per gate over all nodes
+    - if coherence-bump applies, add +0.15 to G3 and G5
+    - 'produce final gate_order: sort gates by total score desc; stable tie-break
+      by gate id'
+  outputs:
+    gate_order:
+    - G1
+    - G2
+    - G3
+    - G4
+    - G5
+    - G6
+    - G7
+    routing_log:
+      include:
+      - node_hints
+      - gate_scores
+      - coherence_bump_applied
+      - final_order
+  aliases:
+    Severance:
+    - Gate1
+    - Cut
+    - Sever
+    VoiceClarity:
+    - Gate2
+    - Clarity
+    - Voice
+    Structure:
+    - Gate3
+    - Order
+    - Scaffold
+    Insight:
+    - Gate4
+    - Pattern
+    - Signal
+    Embodiment:
+    - Gate5
+    - Action
+    - Ground
+    Harmonize:
+    - Gate6
+    - Balance
+    - Blend
+    CrownPrep:
+    - Gate7
+    - Crown
+    - Verify

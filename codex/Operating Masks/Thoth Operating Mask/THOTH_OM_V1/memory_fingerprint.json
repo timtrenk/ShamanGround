@@ -1,0 +1,25 @@
+{
+  "timestamp_utc": "2025-10-18T05:55:35.912016Z",
+  "memory_files": [
+    {
+      "path": "/mnt/data/memory/brand_voice.md",
+      "name": "brand_voice.md",
+      "size": 203,
+      "sha256": "0f1b4694d38a83ca4dc97ffb93551729a8969ff9b9adb1b3476f7516e13e94e4"
+    },
+    {
+      "path": "/mnt/data/memory/constraints.md",
+      "name": "constraints.md",
+      "size": 145,
+      "sha256": "0c124e6074aced7de92bec389f392d6c62cfcd88812547bfbd0de91e583dc0f3"
+    },
+    {
+      "path": "/mnt/data/memory/glossary.md",
+      "name": "glossary.md",
+      "size": 221,
+      "sha256": "7c6defa00e8403e6856df393cb27a8f2efdc921d6cb73e86e9cb0e892eb09057"
+    }
+  ],
+  "combined_manifest_sha256": "28b1df5ab26c9e0593944cad2a507151e775827ae4ab68ccb981c3fa042b713a",
+  "note": "Include this JSON in receipts for perfect reproducibility of memory pins."
+}

@@ -1,0 +1,17 @@
+# gates/gate_order.yaml
+order:
+  # canonical sequences
+  default: [G01, G02, GNN, G12]
+  clarity_first: [G02, G01, GNN, G12]
+  stabilize_then_act: [G11, G01, G02, G12]
+
+  # rules
+  rules:
+    - if: "trap.family in ['psycho']"
+      use: clarity_first
+    - if: "residual_index > 0.6"
+      use: stabilize_then_act
+    - if: "node.hook.gate != null"
+      replace:
+        token: GNN
+        with: "${node.hook.gate}"

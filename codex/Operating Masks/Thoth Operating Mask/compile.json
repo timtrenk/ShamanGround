@@ -1,0 +1,64 @@
+{
+  "timestamp": "20251013T201945Z",
+  "task": "tweet_thread_smoke",
+  "template": "tweet_thread.v1",
+  "gates": [
+    "Severance",
+    "Clarity",
+    "Action",
+    "Integration",
+    "Boundaries",
+    "Reflection",
+    "Seal"
+  ],
+  "sc_k": 5,
+  "candidates": [
+    {
+      "score": 4,
+      "chars": [
+        149,
+        144,
+        135
+      ]
+    },
+    {
+      "score": 4,
+      "chars": [
+        124,
+        125,
+        101
+      ]
+    },
+    {
+      "score": 2,
+      "chars": [
+        149,
+        157,
+        152
+      ]
+    },
+    {
+      "score": 4,
+      "chars": [
+        149,
+        125,
+        101
+      ]
+    },
+    {
+      "score": 4,
+      "chars": [
+        114,
+        102,
+        99
+      ]
+    }
+  ],
+  "winner_score": 4,
+  "artifacts": {
+    "thread_md": "/mnt/data/om_runs/tier1_smoke_tweet_20251013T201945Z/outputs/teaser_thread/20251013T201945Z.md",
+    "distortion_report": "/mnt/data/om_runs/tier1_smoke_tweet_20251013T201945Z/distortion_report.md"
+  },
+  "residual": 0.05,
+  "status": "PASS"
+}

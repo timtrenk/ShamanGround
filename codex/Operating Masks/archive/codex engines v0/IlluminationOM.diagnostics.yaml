@@ -1,0 +1,82 @@
+# IlluminationOM — Diagnostics Braid
+# This single file braids the three companions:
+#   1) engine.wiring   (bff_function + harmonizer_tone)
+#   2) engine.flow     (clarity → [bff, harmonizer] → action)
+#   3) engine.outputs  (harmonized_text + action_step)
+# Drop beside your engine file as `diagnostics.yaml` if you prefer.
+bundle: diagnostics
+engine:
+  id: IlluminationOM
+  version: 0.1.0
+
+  # -------------------- Wiring --------------------
+  wiring:
+    include: [bff_function, harmonizer_tone]
+    contracts:
+      bff_function:
+        input_from: clarity
+        expects:
+          - trap_snapshot
+          - family_activity
+          - gate_telemetry
+        emits:
+          - bff_signature
+      harmonizer_tone:
+        input_from: clarity
+        expects:
+          - harmonizer_status
+        emits:
+          - harmonized_text
+
+  # -------------------- Flow --------------------
+  flow:
+    stages:
+      - stage: clarity
+        fanout: [bff_function, harmonizer_tone]
+        notes: "Clarity resolves mirrors; its packet is fanned to BFF + Harmonizer."
+      - stage: harmonizer_tone
+        then: action
+        notes: "Harmonizer balances tone and prepares the actionable synthesis."
+    invariants:
+      - "clarity precedes both bff_function and harmonizer_tone"
+      - "action runs only after harmonizer_tone"
+    on_error:
+      - rule: "If harmonizer_tone fails, retry once, else route clarity→action(degraded=true)"
+      - rule: "If bff_function fails, skip bff_signature but continue; do not block action."
+
+  # -------------------- Outputs --------------------
+  outputs:
+    - id: harmonized_text
+      from: harmonizer_tone
+      type: text
+      description: "Refined narrative after harmonic balancing."
+    - id: action_step
+      from: action
+      type: object
+      schema:
+        title: string
+        description: string
+        priority: [low, normal, high]
+        next_step: string
+        confidence: number
+
+  # -------------------- Contract (reference) --------------------
+  io_contract:
+    required_inputs:
+      - trap_snapshot
+      - family_activity
+      - gate_telemetry
+      - harmonizer_status
+    provided_outputs:
+      - harmonized_text
+      - action_step
+    optional_outputs:
+      - bff_signature
+
+  # -------------------- Hints --------------------
+  hints:
+    integration:
+      - "Load this file with your runtime; it does not replace runtime."
+      - "If you also use Codex_Engine_v0.runtime.yaml, diagnostics will emit only on-demand."
+    testing:
+      - "Simulate a cycle with clarity payload → verify fanout → ensure action emits action_step."

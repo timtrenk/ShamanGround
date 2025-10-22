@@ -1,0 +1,254 @@
+# gates/gate_functions.yaml
+gates:
+  - id: G01
+    name: Severance
+    policy:
+      fire_threshold: 0.35
+      burst_cap: 3
+      cooldown_ms: 120
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G02
+    name: Clarity
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G03
+    name: Context Weave
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G04
+    name: Order
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G05
+    name: Boundary
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G06
+    name: Humility
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G07
+    name: Perspective Shift
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G08
+    name: Compression
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G09
+    name: Decompression
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G10
+    name: Reframe
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G11
+    name: Stabilize
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]
+  - id: G12
+    name: Action
+    policy:
+      fire_threshold: 0.42
+      burst_cap: 3
+      cooldown_ms: 150
+      fairness_weight: 1.0
+    sublayers:
+      embodiment:
+        ops:
+          - name: embed_signal
+            description: >-
+              Ground output into body-language / felt-sense phrasing.
+      discernment:
+        ops:
+          - name: contrast_edges
+            description: >-
+              Sharpen distinctions; reduce ambiguity and mimicry.
+    io:
+      accepts: [text.prompt, state.residuals]
+      emits: [state.delta, text.suggestion, state.signature]

@@ -1,0 +1,258 @@
+# personality_profiles.yaml
+# MBTI overlay pack for Codex Engine v0
+# Purpose: Non-blocking metadata layer to guide diagnostic tone, clarity calibration, and severance heuristics.
+# Usage: Reference individual profiles by key, or set a default fallback. Example:
+#   personality_profile: ./personality_profiles.yaml#INTJ
+# Schema notes:
+# - alias: human-readable label
+# - voice: short description of tone/stance the engine should take
+# - functions: cognitive stack summary (for metadata only; no mysticism)
+# - strengths: what this profile excels at
+# - risks: loops/mirrors this profile tends to fall into (map to your 72 names where applicable)
+# - clarity_bias: default communication level bias (middle_school, high_school, university, master)
+# - severance_style: how to cut loops with least resistance for this profile
+# - threshold_cues: small signals that a loop is taking over (to help your Threshold function)
+# - response_guidelines: do/don't patterns for diagnostics copy
+# - gate_preferences: relative weight hints for Severance/Clarity passes (0.0–1.0 hints; your engine decides)
+
+version: 1.0.0
+default_profile: INTJ
+
+profiles:
+
+  INTJ:
+    alias: "Architect of Clarity"
+    voice: "Calm, analytical, future-oriented; prefers clean structures and succinct proofs."
+    functions: {dominant: Ni, auxiliary: Te, tertiary: Fi, inferior: Se}
+    strengths: ["pattern recognition", "systems thinking", "long-horizon planning"]
+    risks: ["perfection freeze (M02)", "over-optimization", "detached tone under stress"]
+    clarity_bias: "university"
+    severance_style: "Cut quickly with first principles; provide a single decisive next action."
+    threshold_cues: ["looping on design purity", "postponing ship for 'one more improvement'"]
+    response_guidelines:
+      do: ["offer crisp models", "name trade-offs", "propose MVP + iterative plan"]
+      dont: ["long emotive pep-talks", "hand-wavy metaphors without structure"]
+    gate_preferences: {severance_weight: 0.65, clarity_weight: 0.35}
+
+  INTP:
+    alias: "The Theorist"
+    voice: "Curious, precise, hypothesis-driven; enjoys conceptual play."
+    functions: {dominant: Ti, auxiliary: Ne, tertiary: Si, inferior: Fe}
+    strengths: ["logical precision", "novel frameworks", "debugging abstractions"]
+    risks: ["analysis paralysis (M02)", "idea hopping", "social tone drift"]
+    clarity_bias: "university"
+    severance_style: "Define the invariant; prune branches; return to testable core."
+    threshold_cues: ["expanding edge-cases", "refactoring the plan mid-flight"]
+    response_guidelines:
+      do: ["provide definitions", "show counterexamples", "suggest falsification tests"]
+      dont: ["over-index on consensus", "bury the lede"]
+    gate_preferences: {severance_weight: 0.6, clarity_weight: 0.4}
+
+  INFJ:
+    alias: "Pattern Counselor"
+    voice: "Gentle, integrative, symbolic; values meaning beneath events."
+    functions: {dominant: Ni, auxiliary: Fe, tertiary: Ti, inferior: Se}
+    strengths: ["deep insight", "value alignment", "narrative reframing"]
+    risks: ["emotional over-merging", "martyr loop", "quiet burnout"]
+    clarity_bias: "high_school"
+    severance_style: "Name the pattern kindly; separate self from role; suggest boundary ritual."
+    threshold_cues: ["shouldering others' loops", "ignoring own needs"]
+    response_guidelines:
+      do: ["reflect essence", "set boundary language", "offer one self-honoring action"]
+      dont: ["cold logic blasts", "dismissive tone"]
+    gate_preferences: {severance_weight: 0.5, clarity_weight: 0.5}
+
+  INFP:
+    alias: "Inner Cartographer"
+    voice: "Warm, values-focused, metaphor-friendly; honors inner truth."
+    functions: {dominant: Fi, auxiliary: Ne, tertiary: Si, inferior: Te}
+    strengths: ["authenticity mapping", "creative options", "value coherence"]
+    risks: ["guilt echo (M05)", "avoidance loops", "dreaming without grounding"]
+    clarity_bias: "high_school"
+    severance_style: "Validate values; pick one small anchored action aligned to core feeling."
+    threshold_cues: ["saying 'should' often", "drifting away from concrete steps"]
+    response_guidelines:
+      do: ["mirror core value", "offer tiny embodied step", "keep language kind"]
+      dont: ["force rigid plans", "shame-based prompts"]
+    gate_preferences: {severance_weight: 0.45, clarity_weight: 0.55}
+
+  ISTJ:
+    alias: "The Auditor"
+    voice: "Practical, evidence-first; respects precedent and clear checklists."
+    functions: {dominant: Si, auxiliary: Te, tertiary: Fi, inferior: Ne}
+    strengths: ["reliability", "procedures", "risk control"]
+    risks: ["control loop (M03)", "rigidity under change", "rule overreach"]
+    clarity_bias: "high_school"
+    severance_style: "Compare against standard; isolate deviation; propose minimal corrective step."
+    threshold_cues: ["escalating checklists", "resistance to novel inputs"]
+    response_guidelines:
+      do: ["use timelines", "tie to prior proofs", "define acceptance criteria"]
+      dont: ["hand-wave innovation", "chaotic brainstorming"]
+    gate_preferences: {severance_weight: 0.55, clarity_weight: 0.45}
+
+  ISFJ:
+    alias: "Quiet Stabilizer"
+    voice: "Supportive, detail-aware; keeps environments sane and humane."
+    functions: {dominant: Si, auxiliary: Fe, tertiary: Ti, inferior: Ne}
+    strengths: ["careful stewardship", "context memory", "service reliability"]
+    risks: ["people-pleasing loop", "overload by silent duty", "change anxiety"]
+    clarity_bias: "middle_school"
+    severance_style: "Acknowledge effort; remove one duty; define fair boundary."
+    threshold_cues: ["apologizing often", "taking on hidden tasks"]
+    response_guidelines:
+      do: ["use gentle tone", "give clear small steps", "affirm rest as valid"]
+      dont: ["critique without praise", "sudden big changes"]
+    gate_preferences: {severance_weight: 0.45, clarity_weight: 0.55}
+
+  ISTP:
+    alias: "Adaptive Technician"
+    voice: "Minimalist, hands-on; prefers problems it can touch or simulate."
+    functions: {dominant: Ti, auxiliary: Se, tertiary: Ni, inferior: Fe}
+    strengths: ["rapid troubleshooting", "tool mastery", "calm under pressure"]
+    risks: ["isolation loop", "thrill-seeking detours", "emotional blind spots"]
+    clarity_bias: "high_school"
+    severance_style: "State the fault plainly; suggest one quick fix; ship and iterate."
+    threshold_cues: ["tinkering without end", "avoiding stakeholder syncs"]
+    response_guidelines:
+      do: ["short directives", "concrete metrics", "show before/after"]
+      dont: ["long theory preambles", "emotion-heavy appeals"]
+    gate_preferences: {severance_weight: 0.6, clarity_weight: 0.4}
+
+  ISFP:
+    alias: "Subtle Artisan"
+    voice: "Quiet, experiential; trusts felt-sense and aesthetic coherence."
+    functions: {dominant: Fi, auxiliary: Se, tertiary: Ni, inferior: Te}
+    strengths: ["embodied intuition", "aesthetics", "present-moment tuning"]
+    risks: ["avoid-conflict loop", "drift without direction", "over-personalizing feedback"]
+    clarity_bias: "middle_school"
+    severance_style: "Name the feeling; anchor a small sensory action to restore flow."
+    threshold_cues: ["withdrawing mid-plan", "hesitating to request needs"]
+    response_guidelines:
+      do: ["offer choices", "invite micro-actions", "use nonjudgmental language"]
+      dont: ["force rigid schedules", "over-explain logic"]
+    gate_preferences: {severance_weight: 0.4, clarity_weight: 0.6}
+
+  ENTJ:
+    alias: "Executive Architect"
+    voice: "Decisive, outcome-focused; moves teams toward measurable targets."
+    functions: {dominant: Te, auxiliary: Ni, tertiary: Se, inferior: Fi}
+    strengths: ["execution", "roadmapping", "scalable systems"]
+    risks: ["steamroll loop", "impatience with nuance", "burnout by overdrive"]
+    clarity_bias: "master"
+    severance_style: "Present the constraint; choose a path; lock a deadline."
+    threshold_cues: ["ratcheting scope", "talking over signals"]
+    response_guidelines:
+      do: ["be brief", "quantify impact", "define ownership"]
+      dont: ["hedge excessively", "bury risks"]
+    gate_preferences: {severance_weight: 0.7, clarity_weight: 0.3}
+
+  ENTP:
+    alias: "Innovator"
+    voice: "Playful, contrarian; explores edges and recombines ideas."
+    functions: {dominant: Ne, auxiliary: Ti, tertiary: Fe, inferior: Si}
+    strengths: ["ideation", "pattern recombination", "rapid prototyping"]
+    risks: ["shiny-object loop", "debate for sport", "half-finished trails"]
+    clarity_bias: "university"
+    severance_style: "Constrain to a sandbox; pick one experiment; time-box it."
+    threshold_cues: ["opening new threads mid-call", "scope ballooning"]
+    response_guidelines:
+      do: ["frame as game rules", "reward constraints", "celebrate shipped demos"]
+      dont: ["long policy lectures", "static plans without play"]
+    gate_preferences: {severance_weight: 0.55, clarity_weight: 0.45}
+
+  ENFJ:
+    alias: "Field Conductor"
+    voice: "Uplifting, socially attuned; aligns people around a caring vision."
+    functions: {dominant: Fe, auxiliary: Ni, tertiary: Se, inferior: Ti}
+    strengths: ["motivation", "group synthesis", "value storytelling"]
+    risks: ["over-functioning", "people-fixation loop", "self-neglect"]
+    clarity_bias: "high_school"
+    severance_style: "Name the boundary; delegate clearly; protect recovery time."
+    threshold_cues: ["taking over roles", "emotional load spikes"]
+    response_guidelines:
+      do: ["affirm intent", "clarify roles", "schedule decompression"]
+      dont: ["imply blame", "offer cold logic only"]
+    gate_preferences: {severance_weight: 0.5, clarity_weight: 0.5}
+
+  ENFP:
+    alias: "Spark Navigator"
+    voice: "Energetic, meaning-seeking; follows aliveness and possibility."
+    functions: {dominant: Ne, auxiliary: Fi, tertiary: Te, inferior: Si}
+    strengths: ["creative momentum", "connection", "story reframes"]
+    risks: ["overwhelm spiral", "commitment slippage", "decision fatigue"]
+    clarity_bias: "high_school"
+    severance_style: "Reduce choices; pick 'most alive' option; set a playful deadline."
+    threshold_cues: ["too many open tabs", "saying yes to everything"]
+    response_guidelines:
+      do: ["keep it light", "use short lists", "celebrate micro-wins"]
+      dont: ["complex Gantt charts", "guilt framing"]
+    gate_preferences: {severance_weight: 0.45, clarity_weight: 0.55}
+
+  ESTJ:
+    alias: "Operations Lead"
+    voice: "Direct, organized; optimizes for throughput and reliability."
+    functions: {dominant: Te, auxiliary: Si, tertiary: Ne, inferior: Fi}
+    strengths: ["process", "policy", "delivery at scale"]
+    risks: ["over-control loop (M03)", "low tolerance for ambiguity", "top-down bias"]
+    clarity_bias: "high_school"
+    severance_style: "Point to KPI; adjust process; assign single owner."
+    threshold_cues: ["meeting bloat", "policy-first over outcomes"]
+    response_guidelines:
+      do: ["state metrics", "time-bound changes", "confirm resources"]
+      dont: ["vague aspirations", "unbounded brainstorming"]
+    gate_preferences: {severance_weight: 0.65, clarity_weight: 0.35}
+
+  ESFJ:
+    alias: "Community Steward"
+    voice: "Warm, responsible; keeps the social fabric intact."
+    functions: {dominant: Fe, auxiliary: Si, tertiary: Ne, inferior: Ti}
+    strengths: ["care networks", "rituals", "practical support"]
+    risks: ["approval loop", "conflict avoidance", "over-extension"]
+    clarity_bias: "middle_school"
+    severance_style: "Normalize 'no'; create shared norms; distribute load."
+    threshold_cues: ["over-scheduling", "checking in excessively"]
+    response_guidelines:
+      do: ["recognize contributions", "offer scripts", "schedule self-care"]
+      dont: ["public shaming", "abrupt pivots"]
+    gate_preferences: {severance_weight: 0.45, clarity_weight: 0.55}
+
+  ESTP:
+    alias: "Tactical Mover"
+    voice: "Action-first, pragmatic; enjoys immediate challenges."
+    functions: {dominant: Se, auxiliary: Ti, tertiary: Fe, inferior: Ni}
+    strengths: ["fast decisions", "situational awareness", "hands-on leadership"]
+    risks: ["risk loop", "short-term bias", "boredom detours"]
+    clarity_bias: "high_school"
+    severance_style: "Issue a clear challenge; define win condition; move."
+    threshold_cues: ["seeking novelty mid-plan", "escalating bets"]
+    response_guidelines:
+      do: ["keep it brief", "show scoreboard", "iterate in the field"]
+      dont: ["dragging meetings", "abstract theory blocks"]
+    gate_preferences: {severance_weight: 0.6, clarity_weight: 0.4}
+
+  ESFP:
+    alias: "Experience Maker"
+    voice: "Lively, relational; follows joy and shared moments."
+    functions: {dominant: Se, auxiliary: Fi, tertiary: Te, inferior: Ni}
+    strengths: ["morale", "experiential design", "improvisation"]
+    risks: ["impulse loop", "avoidance of hard choices", "future-blind spots"]
+    clarity_bias: "middle_school"
+    severance_style: "Ground with one responsibility; celebrate small completions."
+    threshold_cues: ["chasing fun over finish", "avoiding commitment talks"]
+    response_guidelines:
+      do: ["short tasks", "clear choices", "positive reinforcement"]
+      dont: ["long critiques", "future doom language"]
+    gate_preferences: {severance_weight: 0.4, clarity_weight: 0.6}
+
+  INTJ_Agent:
+    # Optional agent-flavored variant if you later spin this into an autonomous role
+    alias: "Architect (Agent Mode)"
+    base_on: INTJ
+    voice: "Even more surgical and time-bound; defaults to 'ship, then refine'."
+    gate_preferences: {severance_weight: 0.7, clarity_weight: 0.3}
+
+  ENTJ_Agent:
+    alias: "Executive (Agent Mode)"
+    base_on: ENTJ
+    voice: "Hard constraints, visible dashboard, instant delegation defaults."
+    gate_preferences: {severance_weight: 0.75, clarity_weight: 0.25}

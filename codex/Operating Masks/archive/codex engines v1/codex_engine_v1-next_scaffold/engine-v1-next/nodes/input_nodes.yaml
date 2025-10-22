@@ -1,0 +1,146 @@
+# nodes/input_nodes.yaml
+nodes:
+  - id: N01
+    name: Architect
+    hook:
+      gate: G02   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N02
+    name: Mediator
+    hook:
+      gate: G03   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N03
+    name: Navigator
+    hook:
+      gate: G04   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N04
+    name: Scribe
+    hook:
+      gate: G05   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N05
+    name: Builder
+    hook:
+      gate: G06   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N06
+    name: Analyst
+    hook:
+      gate: G07   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N07
+    name: Artist
+    hook:
+      gate: G08   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N08
+    name: Healer
+    hook:
+      gate: G09   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N09
+    name: Explorer
+    hook:
+      gate: G10   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N10
+    name: Guardian
+    hook:
+      gate: G11   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N11
+    name: Integrator
+    hook:
+      gate: G12   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral
+  - id: N12
+    name: Catalyst
+    hook:
+      gate: G01   # example mapping, adjust per your design
+    sublayers:
+      embodiment:
+        cues: ["breath", "pace", "grounding"]
+      discernment:
+        cues: ["contrast", "scope", "test-case"]
+    prefs:
+      verbosity: medium
+      tone: neutral

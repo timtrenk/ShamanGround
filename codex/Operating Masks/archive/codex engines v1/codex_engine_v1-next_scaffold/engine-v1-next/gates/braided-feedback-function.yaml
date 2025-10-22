@@ -1,0 +1,13 @@
+# gates/braided-feedback-function.yaml
+bff:
+  description: Minimal braid quality aggregator.
+  inputs: [residuals, deltas, gate_signatures]
+  output:
+    braid_quality: 0.0   # computed
+    signature: null      # computed authorship signature
+  method:
+    steps:
+      - normalize_residuals
+      - weight_by_gate_policy
+      - aggregate_to_quality
+      - sign_authorship

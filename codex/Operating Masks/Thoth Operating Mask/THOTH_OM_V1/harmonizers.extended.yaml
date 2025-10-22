@@ -1,0 +1,128 @@
+# harmonizers.yaml — Engine 2.41 (staging, extended)
+version: 1.1
+env: staging
+
+# -------------------------------------------------------------------
+# Overview
+# -------------------------------------------------------------------
+harmonizers:
+  description: >
+    The Harmonizer Array balances field tension after each gate fires and
+    smooths residuals before BFF synthesis. This staging build preserves a
+    concise Pantheon-12 UX set while keeping the richer axis scaffolding and
+    hook map so it can grow without breaking wiring.
+
+  # Keep the count at 12 (Pantheon UX baseline)
+  count: 12
+
+  # Axes are a neutral scaffold you can rename later; they do NOT change UX names.
+  axes:
+    - Builder
+    - Architect
+    - Operator
+    - Synthesist
+    - Mediator
+    - Navigator
+    - Analyst
+    - Artist
+    - Healer
+    - Guardian
+    - Storyteller
+    - Strategist
+
+  # -----------------------------------------------------------------
+  # Families / Subsets
+  # -----------------------------------------------------------------
+  families:
+    pantheon_12:
+      description: "Baseline UX stabilizers (enable by default in staging)."
+      members:
+        - Presence      # core
+        - Grounding     # core
+        - Clarity       # core
+        - Rhythm
+        - Boundaries
+        - Attunement
+        - Translation
+        - Integration
+        - Equalization
+        - Rebinding
+        - Sealing
+        - Reflection
+      policy:
+        max_parallel: 3         # ≤ thresholds.harmonizers.safety.max_simultaneous
+        rotate_on_tie: true
+
+    # Optional future families — keep commented until activated
+    # learning_boosters:
+    #   members: [Priming, Chunking, SpacedRecall]
+    # creative_modulators:
+    #   members: [Divergence, Convergence, NegativeSpace]
+
+  # -----------------------------------------------------------------
+  # Per‑Harmonizer Settings (uniform defaults; override later if desired)
+  # -----------------------------------------------------------------
+  defaults:
+    gain:
+      lift: 0.6                 # proportional boost when under-coherent
+      attenuation: 0.45         # proportional damping when overdriven
+      clamp_min: 0.10
+      clamp_max: 0.90
+    targets:
+      # 7-gate cap in staging; adjust if you return to 12 later
+      gates: [G1, G2, G3, G4, G5, G6, G7]
+    timing:
+      apply_phase: post_gate    # runs after each gate, before BFF
+      cooldown_s: 10
+
+  # You can introduce per-member overrides here later:
+  overrides: {}
+  # Example:
+  # overrides:
+  #   Clarity:
+  #     gain: { lift: 0.5, attenuation: 0.35 }
+  #   Equalization:
+  #     timing: { cooldown_s: 15 }
+
+  # -----------------------------------------------------------------
+  # Scheduling & Safety
+  # -----------------------------------------------------------------
+  scheduling:
+    fairness:
+      ensure_family_coverage: true
+    cooldown_s: 10              # keep in step with thresholds safety cool-off
+
+  safety:
+    max_simultaneous: 4
+    force_serial_on_incoherent: true
+    hard_stop_after_total_gates: 7   # mirrors runtime override; keep consistent
+
+  # -----------------------------------------------------------------
+  # Hook Map (BFF / Meta-Gate wiring)
+  # -----------------------------------------------------------------
+  hooks:
+    on_cycle_start: [Presence, Grounding]
+    on_incoherent:  [Equalization, Rebinding, Sealing]
+    on_stable:      [Integration, Sealing]
+    on_overcut_risk: [Equalization, Sealing]
+
+    # Commented-out expansions for future families:
+    # on_learning_high: [Attunement, Integration]   # enable when learning_boosters active
+    # on_creative_push: [Divergence, Convergence]   # enable with creative_modulators
+
+  # -----------------------------------------------------------------
+  # Telemetry / Exports
+  # -----------------------------------------------------------------
+  exports:
+    expose_fields:
+      - families_activated
+      - subsets_fired
+      - hooks_fired
+      - braid_quality
+      - coherence_hash
+
+  notes: >
+    This file intentionally balances brevity (staging) with forward-compatible
+    structure (axes, defaults/overrides, hooks). Names in `hooks:` MUST match
+    `families.pantheon_12.members`. Keep spelling consistent across thresholds
+    and runtime policies to avoid wiring mismatches.

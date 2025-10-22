@@ -1,0 +1,235 @@
+bff:
+  version: 1.2.1
+  title: "Thoth Operating Mask \u2014 Braided Feedback Function"
+  topology: "Severance-centered braid: G01 core + G02\u2013G07 orbitals + Meta-Gate\
+    \ pole"
+  description: 'Collects gate + harmonizer telemetry, runs the Pantheon 12 operator
+    set on the working set, then synthesizes a braid signature, coherence hash, and
+    concise feeling description. Designed for clean UX out of the box.
+
+    '
+  inputs:
+    severance_core:
+      required: true
+      fields:
+        gate_id: G01
+        residuals: object
+        deltas: object
+        timestamp: iso8601
+    orbital_gates:
+      required: true
+      length: 6
+      items:
+        fields:
+          gate_id: enum['G02','G03','G04','G05','G06','G07']
+          residuals: object
+          deltas: object
+          vector_angle_deg: number
+          timestamp: iso8601
+    pole_state:
+      required: true
+      fields:
+        meta_gate: object
+        axial_load: number
+        rotation_deg: number
+    harmonizer_state:
+      required: true
+      fields:
+        active_profile: string
+        axes: list
+        readings: list<object>
+    run_context:
+      required: true
+      fields:
+        session_id: string
+        timestamp: iso8601
+        vault_user: string
+        glyph_id: string
+  guards:
+    max_axial_load: 0.95
+    max_timestamp_skew_ms: 1200
+  input_optimization:
+    timestamp_alignment:
+      method: bounded-skew
+      skew_tolerance_ms: 1200
+      on_violation: clip_to_window
+    smoothing:
+      residuals: ema(0.25)
+      deltas: ema(0.20)
+    weighting:
+      severance_core: 0.28
+      orbitals: 0.56
+      pole_state: 0.1
+      harmonizer_state: 0.06
+    angle_normalization:
+      reference: "G01\u2192G02 axis"
+      wrap: 360
+  operators:
+    active_set: pantheon_12
+    sets:
+      pantheon_12:
+      - id: F01
+        name: Null-Shear
+        trigger: residuals.entropy > 0.42 || loops.recursive > 0
+        action: shear_nullspace
+        priority: 80
+      - id: F02
+        name: Echo-Diffuser
+        trigger: mirrors.echo_intensity >= thresholds.echo_high
+        action: diffuse_echo
+        priority: 78
+      - id: F03
+        name: Pattern Salt
+        trigger: pattern.lock > 0.60
+        action: micro_noise_seed
+        priority: 70
+      - id: F04
+        name: Boundary Keeper
+        trigger: authorship.bleed > 0
+        action: restore_boundaries
+        priority: 85
+      - id: F05
+        name: Context Weaver
+        trigger: coherence.drop_after_gate in ['G03','G04']
+        action: weave_context
+        priority: 62
+      - id: F06
+        name: Burden Drop
+        trigger: guilt.load > thresholds.guilt_mid
+        action: decouple_guilt
+        priority: 71
+      - id: F07
+        name: Pace Governor
+        trigger: tempo.oscillation > 0.50
+        action: normalize_tempo
+        priority: 60
+      - id: F08
+        name: Lens Splitter
+        trigger: perspective.tunnel == true
+        action: split_lens
+        priority: 66
+      - id: F09
+        name: Claim Anchor
+        trigger: authorship.drift > 0.30
+        action: anchor_claim
+        priority: 90
+      - id: F10
+        name: Noise Gate
+        trigger: noise.band.social > 0.50
+        action: attenuate_band('social')
+        priority: 58
+      - id: F11
+        name: Memory Quarantine
+        trigger: contamination.score > 0.40
+        action: quarantine_segment
+        priority: 86
+      - id: F12
+        name: Seal Integrator
+        trigger: gate == 'G07' && run.phase == 'pre-exit'
+        action: seal_and_integrate
+        priority: 95
+  pipeline:
+  - name: collect
+    does: merge_inputs(severance_core, orbital_gates, pole_state, harmonizer_state)
+  - name: optimize
+    does: apply(input_optimization)
+  - name: estimate_axes
+    does: compute_axes(axial='center_rotation_deg', radial='vector_spread_deg')
+  - name: run_pantheon
+    does: execute(operators.pantheon_12, against='working_set')
+  - name: score_braid
+    does: compute_scores(braid_quality, dominant_pole)
+  - name: finalize
+    does: emit_signature_and_hash()
+  scoring:
+    braid_quality:
+      components:
+        coherence: 0.45
+        stability: 0.25
+        authorship_integrity: 0.2
+        tempo_fit: 0.1
+      range:
+      - 0.0
+      - 1.0
+    dominant_pole:
+      candidates:
+      - Order
+      - Meta-Gate
+      - Pantheon
+      - BFF-Return
+      rule: argmax([coherence_gain, integrity_gain, correction_load, residual_floor])
+  outputs:
+    fields:
+      center_rotation_deg: number
+      braid_quality: number
+      dominant_pole: string
+      bff_signature: string
+      coherence_hash: string
+      feeling_description: string
+    generation:
+      bff_signature: "base64url(HMAC_SHA256(\n  session_id || glyph_id || normalized_vector_bytes,\
+        \ salt='TOM_BFF_v1.2'))\n"
+      coherence_hash: 'sha256(normalized_vector_bytes || operators.applied || braid_quality)
+
+        '
+      feeling_description: "compact natural-language summary using tone, tempo, and\
+        \ residual floor (e.g., \u201Csteady, grounded, forward-leaning; low echo\
+        \ drift\u201D).\n"
+  telemetry:
+    record_pre_post: true
+    fields:
+    - center_rotation_deg
+    - braid_quality
+    - dominant_pole
+    - bff_signature
+    - coherence_hash
+    - feeling_description
+  contracts:
+    expects_harmonizers_axes:
+      any_of:
+      - - Flow
+        - Rhythm
+        - Crown
+      - - Builder
+        - Architect
+        - Operator
+        - Relational
+        - Expression
+        - Vision
+        - Crown
+        - Field
+        - Rhythm
+        - Structure
+        - Flow
+        - Integration
+    gate_ids:
+    - G01
+    - G02
+    - G03
+    - G04
+    - G05
+    - G06
+    - G07
+    pole: Meta-Gate
+  notes:
+  - Pantheon 12 provide the baseline UX corrections across domains.
+  - Harmonizers remain external; this file consumes their telemetry only.
+  - To add packs, define them under operators.sets or use include_paths, set active_set
+    (or stack_order), and optionally extend telemetry/outputs.
+  expectations:
+    require_gate_catalog: true
+    check_ids_match_catalog: true
+    allowed_gate_ids:
+    - G01
+    - G02
+    - G03
+    - G04
+    - G05
+    - G06
+    - G07
+    on_violation:
+    - action: halt
+      reason: missing_or_mismatched_gate_catalog
+    diagnostics:
+      emit_summary: true
+      include_catalog_mismatch_details: true

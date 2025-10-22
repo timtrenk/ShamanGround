@@ -1,0 +1,141 @@
+version: 1.1
+label: "Thoth OM v1 \u2014 runtime"
+paths:
+  project_root: /mnt/data
+cross_thread_memory:
+  enabled: true
+  sources:
+  - path: /mnt/data/thoth_om_v1/memory
+  - path: /mnt/data/memory
+  verify_with_manifest: /mnt/data/memory_fingerprint.json
+  on_mismatch: sever
+  precedence:
+  - /mnt/data/memory
+  - /mnt/data/thoth_om_v1/memory
+context:
+  threshold_profile: default
+engine:
+  thoth_engine_path: /mnt/data/engine/Thoth_engine_1.0.yaml
+  metatron_catalog_path: /mnt/data/engine/metatron_function.yaml
+  braided_feedback_path: /mnt/data/engine/braided-feedback-function.yaml
+  trap_seeds_path: /mnt/data/trap_seeds.yaml
+schemas:
+  segments_schema_path: /mnt/data/schemas/segments.schema.json
+thresholds:
+  path: /mnt/data/thresholds_1.1.yaml
+harmonizers:
+  path: /mnt/data/engine/harmonizers.extended.yaml
+  allow:
+    - latency_smoothing
+    - tone_equalizer
+    - rhythm_stabilizer
+    - polarity_balancer
+    - jargon_filter
+    - verbosity_normalizer
+    - prompt_binder
+    - safety_guard
+  chain:
+    pre_gate: [latency_smoothing, tone_equalizer]
+    inter_gate: [rhythm_stabilizer]
+    post_gate: [polarity_balancer, verbosity_normalizer]
+  params:
+    latency_smoothing: { window: 3 }
+    tone_equalizer:    { target: neutral, strength: 0.6 }
+    rhythm_stabilizer: { cadence: medium }
+    polarity_balancer: { max_polarity: 0.7 }
+    jargon_filter:     { domain_bias: 0.4 }
+    verbosity_normalizer: { max_tokens: 900 }
+    prompt_binder:     { pin_memory: true }
+    safety_guard:      { strict: true }
+
+pre_gate: [latency_smoothing, tone_equalizer]
+    inter_gate: [rhythm_stabilizer]
+    post_gate: [polarity_balancer, verbosity_normalizer]path: /mnt/data/engine/harmonizers.extended.yaml
+self_learning:
+  enabled: true
+  path: /mnt/data/runtime/self_learning.yaml
+routing:
+  force_serial_on_incoherent: true
+  call_harmonizers_below: 0.55
+  early_severance_below: 0.28
+  total_gate_cap: 7
+safety:
+  hard_stop_after_total_gates: 7
+  max_gate_iterations: 2
+  cooldown_s: 2
+persistence:
+  casebook:
+    path: /mnt/data/thoth_om_v1/casebook.db.jsonl
+    format: jsonl
+    read_on_boot: true
+    write_on_exit: true
+    store_as: learning.casebook.store
+    record_var: thread.casebook
+    append: true
+    rotate:
+      max_bytes: 20000000
+      keep: 5
+load.jsonl:
+  file: /mnt/data/thoth_om_v1/casebook.db.jsonl
+save.jsonl:
+  file: /mnt/data/thoth_om_v1/casebook.db.jsonl
+  record: ${thread.casebook}
+
+# lunar nudge policy hook
+lunar_nudge:
+  enabled: true
+  policy: "/mnt/data/runtime/lunar_nudge.yaml"
+
+adapters:
+  path: /mnt/data/engine/adapters.yaml
+  fallback: ai_drift_dx
+  default_playbook: a_ai_drift
+  allow:
+    - latency_smoothing
+    - tone_equalizer
+    - rhythm_stabilizer
+    - polarity_balancer
+    - jargon_filter
+    - verbosity_normalizer
+    - prompt_binder
+    - safety_guard
+
+
+  params:
+    latency_smoothing: { window: 3 }
+    tone_equalizer:    { target: neutral, strength: 0.6 }
+    rhythm_stabilizer: { cadence: medium }
+    polarity_balancer: { max_polarity: 0.7 }
+    jargon_filter:     { domain_bias: 0.4 }
+    verbosity_normalizer: { max_tokens: 900 }
+    prompt_binder:     { pin_memory: true }
+    safety_guard:      { strict: true }
+
+overlays:
+  enabled: true
+  entries:
+    - name: lunar_nudge
+      policy: /mnt/data/runtime/lunar_nudge.yaml
+      autoload: true
+    - name: pantheon12
+      catalog: /mnt/data/engine/pantheon12.yaml
+      autoload: true
+  allow: ["lunar_nudge","pantheon12"]
+
+overlay_policy:
+  max_agents_per_turn: 3
+  cooldown_s: 1
+  rules:
+    - when: [coherence_drop, loop_detected]
+      run: [echo_breaker, coherence_anchor]
+      resume_at: same_gate
+    - when: [missing_inputs]
+      run: [context_broker]
+      resume_at: same_gate
+    - when: [style_drift, config_mismatch]
+      run: [drift_corrector]
+      resume_at: previous_gate
+    - when: [policy_risk]
+      run: [safety_marshal]
+      resume_at: stop
+  always_post: [crown_verifier]

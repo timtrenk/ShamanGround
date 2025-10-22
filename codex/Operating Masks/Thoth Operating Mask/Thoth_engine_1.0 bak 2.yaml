@@ -1,0 +1,309 @@
+version: 1.0
+name: "Thoth_engine_1.0"
+description: Full engine braid spec wired for trap_seeds, Metatron (7-gate), harmonizers, BFF, thresholds,
+  and telemetry.
+imports:
+  trap_seeds: trap_seeds.yaml
+  metatron_function: metatron_function.yaml
+  bff: braided-feedback-function.yaml
+  harmonizers: harmonizers.extended.yaml
+  thresholds: thresholds_1.1.yaml
+contracts:
+  packet.out:
+    required_fields:
+    - payload
+    - residuals
+    - metrics
+    - ts
+    metrics_minimum_keys:
+    - coherence
+    - intensity
+    - stability
+    ts_format: iso-8601
+  hooks:
+    after_gate:
+    - harmonizers.apply
+    before_bff:
+    - harmonizers.flush
+input_optimization:
+  enabled: true
+  steps:
+  - normalize_text
+  - strip_placeholders
+  - timestamp_align
+  - z_score_metrics
+  - smooth_residuals
+  - weight_by_threshold_confidence
+  notes: "Mirrors/traps map \u2192 thresholds gate \u2192 harmonizers polish \u2192 BFF synth."
+meta_gate:
+  driver: metatron_function
+  config_ref: metatron_function.yaml#metatron
+  notes:
+  - Planner/orchestrator for 7-gate set; non-transform roles live in policies/harmonizers/runtime.
+trap_mapping:
+  dataset: trap_seeds
+  map_fields:
+  - trap_id
+  - family
+  - variant
+  - resonance_pattern
+  - disruption_pattern
+  - guidance
+  emit_into: thresholds.inputs.trap_context
+gates:
+  G01:
+    name: Severance
+    role: cut non-authored overlays
+    out_schema: packet.out
+  G02:
+    name: Voice Clarity
+    role: tone + level alignment
+    out_schema: packet.out
+  G03:
+    name: Order
+    role: structure & step sequencing
+    out_schema: packet.out
+  G04:
+    name: Direction
+    role: goal vector & constraint set
+    out_schema: packet.out
+  G05:
+    name: Relational
+    role: context + empathy restoration
+    out_schema: packet.out
+  G06:
+    name: Integration
+    role: merge safe deltas
+    out_schema: packet.out
+  G07:
+    name: Crown Verification
+    role: final allow/flag/block
+    out_schema: packet.out
+flow:
+  sequence:
+  - G01
+  - G02
+  - G03
+  - G04
+  - G05
+  - G06
+  - G07
+  hooks:
+    after_each_gate: harmonizers.apply
+    before_bff: harmonizers.flush
+  bff:
+    center: G01
+    orbitals:
+    - G02
+    - G03
+    - G04
+    - G05
+    - G06
+    - G07
+    pole: Meta-Gate
+    signature_emit: bff_signature
+bff_integration:
+  inputs:
+    severance_core: G01.out
+    orbital_gates:
+    - G02.out
+    - G03.out
+    - G04.out
+    - G05.out
+    - G06.out
+    - G07.out
+    meta_pole: meta_gate
+    harmonizer_state: harmonizers.state
+  input_optimization:
+    normalize: true
+    smooth_window: 3
+    weighting:
+      center: 1.0
+      orbitals: 0.88
+      clarity_bias: 0.06
+  outputs:
+    bff_signature:
+      fields:
+      - axial
+      - radial
+      - clarity
+      - learning_delta
+      - coherence_hash
+telemetry:
+  record:
+  - gate_outputs.pre_harmonizer
+  - gate_outputs.post_harmonizer
+  - thresholds.decisions
+  - meta_gate.gate_plan
+  - bff.signature
+  receipt_policy:
+    on_demand: true
+    on_thread_end: true
+    redact_keys:
+    - payload.raw_text
+    - secrets
+    - api_key
+definitions:
+  normalize_text: lowercase, collapse whitespace, unicode NFC
+  strip_placeholders: remove [TODO], <placeholder>, {{var}} artifacts
+  timestamp_align: align ts to nearest gate cycle
+  z_score_metrics: normalize metrics by rolling z-score
+  smooth_residuals: EWMA smoothing on residual vectors
+
+nodes:
+  version: 1.0
+  env: staging
+  contracts:
+    bff_input_key: segmented_nodes
+    metagate_hint_key: metagate_routing_hint
+    threshold_namespace: nodes
+    harmonizer_family: pantheon_12
+
+  defaults:
+    enabled: true
+    preferred_gates: [G1, G2, G3, G4, G5, G6, G7]
+    bff_report:
+      emit: true
+      fields: [coherence, residuals, risks, ops_used, time_ms]
+    sublayers:
+      embodiment: { actions: [] }
+      discernment: { checks: [] }
+
+  list:
+    - id: N01
+      name: Framing
+      role: Clarify objective, constraints, and definition of done.
+      enabled: true
+      preferred_gates: [G1, G2, G4]
+      interfaces: { inputs: [seed, context, constraints], outputs: [framed_brief] }
+      sublayers:
+        embodiment: { actions: [summon.objective, bound.scope, define.success] }
+        discernment: { checks: [assumption.scan, goal.test, loop.risk] }
+      thresholds: [nodes.framing.min_signal, nodes.framing.max_mirrors]
+      harmonizers: { include: [Clarity, Grounding, Boundaries] }
+      bff_report: { add_tags: [framing, brief] }
+      metagate_routing_hint: { priority: 80, tags: [setup, objective] }
+
+    - id: N02
+      name: Segmentation
+      role: Slice the input into coherent segments by intent.
+      preferred_gates: [G1, G3, G5]
+      interfaces: { inputs: [framed_brief, raw_input], outputs: [segments] }
+      sublayers:
+        embodiment: { actions: [segment.by_intent, label.tokens, order.linear] }
+        discernment: { checks: [cohesion.test, redundancy.drop] }
+      thresholds: [nodes.segmentation.max_segments, nodes.segmentation.min_cohesion]
+      harmonizers: { include: [Presence, Rhythm, Integration] }
+      bff_report: { add_tags: [segments] }
+      metagate_routing_hint: { priority: 75, tags: [partition] }
+
+    - id: N03
+      name: Tooling
+      role: Identify tools, variables, and env requirements.
+      interfaces: { inputs: [segments], outputs: [tool_plan] }
+      sublayers:
+        embodiment: { actions: [detect.tools, declare.vars, plan.env] }
+        discernment: { checks: [safety.check, cost.estimate] }
+      thresholds: [nodes.tooling.max_new_tools]
+      harmonizers: { include: [Translation, Integration, Boundaries] }
+      metagate_routing_hint: { priority: 70, tags: [prep, resources] }
+
+    - id: N04
+      name: Research
+      role: Collect missing facts from local context only (no web).
+      interfaces: { inputs: [segments, tool_plan], outputs: [research_notes] }
+      sublayers:
+        embodiment: { actions: [scan.context, extract.facts] }
+        discernment: { checks: [confidence.estimate, source.rank] }
+      thresholds: [nodes.research.max_hops]
+      harmonizers: { include: [Clarity, Reflection] }
+      metagate_routing_hint: { priority: 65, tags: [facts] }
+
+    - id: N05
+      name: Design Draft
+      role: Draft a minimal viable plan or structure.
+      interfaces: { inputs: [framed_brief, segments, research_notes], outputs: [design_draft] }
+      sublayers:
+        embodiment: { actions: [sketch.structure, choose.pattern] }
+        discernment: { checks: [complexity.cap, mirror.scan] }
+      thresholds: [nodes.design.max_complexity]
+      harmonizers: { include: [Integration, Equalization] }
+      metagate_routing_hint: { priority: 65, tags: [plan] }
+
+    - id: N06
+      name: Prototype
+      role: Assemble a first-pass artifact or answer.
+      interfaces: { inputs: [design_draft, tool_plan], outputs: [proto] }
+      sublayers:
+        embodiment: { actions: [assemble, stub, mock] }
+        discernment: { checks: [sanity.check, risk.scan] }
+      thresholds: [nodes.prototype.max_runtime_ms]
+      harmonizers: { include: [Rhythm, Grounding] }
+      metagate_routing_hint: { priority: 60, tags: [build] }
+
+    - id: N07
+      name: BFF Weave
+      role: Send segments through the braid; collect coherence.
+      interfaces: { inputs: [proto, segments], outputs: [bff_packet] }
+      sublayers:
+        embodiment: { actions: [bff.weave, residuals.measure] }
+        discernment: { checks: [coherence.test, overcut.guard] }
+      thresholds: [nodes.bff.coherence_min]
+      harmonizers: { include: [Equalization, Sealing] }
+      bff_report: { add_tags: [braid, coherence] }
+      metagate_routing_hint: { priority: 90, tags: [quality] }
+
+    - id: N08
+      name: Polish
+      role: Refine language, structure, and UX.
+      interfaces: { inputs: [proto, bff_packet], outputs: [polished] }
+      sublayers:
+        embodiment: { actions: [rewrite.clean, structure.tighten] }
+        discernment: { checks: [tone.check, drift.scan] }
+      thresholds: [nodes.polish.max_read_time_min]
+      harmonizers: { include: [Attunement, Translation] }
+      metagate_routing_hint: { priority: 55, tags: [refine] }
+
+    - id: N09
+      name: Risk & Ethics
+      role: Evaluate safety, compliance, and edge cases.
+      interfaces: { inputs: [polished], outputs: [risk_notes] }
+      sublayers:
+        embodiment: { actions: [policy.align, redteam.light] }
+        discernment: { checks: [harm.scan, leak.check] }
+      thresholds: [nodes.risk.max_flags]
+      harmonizers: { include: [Boundaries, Reflection] }
+      metagate_routing_hint: { priority: 85, tags: [guard] }
+
+    - id: N10
+      name: Integrate
+      role: Merge outputs with prior context or files.
+      interfaces: { inputs: [polished, risk_notes], outputs: [integrated] }
+      sublayers:
+        embodiment: { actions: [merge.context, resolve.conflicts] }
+        discernment: { checks: [regression.test] }
+      thresholds: [nodes.integrate.max_diffs]
+      harmonizers: { include: [Integration, Rebinding] }
+      metagate_routing_hint: { priority: 50, tags: [merge] }
+
+    - id: N11
+      name: Crown Verify
+      role: Final distortion check vs. thresholds; ready-to-ship gate.
+      interfaces: { inputs: [integrated], outputs: [verified] }
+      sublayers:
+        embodiment: { actions: [aggregate.metrics, compare.thresholds] }
+        discernment: { checks: [distortion.final, authorship.check] }
+      thresholds: [nodes.crown.max_distortion, nodes.crown.min_authorship]
+      harmonizers: { include: [Presence, Sealing] }
+      metagate_routing_hint: { priority: 95, tags: [finalize] }
+
+    - id: N12
+      name: Ship
+      role: Emit artifact, logs, and receipts.
+      interfaces: { inputs: [verified], outputs: [artifact, receipts] }
+      sublayers:
+        embodiment: { actions: [emit.artifact, write.receipt, log.summary] }
+        discernment: { checks: [path.check, permissions.check] }
+      thresholds: [nodes.ship.max_size_mb]
+      harmonizers: { include: [Rhythm, Grounding, Reflection] }
+      metagate_routing_hint: { priority: 40, tags: [deliver] }

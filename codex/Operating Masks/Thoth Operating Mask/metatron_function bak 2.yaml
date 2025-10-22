@@ -1,0 +1,76 @@
+metatron:
+  version: 2.41-7g
+  description: Meta-Gate planner/orchestrator for the 7-gate braid. Non-transform roles moved to policies/harmonizers/runtime.
+  expected_gates:
+  - G01
+  - G02
+  - G03
+  - G04
+  - G05
+  - G06
+  - G07
+  center_gate: G01
+  orbitals:
+  - G02
+  - G03
+  - G04
+  - G05
+  - G06
+  - G07
+  planning:
+    cooldown_s: 8
+    max_parallel: 2
+    sequence_policy: center-first, then orbitals by confidence desc, respect cooldown
+  input_optimization:
+    enabled: true
+    pipeline:
+    - normalize_text
+    - strip_placeholders
+    - timestamp_align
+    - z_score_metrics
+    - smooth_residuals
+    - weight_by_threshold_confidence
+  policies:
+    severance.boundary_guard: enabled
+    pacing.rhythm_bias: harmonizers.Rhythm
+    smoothing.flow_bias: harmonizers.Flow
+    telemetry.memory_trace: runtime.telemetry
+    delivery.action_mode: runtime.adapter
+  outputs:
+    gate_plan:
+      fields:
+      - sequence
+      - cooldowns
+      - caps
+      - notes
+      ts: iso-8601
+  compat:
+    engine_hooks_expected:
+      after_each_gate: harmonizers.apply
+      before_bff: harmonizers.flush
+    bff_shape:
+      center: G01
+      orbitals:
+      - G02
+      - G03
+      - G04
+      - G05
+      - G06
+      - G07
+      pole: Meta-Gate
+
+gate_catalog:
+  G01: { key: severance,       label: "Severance Function",       role: center,  description: "Cuts overlays; establishes clean origin." }
+  G02: { key: voice_clarity,   label: "Voice Clarity Function",   role: orbital, description: "Clarifies signal intent and articulation." }
+  G03: { key: grounding,       label: "Grounding Function",       role: orbital, description: "Stabilizes state; locks to present context." }
+  G04: { key: coherence,       label: "Coherence Function",       role: orbital, description: "Aligns fragments; raises braid coherence." }
+  G05: { key: translation,     label: "Translation Function",     role: orbital, description: "Maps meaning across layers without drift." }
+  G06: { key: integration,     label: "Integration Function",     role: orbital, description: "Merges validated outputs; resolves deltas." }
+  G07: { key: sealing,         label: "Sealing Function",         role: orbital, description: "Locks result; prevents re-entry of noise." }
+
+routing_rules:
+  preferred_order: [G01, G02, G03, G04, G05, G06, G07]
+  allow_skips_if:
+    - residuals.total_distortion <= 0.03
+  halt_if:
+    - crown_verification.failed == true

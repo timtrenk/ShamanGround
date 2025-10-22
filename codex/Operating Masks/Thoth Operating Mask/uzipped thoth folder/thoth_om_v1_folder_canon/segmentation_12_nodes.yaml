@@ -1,0 +1,112 @@
+# segmentation_12_nodes.yaml — Thoth OM v1
+version: 1.0
+description: >
+  Input segmentation for Thoth OM v1. Splits a raw prompt into 12 labeled segments,
+  runs mirror scan, and normalizes each segment. Emit JSON matching segments.schema.json.
+
+nodes:
+  - id: N1
+    name: Goal
+    purpose: "What success looks like (objective, KPI, deadline)."
+    extract_rules:
+      must_capture: ["goal","objective","purpose","deadline","kpi","success"]
+      heuristics: ["first paragraph often states the ask"]
+    required: true
+    output_keys: ["goal_text","deadline","kpi"]
+
+  - id: N2
+    name: Constraints
+    purpose: "Hard limits (format, length, tone, budget, do/don't)."
+    extract_rules:
+      must_capture: ["format","length","tone","budget","brand","do not","avoid"]
+    required: true
+    output_keys: ["format","length_cap","tone","forbidden"]
+
+  - id: N3
+    name: Audience
+    purpose: "Who this is for; their needs and level."
+    extract_rules:
+      must_capture: ["audience","users","buyers","stakeholders","reader"]
+    required: false
+    output_keys: ["audience_desc","persona","level"]
+
+  - id: N4
+    name: Context
+    purpose: "Background, scope, prior work, environment."
+    extract_rules:
+      must_capture: ["context","background","scope","stack","environment","domain"]
+    required: false
+    output_keys: ["context_summary"]
+
+  - id: N5
+    name: Inputs_Data
+    purpose: "Provided data, links, figures, examples."
+    extract_rules:
+      must_capture: ["data","table","link","url","example","evidence","figures"]
+    required: false
+    output_keys: ["sources","artifacts"]
+
+  - id: N6
+    name: Unknowns
+    purpose: "Open questions, assumptions to test."
+    extract_rules:
+      must_capture: ["unknown","question","assumption","need to know","clarify"]
+    required: false
+    output_keys: ["questions","assumptions"]
+
+  - id: N7
+    name: Risks
+    purpose: "Failure modes, blockers, mirror triggers."
+    extract_rules:
+      must_capture: ["risk","blocker","failure","pitfall","concern"]
+    required: false
+    output_keys: ["risks","mitigations"]
+
+  - id: N8
+    name: Structure
+    purpose: "Required sections, schema, headings."
+    extract_rules:
+      must_capture: ["sections","schema","fields","headings","outline"]
+    required: false
+    output_keys: ["schema_name","sections"]
+
+  - id: N9
+    name: Style
+    purpose: "Brand voice, examples to emulate/avoid."
+    extract_rules:
+      must_capture: ["style","voice","brand","example","like","avoid style"]
+    required: false
+    output_keys: ["voice_rules","positive_refs","negative_refs"]
+
+  - id: N10
+    name: Sources
+    purpose: "Where truth should come from (retrieval/browse)."
+    extract_rules:
+      must_capture: ["source","doc","repo","dataset","browse","cite"]
+    required: false
+    output_keys: ["must_cite","allow_browse"]
+
+  - id: N11
+    name: Evaluation
+    purpose: "How we score success (rubric, tests)."
+    extract_rules:
+      must_capture: ["evaluate","score","rubric","acceptance","tests"]
+    required: false
+    output_keys: ["rubric","acceptance_tests"]
+
+  - id: N12
+    name: Actions_Output
+    purpose: "Deliverables, next actions, handoff format."
+    extract_rules:
+      must_capture: ["deliverable","output","next step","handoff","export"]
+    required: true
+    output_keys: ["deliverables","next_actions","export_format"]
+
+processing:
+  mirror_scan: true
+  rewrite_on_flag: true
+  normalization:
+    lowercase_keys: true
+    strip_whitespace: true
+
+emits_schema: "./segments.schema.json"

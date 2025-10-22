@@ -1,0 +1,117 @@
+# thresholds_1.1.yaml — Engine 2.41 (staging)
+version: 1.1
+env: staging
+
+# -------------------------------------------------------------------
+# Purpose
+# -------------------------------------------------------------------
+# Central threshold and policy definitions used by Meta‑Gate, BFF, and
+# Harmonizers. Aligned to the Pantheon‑12 baseline and 7‑gate cap.
+
+thresholds:
+  # -----------------------------
+  # Global / Meta‑Gate
+  # -----------------------------
+  meta_gate:
+    coherence:
+      # Coherence score range [0.0, 1.0]
+      warn_below: 0.42
+      sever_below: 0.33
+      stabilize_above: 0.66
+    safety:
+      hard_stop_after_total_gates: 7   # must match runtime/harmonizers cap
+      max_gate_iterations: 2           # per gate per cycle
+      cooldown_s: 2
+    routing:
+      # When incoherent, force serial harmonizers even if parallel allowed
+      force_serial_on_incoherent: true
+
+  # -----------------------------
+  # Gates
+  # -----------------------------
+  gates:
+    # Target order is outside the scope here; this only caps and triggers.
+    total_cap: 7
+    triggers:
+      # Emit early severance if below this after any gate
+      early_severance_below: 0.28
+      # If coherence dips but not catastrophic, ask Harmonizers to assist
+      call_harmonizers_below: 0.55
+
+  # -----------------------------
+  # Harmonizers
+  # -----------------------------
+  harmonizers:
+    safety:
+      max_simultaneous: 4              # ≥ families.pantheon_12.policy.max_parallel (3)
+      force_serial_on_incoherent: true
+      cooldown_s: 10                   # keep in step with harmonizers.scheduling.cooldown_s
+    selection:
+      ensure_family_coverage: true     # mirrors scheduling.fairness.ensure_family_coverage
+      rotate_on_tie: true              # mirrors families.pantheon_12.policy.rotate_on_tie
+    # Hook names must match harmonizers.hooks.* exactly.
+    hooks:
+      on_cycle_start:   [Presence, Grounding]
+      on_incoherent:    [Equalization, Rebinding, Sealing]
+      on_stable:        [Integration, Sealing]
+      on_overcut_risk:  [Equalization, Sealing]
+
+  # -----------------------------
+  # BFF (Braided Feedback Function)
+  # -----------------------------
+  bff:
+    inputs:
+      require_severance_core: true     # Gate 1 packet required
+      orbital_count: 6                 # 6 orbitals around Severance in 7‑gate mode
+      max_age_ms: 120000               # packets older than 120s are discarded
+    synthesis:
+      min_samples_for_quality: 4       # min orbital inputs to compute stable braid_quality
+      quality_floor: 0.35              # below this → 'low'
+      quality_target: 0.70             # at/above → 'high'
+    outputs:
+      # coarse categories for telemetry & receipts
+      braid_quality_bands:
+        low:    [0.00, 0.35]
+        medium: [0.35, 0.70]
+        high:   [0.70, 1.00]
+
+  # -----------------------------
+  # Severance / Clarity
+  # -----------------------------
+  functions:
+    severance:
+      # Trigger when any of these conditions are true
+      triggers:
+        coherence_below: 0.33
+        loop_detected: true
+        repetition_window_n: 3         # same intent repeated 3 times in 8 turns
+      safety:
+        max_auto_cuts_per_cycle: 2
+        require_ack_on_manual_cut: true
+    clarity:
+      reading_levels: [middle_school, high_school, university, master]
+      default_level: high_school
+      adjust_if:
+        coherence_below: 0.50          # simplify language if under 0.50
+        user_requests_simpler: true
+
+  # -----------------------------
+  # Telemetry / Emission
+  # -----------------------------
+  telemetry:
+    diagnostics:
+      default_visibility: on_demand     # {on_demand|always|off}
+      emit_on:
+        thread_end: true
+        explicit_request: true          # e.g., "show diagnostics"
+      include_fields:
+        - coherence_score
+        - braid_quality
+        - active_gates
+        - harmonizers_fired
+        - hooks_fired
+        - severances: {auto, manual}
+        - clarity_level
+        - coherence_hash
+
+# End of thresholds_1.1.yaml

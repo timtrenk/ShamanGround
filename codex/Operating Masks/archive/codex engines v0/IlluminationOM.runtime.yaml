@@ -1,0 +1,157 @@
+# Illumination Operating Mask — Runtime
+# Diagnostics-on-demand configuration
+# Emits a full diagnostics report only at:
+#   1) thread_end, or
+#   2) explicit user request (diagnostics:true in call or command "show diagnostics").
+# Never with every output unless explicitly requested.
+
+runtime:
+  version: 0.1.0
+  engine_id: IlluminationOM
+  mode: active
+  notes: >
+    Designed for the 'Monolith' flow (Mirrors → Threshold → Severance → Clarity → Action)
+    while keeping diagnostics quiet by default. Telemetry is buffered and summarized only
+    when triggered.
+
+  # -------------------- Triggers & Emission Policy --------------------
+  diagnostics:
+    default_visibility: on_demand           # {on_demand|always|off}
+    emit_on:
+      thread_end: true                      # Emit at the end of a chat/workflow thread
+      user_request: true                    # Emit when the user explicitly asks
+      per_output: false                     # Do NOT emit on every normal output
+    request_aliases:                        # phrases that count as explicit requests
+      - "show diagnostics"
+      - "diagnostics report"
+      - "run diagnostics"
+      - "full report"
+      - "open the run receipt"
+      - "bff signature"
+    redaction:
+      enabled: true
+      rules:
+        - name: strip_emails
+          pattern: '(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b'
+          replace: "[redacted-email]"
+        - name: strip_keys
+          pattern: '(?i)(api[_-]?key|secret|token)\s*[:=]\s*\S+'
+          replace: '\1: [redacted]'
+    # What to include when a report is emitted
+    include_sections:
+      - run_header
+      - trap_snapshot
+      - family_activity
+      - gate_telemetry
+      - harmonizer_status
+      - policy_snapshot
+      - gate_plan
+      - harmonizer_queue
+      - bff_signature
+      - learning_deltas
+      - run_receipt
+
+  # -------------------- Telemetry Buffers --------------------
+  buffers:
+    # Rolling top-N trap hits with score/family/domain. Cleared on report or after 500 items.
+    trap_snapshot:
+      capacity: 128
+      ttl_cycles: 64
+    family_activity:
+      size: 12                               # one slot per family
+      decay: 0.92                            # EMA decay per cycle
+    gate_telemetry:
+      fields: [last_fired_ts, success_rate, time_to_green, cooldown_ms]
+      capacity: 64
+    harmonizer_status:
+      fields: [hot_cold, lift_damp, last_delta]
+      capacity: 64
+    policy_snapshot:
+      source_paths:
+        - thresholds.yaml
+        - caps.yaml
+        - runtime_overrides.yaml
+      include_effective_only: true           # flattened effective policy after overrides
+
+  # -------------------- Planner & Scheduler --------------------
+  planner:
+    gate_plan_strategy: spiral_min_interference
+    objectives:
+      - reduce_resonance_error
+      - preserve_authorship_signal
+      - minimize_gate_bounce
+    constraints:
+      max_consecutive_same_gate: 2
+      cooldown_ms_min: 250
+    harmonizer_queue_strategy: after_each_gate
+    bff:
+      enabled: true
+      signature: sha256                       # hash function for BFF signature packet
+
+  # -------------------- Receipts & Persistence --------------------
+  receipts:
+    enable_run_receipt: true
+    sign_with: engine_local                   # {engine_local|vault_key|disabled}
+    fields:
+      run_id: auto
+      started_at: auto
+      finished_at: auto
+      inputs:
+        - trap_snapshot
+        - family_activity
+        - gate_telemetry
+        - harmonizer_status
+        - policy_snapshot
+      outputs:
+        - gate_plan
+        - harmonizer_queue
+        - bff_signature
+        - learning_deltas
+    storage:
+      format: jsonl                           # {json|jsonl|yaml}
+      path: receipts
+      rotate:
+        max_bytes: 10485760                   # 10 MB per file
+        max_files: 20
+
+  # -------------------- API Surface (reference) --------------------
+  io_contract:
+    required_inputs:
+      trap_snapshot: "list of {trap_id, score, family, domain}"
+      family_activity: "float[12] rolling intensities"
+      gate_telemetry: "per-gate {gate_id, last_fired_ts, success_rate, time_to_green}"
+      harmonizer_status: "per-harmonizer {id, hot_cold, lift_damp}"
+      policy: "effective thresholds and caps (auto if policies/* loaded)"
+    required_outputs:
+      gate_plan: "ordered list of gates to execute next"
+      harmonizer_queue: "post-gate harmonizers to apply"
+      run_receipt: "signed record of the cycle"
+      bff_signature: "hash + summary vector of braid closeout"
+      learning_deltas: "parameter updates for next cycle"
+
+  # -------------------- Commands --------------------
+  commands:
+    # Normal step: plan/act without emitting full diagnostics
+    step:
+      description: "Plan gates and harmonizers using current buffers; do not emit diagnostics."
+      emits_diagnostics: false
+    # Explicit report: compile and emit diagnostics immediately
+    report:
+      description: "Emit the full diagnostics report now."
+      emits_diagnostics: true
+    # Thread end hook (called by host when the conversation/workflow thread concludes)
+    thread_end:
+      description: "Auto-emit diagnostics per diagnostics.emit_on.thread_end=true"
+      emits_diagnostics: true
+
+  # -------------------- Safety & Limits --------------------
+  limits:
+    max_cycle_ms: 1200
+    max_tokens_out: 1200
+    recursion_guard: 3
+    trap_mutation_cap: 7
+
+  # -------------------- Compatibility --------------------
+  compatibility:
+    engine_family: ["2.3", "2.4", "v0"]
+    notes: "This runtime is drop-in for IlluminationOM.yaml or loadable as runtime.yaml."

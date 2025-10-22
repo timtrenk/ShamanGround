@@ -1,0 +1,21 @@
+# router/persona_router.yaml — Select persona lens(es) per task/intent
+version: 1.0
+policy:
+  default_persona: P_ANALYST
+  allow_multiple: true
+  conflict_resolution: "max_weight_wins; ties favor Evidence>Action>Style"
+
+routes:
+  - match:
+      task: ["sales_page","landing_copy","ad_copy"]
+    apply: ["P_CREATOR","P_EXEC"]
+  - match:
+      task: ["spec","report","audit","risk_review"]
+    apply: ["P_ANALYST"]
+  - match:
+      task: ["exec_brief","board_update","proposal"]
+    apply: ["P_EXEC","P_ANALYST"]
+
+activation:
+  via_user_input_key: "persona"     # user can pass persona ids; router merges with matches
+  dedupe: true

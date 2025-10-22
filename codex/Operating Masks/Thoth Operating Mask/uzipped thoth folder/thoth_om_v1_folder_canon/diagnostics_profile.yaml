@@ -1,0 +1,18 @@
+# diagnostics_profile.yaml — quick end-to-end smoke test
+diagnostics:
+  prompt: |
+    Create a 300-word landing page section for Thoth OM v1.
+    Audience: indie devs.
+    Must include: headline, exactly 3 bullet benefits, and one CTA.
+    Cite no external facts.
+  expect:
+    schema: segments.schema.json
+    checks:
+      - name: mirror_cap
+        lt: 0.08
+      - name: bullets_exact
+        equals: 3
+      - name: has_cta
+        equals: true
+      - name: word_cap
+        lte: 320

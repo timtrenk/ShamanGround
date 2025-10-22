@@ -1,0 +1,39 @@
+  # -----------------------------------------
+  # Gate Changelog (lightweight)
+  # -----------------------------------------
+  # HOW TO USE
+  # - Add one entry per release whenever a gate meaningfully changes.
+  # - Keep it short. If the gate's inputoutput contract changes, set contract_change true.
+  # - If you need migration notes, add 1–2 lines in migration (optional).
+  #
+  # FIELDS
+  # - date YYYY-MM-DD
+  # - gate Gate ID (e.g., G01)
+  # - from previous gate version (string you choose; doesn't need semver if you don't want)
+  # - to new gate version (string)
+  # - summary 1-line description of what changed
+  # - impact none  low  medium  high  (how noticeable to users)
+  # - contract_change truefalse  (did inputsoutputs or semantics change)
+  # - migration (optional) 1–2 bullets of guidance if contract_change = true
+  #
+  gate_changelog
+    # --- EXAMPLE (minor behavior tweak; no contract change) ---
+    - date 2025-10-11
+      gate G01
+      from 1.0
+      to 1.1
+      summary Added 'soft_redirect' cut method for mild loops; tuned min_confidence 0.50→0.52.
+      impact low
+      contract_change false
+
+    # --- EXAMPLE (major change; contract change) ---
+    # - date 2026-01-05
+    #   gate G07
+    #   from 1.x
+    #   to 2.0
+    #   summary Safety Guard now emits an explicit 'decision' field (allowflagblockescalate).
+    #   impact medium
+    #   contract_change true
+    #   migration
+    #     - If you inferred decision from explanation tone, read GF.OUTPUT.decision instead.
+    #     - Profiles add checks for 'decision'.

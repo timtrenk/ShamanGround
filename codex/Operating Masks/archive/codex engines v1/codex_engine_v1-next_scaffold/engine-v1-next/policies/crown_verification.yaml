@@ -1,0 +1,15 @@
+# policies/crown_verification.yaml
+crown:
+  description: >
+    Final gate ensuring outputs are authored, coherent, and non-mimetic before
+    any export/handoff. Crown must validate signatures and braid quality.
+  checks:
+    - name: coherence_min
+      expect: braid_quality >= 0.62
+    - name: authorship_signature
+      expect: signature.present == true
+    - name: non_mimic_boundary
+      expect: mimic_score <= 0.20
+  failure_policy:
+    action: block_export
+    message: "Crown verification failed. Adjust gates or reduce residuals."

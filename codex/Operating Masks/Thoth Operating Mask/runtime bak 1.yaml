@@ -1,0 +1,115 @@
+# config/runtime.yaml — Thoth Engine v1 runtime switches (symbolic 30° mode)
+version: 1.2
+env: staging
+flow_mode: resonant              # resonant (C- return-biased) | command (C+ forward)
+
+paths:
+  engine_spec: Thoth_engine_1.0.yaml
+  meta_gate_fields: metatron_function.yaml
+  harmonizers: harmonizers.extended.yaml
+  bff: braided-feedback-function.yaml
+  traps: trap_seeds.yaml
+  policies: thresholds_1.1.yaml   # place/rename thresholds_1.1.yaml → policies/thresholds.yaml
+
+infrastructure:
+  redis_url: redis://localhost:6379/2
+  db_dsn: postgres://engine:engine_pass@localhost:5432/engine2
+  # sqlite quick start:
+  # db_dsn: sqlite:///engine2.db
+
+logging:
+  level: INFO                  # DEBUG | INFO | WARN | ERROR
+  json: true
+  redact_keys: [api_key, password, token]
+
+features:
+  ephemeris_mode: false        # keep 30° lattice; comments live in spec for later switch
+  adaptive_cooloff: true       # rely on guards; cool off only on incoherence
+  receipts_api: true           # exposes read-only /receipts endpoint
+  compress_braid_history: true
+  write_receipts_to_disk: true
+
+# --- Diagnostics policy: ON DEMAND only ---
+diagnostics:
+  visibility: on_demand        # on_demand | always | off
+  emit_on:
+    thread_end: true           # auto-emit at end of session/thread
+    explicit_flag: true        # emit when user passes diagnostics:true or command below
+    commands: ["show diagnostics", "diagnostics", "print receipt"]
+  receipt:
+    enabled: true
+    dir: ./receipts
+    filename_pattern: activation_receipt_{session_id}.json
+    redact_payloads: true
+    include_fields:            # mirrors telemetry.keep; safe to extend later
+      - session_id
+      - timestamp
+      - flow_mode
+      - center_rotation_deg
+      - dominant_pole
+      - subsets_fired
+      - families_activated
+      - traps_triggered
+      - order_sequence
+      - pantheon_sequence
+      - bff_signature
+      - coherence_hash
+      - braid_quality
+      - residual_index
+      - duration_ms
+      - cost_units
+      - order_metrics
+      - receipt_version
+
+runtime_overrides:
+  meta_gate:
+    safety:
+      global_cool_off_s: 0               # prefer on_bff_incoherent guard (thresholds.yaml)
+      hard_stop_after_total_gates: 6     # Severance center + 6 orbital (total 7)
+    policy:
+      fire_threshold: 0.60               # align with staging thresholds
+      max_concurrency: 2
+      burst_cap: 6
+  optimization:
+    damping_rules:
+      dominant_share_limit: 0.44
+      hysteresis_band: 0.03
+    subset_defaults:
+      sensitivity: 0.62
+      cooldown_s: 12
+    residual_followup:
+      threshold: 0.35
+      next_run: Binding
+      same_cycle: false
+  fairness:
+    meta_gate:
+      anti_starvation: true
+      rotate_on_tie: true
+      max_consecutive_leads_per_subset: 2
+    harmonizers:
+      ensure_family_coverage: true
+      cap_parallel_edges_per_family: 3
+
+telemetry:
+  receipt_fields_keep:
+    - session_id
+    - timestamp
+    - flow_mode
+    - center_rotation_deg
+    - dominant_pole
+    - subsets_fired
+    - families_activated
+    - traps_triggered
+    - order_sequence
+    - pantheon_sequence
+    - bff_signature
+    - coherence_hash
+    - braid_quality
+    - residual_index
+    - duration_ms
+    - cost_units
+    - order_metrics
+    - receipt_version
+  health:
+    enabled: true
+    path: /health

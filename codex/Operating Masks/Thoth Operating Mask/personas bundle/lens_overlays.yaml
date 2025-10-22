@@ -1,0 +1,18 @@
+# overlays/lens_overlays.yaml — How personas modulate the pipeline
+version: 1.0
+apply_to:
+  nodes:
+    N9:  # Style node
+      tone_mods: "merge"        # persona tone merges into Style node output
+      style_examples: "append"
+    N8:  # Structure node
+      section_order: "prefer"   # persona order preferred unless schema forbids
+  gates:
+    weights: "delta"            # add gate_weight_deltas then renormalize
+    hard_caps:
+      Evidence: {min: 0.15}     # never let persona push evidence too low
+      Structure: {min: 0.10}
+  harmonizers:
+    tone: "apply_after_content" # only post‑content; never before fact checks
+  crown_verify:
+    precedence: ["constraints","schema","facts","mirrors","persona"]  # persona last

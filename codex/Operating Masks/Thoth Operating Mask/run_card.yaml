@@ -1,0 +1,22 @@
+# run_card.yaml — Tier-1 Smoke Test (Tweet Thread)
+task: "3-post launch teaser for Solomon’s Codex: Builder Edition"
+template: tweet_thread.v1
+inputs:
+  product_key: "Solomon's Codex — Builder Edition"
+  constraints:
+    residual_target: 0.08
+    sc_k: 7
+    crown_verify: true
+artifacts:
+  - distortion_report.md
+  - outputs/teaser_thread/${timestamp}.md
+gates: [Severance, Clarity, Action, Integration, Boundaries, Reflection, Seal]
+memory_pins:
+  - ./memory/brand_voice.md
+  - ./memory/glossary.md
+  - ./memory/constraints.md
+notes: |
+  This card assumes:
+  - runtime.yaml is set to env: prod and receipts: true
+  - templates/tweet_thread.yaml exists with id: tweet_thread.v1
+  - thresholds_1.1.yaml sets copy residual to 0.08

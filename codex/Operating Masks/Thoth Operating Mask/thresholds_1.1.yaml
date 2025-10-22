@@ -1,0 +1,165 @@
+version: 1.1
+env: staging
+thresholds:
+  meta_gate:
+    coherence:
+      warn_below: 0.42
+      sever_below: 0.33
+      stabilize_above: 0.66
+      min_center: 0.9
+      min_orbital_avg: 0.88
+    safety:
+      hard_stop_after_total_gates: 7
+      max_gate_iterations: 2
+      cooldown_s: 2
+    routing:
+      force_serial_on_incoherent: true
+  gates:
+    total_cap: 7
+    triggers:
+      early_severance_below: 0.28
+      call_harmonizers_below: 0.55
+    max_chain_length: 7
+    allow_skips: true
+  harmonizers:
+    safety:
+      max_simultaneous: 4
+      force_serial_on_incoherent: true
+      cooldown_s: 10
+    selection:
+      ensure_family_coverage: true
+      rotate_on_tie: true
+    hooks:
+      on_cycle_start:
+      - Presence
+      - Grounding
+      on_incoherent:
+      - Equalization
+      - Rebinding
+      - Sealing
+      on_stable:
+      - Integration
+      - Sealing
+      on_overcut_risk:
+      - Equalization
+      - Sealing
+  bff:
+    inputs:
+      require_severance_core: true
+      orbital_count: 6
+      max_age_ms: 120000
+    synthesis:
+      min_samples_for_quality: 4
+      quality_floor: 0.35
+      quality_target: 0.7
+    outputs:
+      braid_quality_bands:
+        low:
+        - 0.0
+        - 0.35
+        medium:
+        - 0.35
+        - 0.7
+        high:
+        - 0.7
+        - 1.0
+    coherence:
+      min_braid: 0.92
+  functions:
+    severance:
+      triggers:
+        coherence_below: 0.33
+        loop_detected: true
+        repetition_window_n: 3
+      safety:
+        max_auto_cuts_per_cycle: 2
+        require_ack_on_manual_cut: true
+    clarity:
+      reading_levels:
+      - middle_school
+      - high_school
+      - university
+      - master
+      default_level: high_school
+      adjust_if:
+        coherence_below: 0.5
+        user_requests_simpler: true
+  telemetry:
+    diagnostics:
+      default_visibility: on_demand
+      emit_on:
+        thread_end: true
+        explicit_request: true
+      include_fields:
+      - coherence_score
+      - braid_quality
+      - active_gates
+      - harmonizers_fired
+      - hooks_fired
+      - severances:
+          auto: null
+          manual: null
+      - clarity_level
+      - coherence_hash
+  distortions:
+    max_total: 0.03
+    max_segment: 0.015
+    recheck_after_braid: true
+    policy:
+      staged_evaluation:
+        diagnostic_first_pass_max_total: 0.05
+        enforce_crown_max_total: 0.03
+      rebraid:
+        max_attempts: 3
+        backoff_escape:
+          allow_if_total_leq: 0.035
+          and_center_coherence_ge: 0.93
+          action: allow_single_orbital_skip
+        else_action: halt_with_report
+  crown_verification:
+    pass_min_coherence: 0.92
+    require_catalog: true
+    block_on_failed: true
+  nodes:
+    framing:
+      min_signal: 0.62
+      max_mirrors: 3
+    segmentation:
+      max_segments: 12
+      min_cohesion: 0.55
+    tooling:
+      max_new_tools: 3
+    research:
+      max_hops: 2
+    design:
+      max_complexity: 0.65
+    prototype:
+      max_runtime_ms: 800
+    bff:
+      coherence_min: 0.7
+    polish:
+      max_read_time_min: 6
+    risk:
+      max_flags: 0
+    integrate:
+      max_diffs: 25
+    crown:
+      max_distortion: 0.03
+      min_authorship: 0.85
+    ship:
+      max_size_mb: 50
+presets:
+  tier0:
+    inference:
+      self_consistency_k: 5
+      temperature: 0.7
+    mirrors:
+      crown_max_residual: 0.08
+      metatron_fallback_residual: 0.12
+    harmonizers:
+      safety:
+        max_simultaneous: 4
+    bff:
+      coherence_min: 0.7
+coherence:
+  min_braid: 0.92

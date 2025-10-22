@@ -1,0 +1,52 @@
+# braided-feedback-function.yaml — BFF v1.2 (staging)
+version: 1.2
+env: staging
+
+bff:
+  description: >
+    Weaves the Severance core with segment outputs from the 12 Nodes to measure
+    coherence, residual distortion, and risk. Emits a single bff_packet for
+    downstream Polish, Risk, and Crown verification.
+
+  inputs:
+    severance_core:
+      type: object
+      required: true
+      fields: [timestamp, residuals, deltas, mirror_flags]
+    segmented_nodes:
+      type: list<object>
+      required: true
+      min_length: 1
+      max_length: 12
+      description: "Ordered by node id N01..N12 with their outputs & metrics."
+
+  process:
+    steps:
+      - name: normalize-metrics
+        do:
+          - "scale residuals to 0..1"
+          - "cap mirror flags to 0..1 per node (presence flag)"
+      - name: compute-coherence
+        formula: >
+          coherence = 1 - mean(residuals_scaled ∪ mirror_flags_scaled)
+      - name: overcut-guard
+        when: "coherence < thresholds.nodes.bff.coherence_min"
+        do: ["raise flag:low_coherence"]
+      - name: collect-ops
+        do: ["aggregate node actions used", "aggregate checks used"]
+      - name: timing
+        do: ["measure total time_ms"]
+
+  outputs:
+    bff_packet:
+      type: object
+      fields:
+        - coherence: float      # 0..1
+        - residuals: float      # 0..1 (mean residual)
+        - risks: list<string>   # e.g., ['low_coherence']
+        - ops_used: list<string>
+        - time_ms: integer
+      routing_hints:
+        - "if coherence < thresholds.nodes.bff.coherence_min → route back to N05 (Design)"
+      notes:
+        - "Deterministic: for equal inputs, outputs must be identical."

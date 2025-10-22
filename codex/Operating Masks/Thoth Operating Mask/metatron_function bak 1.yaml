@@ -1,0 +1,60 @@
+metatron:
+  version: 2.41-7g
+  description: Meta-Gate planner/orchestrator for the 7-gate braid. Non-transform roles moved to policies/harmonizers/runtime.
+  expected_gates:
+  - G01
+  - G02
+  - G03
+  - G04
+  - G05
+  - G06
+  - G07
+  center_gate: G01
+  orbitals:
+  - G02
+  - G03
+  - G04
+  - G05
+  - G06
+  - G07
+  planning:
+    cooldown_s: 8
+    max_parallel: 2
+    sequence_policy: center-first, then orbitals by confidence desc, respect cooldown
+  input_optimization:
+    enabled: true
+    pipeline:
+    - normalize_text
+    - strip_placeholders
+    - timestamp_align
+    - z_score_metrics
+    - smooth_residuals
+    - weight_by_threshold_confidence
+  policies:
+    severance.boundary_guard: enabled
+    pacing.rhythm_bias: harmonizers.Rhythm
+    smoothing.flow_bias: harmonizers.Flow
+    telemetry.memory_trace: runtime.telemetry
+    delivery.action_mode: runtime.adapter
+  outputs:
+    gate_plan:
+      fields:
+      - sequence
+      - cooldowns
+      - caps
+      - notes
+      ts: iso-8601
+  compat:
+    engine_hooks_expected:
+      after_each_gate: harmonizers.apply
+      before_bff: harmonizers.flush
+    bff_shape:
+      center: G01
+      orbitals:
+      - G02
+      - G03
+      - G04
+      - G05
+      - G06
+      - G07
+      pole: Meta-Gate

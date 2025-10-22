@@ -1,0 +1,1218 @@
+version: 1.0.0
+name: Thoth_engine_1.0
+description: Full engine braid spec wired for trap_seeds, Metatron (7-gate), harmonizers,
+  BFF, thresholds, and telemetry.
+imports:
+  segment_to_gates:
+    gate_sets:
+      SCT: &id001
+      - severance
+      - coherence
+      - translation
+      SGCT: &id002
+      - severance
+      - grounding
+      - coherence
+      - translation
+      SVCT: &id003
+      - severance
+      - voice_clarity
+      - coherence
+      - translation
+      SDOT: &id004
+      - severance
+      - direction
+      - order
+      - translation
+      SVDT: &id005
+      - severance
+      - voice_clarity
+      - direction
+      - translation
+      SGDT: &id007
+      - severance
+      - grounding
+      - direction
+      - translation
+      SODT: &id006
+      - severance
+      - order
+      - direction
+      - translation
+      SGIT: &id008
+      - severance
+      - grounding
+      - coherence
+      - integration
+    segment_to_gates:
+      regulator_marginal: *id001
+      control_board_power_stage_short: *id002
+      outlet_or_cord_arc: *id003
+      retrieval_config_drift: *id001
+      routing_hot_path_thrash: *id002
+      bad_migration: *id001
+      connection_pool_exhaustion: *id002
+      no_single_threaded_owner: *id004
+      process_handoff_failure: *id002
+      prioritization_mismatch: *id003
+      approvals_bottleneck: *id005
+      schema_mismatch: *id001
+      partition_lag: *id002
+      out_of_order_events: *id003
+      upstream_null_injection: *id001
+      dependency_gate_stuck: *id006
+      dns_resolution_fault: *id003
+      mtls_handshake_error: *id002
+      route_misconfiguration: *id007
+      packet_loss: *id002
+      ledger_reconciliation_error: *id004
+      payment_gateway_timeout: *id002
+      duplicate_charge_detection: *id001
+      fx_rate_mismatch: *id001
+      invoice_data_mismatch: *id004
+      model_drift: *id001
+      feature_schema_change: *id001
+      dataset_contamination: *id002
+      training_instability: *id001
+      inference_resource_saturation: *id002
+      power_supply_instability: *id002
+      thermal_overload: *id002
+      sensor_calibration_drift: *id001
+      disk_failure_imminent: *id002
+      memory_ecc_errors: *id002
+      stuck_deploy_job: *id004
+      terraform_state_lock: *id004
+      config_drift_ci: *id004
+      secret_missing_in_env: *id002
+      ticket_queue_overflow: *id004
+      assignment_routing_error: *id003
+      duplicate_ticket_influx: *id006
+      knowledge_base_gap: *id001
+      sleep_debt: *id008
+      context_switch_tax: *id008
+      burnout_risk: *id008
+      focus_loop_decay: *id008
+  trap_seeds: ./trap_seeds.yaml
+  metatron_function: ./metatron_function.yaml
+  bff: ./braided-feedback-function.yaml
+  harmonizers: ./harmonizers.extended.yaml
+  thresholds: ./thresholds_1.1.yaml
+contracts:
+  packet.out:
+    required_fields:
+    - payload
+    - residuals
+    - metrics
+    - ts
+    metrics_minimum_keys:
+    - coherence
+    - intensity
+    - stability
+    ts_format: iso-8601
+  hooks:
+    after_gate:
+    - harmonizers.apply
+    before_bff:
+    - harmonizers.flush
+input_optimization:
+  enabled: true
+  steps:
+  - normalize_text
+  - strip_placeholders
+  - timestamp_align
+  - z_score_metrics
+  - smooth_residuals
+  - weight_by_threshold_confidence
+  notes: "Mirrors/traps map \u2192 thresholds gate \u2192 harmonizers polish \u2192\
+    \ BFF synth."
+prepasses:
+  polarity_inversion:
+    enabled: true
+    does_not_consume_gate_budget: true
+    method: contrastive
+    outputs:
+    - anti_goals
+    - anti_requirements
+    - anti_patterns
+    - negative_tests
+    synthesis:
+      use_trap_context: true
+      max_items_per_list: 5
+    events:
+      emit:
+      - polarity_ready
+meta_gate:
+  driver: metatron_function
+  config_ref: metatron_function.yaml#metagate
+  notes:
+  - Planner/orchestrator for 7-gate set; non-transform roles live in policies/harmonizers/runtime.
+trap_mapping:
+  source: trap_seeds.yaml
+  select: $.trap_seeds[*].sub_traps[*]
+  resolve:
+    seed_family: ^parent.zodiac_family
+    st_id: $.id
+    st_variant: $.type ?? $.title
+    st_res_signature: $.resonance_signature
+    st_guidance: $.feedback_prompt
+  map_fields:
+    trap_id: subtrap:{st_id}
+    family: '{seed_family}'
+    variant: '{st_variant}'
+    resonance_pattern: '{st_res_signature}'
+    guidance: '{st_guidance}'
+  required:
+  - trap_id
+  - family
+  - variant
+  - resonance_pattern
+  validate:
+  - rule: len(trap_id) > 0
+  - rule: len(variant) > 0
+gates:
+  G1:
+    name: Severance
+    role: cut non-authored overlays
+    out_schema: packet.out
+    threshold_ref: ${context.threshold_profile}
+
+  G2:
+    name: Voice Clarity
+    role: tone + level alignment
+    out_schema: packet.out
+    threshold_ref: '${context.threshold_profile}'
+
+  G3:
+    name: Order
+    role: structure & step sequencing
+    out_schema: packet.out
+    threshold_ref: '${context.threshold_profile}'
+
+  G4:
+    name: Direction
+    role: goal vector & constraint set
+    out_schema: packet.out
+    threshold_ref: '${context.threshold_profile}'
+
+  G5:
+    name: Relational
+    role: context + empathy restoration
+    out_schema: packet.out
+    threshold_ref: '${context.threshold_profile}'
+
+  G6:
+    name: Integration
+    role: merge safe deltas
+    out_schema: packet.out
+    threshold_ref: '${context.threshold_profile}'
+
+  G7:
+    name: Crown Verification
+    role: final allow/flag/block
+    out_schema: packet.out
+    threshold_ref: '${context.threshold_profile}'
+
+
+flow:
+  sequence:
+  - G1
+  - G2
+  - G3
+  - G4
+  - G5
+  - G6
+  - G7
+  hooks:
+    after_each_gate: harmonizers.apply
+    before_bff: harmonizers.flush
+  bff:
+    center: G1
+    orbitals:
+    - G2
+    - G3
+    - G4
+    - G5
+    - G6
+    - G7
+    pole: Meta-Gate
+    signature_emit: bff_signature
+bff_integration:
+  inputs:
+    severance_core: G1.out
+    orbital_gates:
+    - G2.out
+    - G3.out
+    - G4.out
+    - G5.out
+    - G6.out
+    - G7.out
+    meta_pole: meta_gate
+    harmonizer_state: harmonizers.state
+  input_optimization:
+    normalize: true
+    smooth_window: 3
+    weighting:
+      center: 1.0
+      orbitals: 0.88
+      clarity_bias: 0.06
+  outputs:
+    bff_signature:
+      fields:
+      - axial
+      - radial
+      - clarity
+      - learning_delta
+      - coherence_hash
+telemetry:
+  record:
+  - gate_outputs.pre_harmonizer
+  - gate_outputs.post_harmonizer
+  - thresholds.decisions
+  - meta_gate.gate_plan
+  - bff.signature
+  receipt_policy:
+    on_demand: true
+    on_thread_end: true
+    redact_keys:
+    - payload.raw_text
+    - secrets
+    - api_key
+definitions:
+  normalize_text: lowercase, collapse whitespace, unicode NFC
+  strip_placeholders: remove [TODO], <placeholder>, {{var}} artifacts
+  timestamp_align: align ts to nearest gate cycle
+  z_score_metrics: normalize metrics by rolling z-score
+  smooth_residuals: EWMA smoothing on residual vectors
+nodes:
+  version: 1.0
+  env: staging
+  contracts:
+    bff_input_key: segmented_nodes
+    metagate_hint_key: metagate_routing_hint
+    threshold_namespace: nodes
+    harmonizer_family: pantheon_12
+  defaults:
+    enabled: true
+    preferred_gates:
+    - G1
+    - G2
+    - G3
+    - G4
+    - G5
+    - G6
+    - G7
+    bff_report:
+      emit: true
+      fields:
+      - coherence
+      - residuals
+      - risks
+      - ops_used
+      - time_ms
+    sublayers:
+      embodiment:
+        actions: []
+      discernment:
+        checks: []
+  list:
+  - id: N01
+    name: Framing
+    role: Clarify objective, constraints, and definition of done.
+    enabled: true
+    preferred_gates:
+    - G1
+    - G2
+    - G4
+    interfaces:
+      inputs:
+      - seed
+      - context
+      - constraints
+      outputs:
+      - framed_brief
+    sublayers:
+      embodiment:
+        actions:
+        - summon.objective
+        - bound.scope
+        - define.success
+      discernment:
+        checks:
+        - assumption.scan
+        - goal.test
+        - loop.risk
+    thresholds:
+    - nodes.framing.min_signal
+    - nodes.framing.max_mirrors
+    harmonizers:
+      include:
+      - Clarity
+      - Grounding
+      - Boundaries
+    bff_report:
+      add_tags:
+      - framing
+      - brief
+    metagate_routing_hint:
+      priority: 80
+      tags:
+      - setup
+      - objective
+  - id: N02
+    name: Segmentation
+    role: Slice the input into coherent segments by intent.
+    preferred_gates:
+    - G1
+    - G3
+    - G5
+    interfaces:
+      inputs:
+      - framed_brief
+      - raw_input
+      outputs:
+      - segments
+    sublayers:
+      embodiment:
+        actions:
+        - segment.by_intent
+        - label.tokens
+        - order.linear
+      discernment:
+        checks:
+        - cohesion.test
+        - redundancy.drop
+    thresholds:
+    - nodes.segmentation.max_segments
+    - nodes.segmentation.min_cohesion
+    harmonizers:
+      include:
+      - Presence
+      - Rhythm
+      - Integration
+    bff_report:
+      add_tags:
+      - segments
+    metagate_routing_hint:
+      priority: 75
+      tags:
+      - partition
+  - id: N03
+    name: Tooling
+    role: Identify tools, variables, and env requirements.
+    interfaces:
+      inputs:
+      - segments
+      outputs:
+      - tool_plan
+    sublayers:
+      embodiment:
+        actions:
+        - detect.tools
+        - declare.vars
+        - plan.env
+      discernment:
+        checks:
+        - safety.check
+        - cost.estimate
+    thresholds:
+    - nodes.tooling.max_new_tools
+    harmonizers:
+      include:
+      - Translation
+      - Integration
+      - Boundaries
+    metagate_routing_hint:
+      priority: 70
+      tags:
+      - prep
+      - resources
+  - id: N04
+    name: Research
+    role: Collect missing facts from local context only (no web).
+    interfaces:
+      inputs:
+      - segments
+      - tool_plan
+      outputs:
+      - research_notes
+    sublayers:
+      embodiment:
+        actions:
+        - scan.context
+        - extract.facts
+      discernment:
+        checks:
+        - confidence.estimate
+        - source.rank
+    thresholds:
+    - nodes.research.max_hops
+    harmonizers:
+      include:
+      - Clarity
+      - Reflection
+    metagate_routing_hint:
+      priority: 65
+      tags:
+      - facts
+  - id: N05
+    name: Design Draft
+    role: Draft a minimal viable plan or structure.
+    interfaces:
+      inputs:
+      - framed_brief
+      - segments
+      - research_notes
+      outputs:
+      - design_draft
+    sublayers:
+      embodiment:
+        actions:
+        - sketch.structure
+        - choose.pattern
+      discernment:
+        checks:
+        - complexity.cap
+        - mirror.scan
+    thresholds:
+    - nodes.design.max_complexity
+    harmonizers:
+      include:
+      - Integration
+      - Equalization
+    metagate_routing_hint:
+      priority: 65
+      tags:
+      - plan
+  - id: N06
+    name: Prototype
+    role: Assemble a first-pass artifact or answer.
+    interfaces:
+      inputs:
+      - design_draft
+      - tool_plan
+      outputs:
+      - proto
+    sublayers:
+      embodiment:
+        actions:
+        - assemble
+        - stub
+        - mock
+      discernment:
+        checks:
+        - sanity.check
+        - risk.scan
+    thresholds:
+    - nodes.prototype.max_runtime_ms
+    harmonizers:
+      include:
+      - Rhythm
+      - Grounding
+    metagate_routing_hint:
+      priority: 60
+      tags:
+      - build
+  - id: N07
+    name: BFF Weave
+    role: Send segments through the braid; collect coherence.
+    interfaces:
+      inputs:
+      - proto
+      - segments
+      outputs:
+      - bff_packet
+    sublayers:
+      embodiment:
+        actions:
+        - bff.weave
+        - residuals.measure
+      discernment:
+        checks:
+        - coherence.test
+        - overcut.guard
+    thresholds:
+    - nodes.bff.coherence_min
+    harmonizers:
+      include:
+      - Equalization
+      - Sealing
+    bff_report:
+      add_tags:
+      - braid
+      - coherence
+    metagate_routing_hint:
+      priority: 90
+      tags:
+      - quality
+  - id: N08
+    name: Polish
+    role: Refine language, structure, and UX.
+    interfaces:
+      inputs:
+      - proto
+      - bff_packet
+      outputs:
+      - polished
+    sublayers:
+      embodiment:
+        actions:
+        - rewrite.clean
+        - structure.tighten
+      discernment:
+        checks:
+        - tone.check
+        - drift.scan
+    thresholds:
+    - nodes.polish.max_read_time_min
+    harmonizers:
+      include:
+      - Attunement
+      - Translation
+    metagate_routing_hint:
+      priority: 55
+      tags:
+      - refine
+  - id: N09
+    name: Risk & Ethics
+    role: Evaluate safety, compliance, and edge cases.
+    interfaces:
+      inputs:
+      - polished
+      outputs:
+      - risk_notes
+    sublayers:
+      embodiment:
+        actions:
+        - policy.align
+        - redteam.light
+      discernment:
+        checks:
+        - harm.scan
+        - leak.check
+    thresholds:
+    - nodes.risk.max_flags
+    harmonizers:
+      include:
+      - Boundaries
+      - Reflection
+    metagate_routing_hint:
+      priority: 85
+      tags:
+      - guard
+  - id: N10
+    name: Integrate
+    role: Merge outputs with prior context or files.
+    interfaces:
+      inputs:
+      - polished
+      - risk_notes
+      outputs:
+      - integrated
+    sublayers:
+      embodiment:
+        actions:
+        - merge.context
+        - resolve.conflicts
+      discernment:
+        checks:
+        - regression.test
+    thresholds:
+    - nodes.integrate.max_diffs
+    harmonizers:
+      include:
+      - Integration
+      - Rebinding
+    metagate_routing_hint:
+      priority: 50
+      tags:
+      - merge
+  - id: N11
+    name: Crown Verify
+    role: Final distortion check vs. thresholds; ready-to-ship gate.
+    interfaces:
+      inputs:
+      - integrated
+      outputs:
+      - verified
+    sublayers:
+      embodiment:
+        actions:
+        - aggregate.metrics
+        - compare.thresholds
+      discernment:
+        checks:
+        - distortion.final
+        - authorship.check
+    thresholds:
+    - nodes.crown.max_distortion
+    - nodes.crown.min_authorship
+    harmonizers:
+      include:
+      - Presence
+      - Sealing
+    metagate_routing_hint:
+      priority: 95
+      tags:
+      - finalize
+  - id: N12
+    name: Ship
+    role: Emit artifact, logs, and receipts.
+    interfaces:
+      inputs:
+      - verified
+      outputs:
+      - artifact
+      - receipts
+    sublayers:
+      embodiment:
+        actions:
+        - emit.artifact
+        - write.receipt
+        - log.summary
+      discernment:
+        checks:
+        - path.check
+        - permissions.check
+    thresholds:
+    - nodes.ship.max_size_mb
+    harmonizers:
+      include:
+      - Rhythm
+      - Grounding
+      - Reflection
+    metagate_routing_hint:
+      priority: 40
+      tags:
+      - deliver
+profiles:
+  tier0:
+    inference_profile_ref: inference_profile
+    segment_map_ref: segment_gate_map
+    thresholds_ref: thresholds_tier0
+pipeline:
+- name: SC@k
+  using: ${imports.inference_profile}
+  params:
+    k: ${inference_profile.sc_k.k}
+    temperature: ${inference_profile.sc_k.temperature}
+  emit: sc_candidates.json
+- name: Reflexion
+  using: ${imports.inference_profile}
+  params:
+    passes: ${inference_profile.reflexion.passes}
+  emit: reflexion_trace.md
+- name: SchemaEnforcement
+  using: ${imports.inference_profile}
+  params:
+    enabled: ${inference_profile.schema_enforcement.enabled}
+    on_invalid: ${inference_profile.schema_enforcement.on_invalid}
+  emit: schema_events.log
+- name: CrownVerify
+  using: ${imports.inference_profile}
+  params:
+    mirror_residual_lt: ${inference_profile.crown_verify.mirror_residual_lt}
+    require_concrete_next_action: ${inference_profile.crown_verify.require_concrete_next_action}
+  emit: crown_verify_report.md
+- name: GateRouting
+  using: ${imports.segment_to_gates}
+  params:
+    mapping: ${segment_to_gates.segment_to_gates}
+  emit: routing_plan.json
+diagnostics:
+  version: 1.0
+  description: Core diagnostic pipeline for problem-solving and fault tracing
+  functions:
+    intake_symptoms:
+      desc: Capture raw observations; no interpretation.
+      impl:
+      - write.thread:
+          user_report: ${user_report}
+          symptom_chain: ${user_report}
+    infer_hypotheses:
+      desc: Map symptoms to likely causes; rank.
+      impl:
+      - adapter := router.classify_domain()
+      - write.thread:
+          active_adapter: ${adapter}
+      - use.adapter.patterns
+      - rank.by:
+        - likelihood
+        - severity
+        - reversibility
+      - write.thread: hypotheses
+    request_feedback:
+      desc: Ask one discriminating question.
+      impl:
+      - choose.discriminating_question
+      - emit.prompt: Show me the one detail that separates the top two possibilities.
+    integrate_feedback:
+      desc: Update beliefs with new evidence.
+      impl:
+      - compare.expected_vs_observed
+      - update.likelihood_scores
+      - write.thread: hypotheses
+    converge_root_cause:
+      desc: Stop when one cause explains all signals.
+      impl:
+      - pick.single_winner min_gap: 0.15
+      - write.thread: root_cause
+    prescribe_fix:
+      desc: Emit concrete next action + parts/tools.
+      impl:
+      - adapter := "${thread.active_adapter}"
+      - cause := "${thread.root_cause}"
+      - playbook := ${adapters[${adapter}].playbooks[${cause}]}
+      - if: ${is_null(${playbook})}
+        then:
+        - write.thread:
+            plan:
+              next_move: "document issue and escalate \u2014 no playbook found"
+              steps:
+              - document symptoms
+              - attach photos/logs
+              - escalate to maintainer
+              parts: []
+        - return
+        else: []
+      - write.thread:
+          plan:
+            next_move: ${playbook.steps[0]}
+            steps: ${playbook.steps}
+            parts: ${playbook.parts_or_tools}
+      - emit.plan.checklist: true
+      - emit.plan.single_next_move: true
+  pipeline:
+    input:
+      user_report: text
+    steps:
+    - call: diagnostics.functions.intake_symptoms
+    - call: diagnostics.functions.infer_hypotheses
+    - call: diagnostics.functions.request_feedback
+    - call: diagnostics.functions.integrate_feedback
+    - call: diagnostics.functions.converge_root_cause
+    - call: diagnostics.functions.prescribe_fix
+    - write.casebook:
+        user_report: ${thread.user_report}
+        symptoms: ${thread.symptom_chain}
+        probes: ${thread.hypotheses[:2]}
+        root_cause: ${thread.root_cause}
+        plan: ${thread.plan}
+        outcome: pending
+    - call: functions.GateRouting
+      with:
+        root_cause: ${thread.root_cause}
+    - emit:
+        file: crown_verify_report.md
+        content: "# Crown Verify \u2014 Diagnostic Summary\n\n**Root Cause:** ${thread.root_cause}\n\
+          **Confidence:** ${thread.confidence}\n\n**Plan (single next move):**\n-\
+          \ ${thread.plan.next_move}\n\n**Parts/Tools:**\n- ${join(thread.plan.parts,\
+          \ \", \")}\n\n**Routing Plan (Gates):**\n- ${join(out.routing_plan.gates,\
+          \ \" \u2192 \")}\n\n_Env:_ ${runtime.env}\n"
+    - emit:
+        file: routing_plan.json
+        content: ${to_json(out.routing_plan)}
+    - prompt.user:
+        message: Will this fix your problem? (yes / no / almost / not sure)
+        store_as: user_feedback
+    - branch:
+        if: ${thread.user_feedback in ['yes','y','Y']}
+        then:
+        - write.casebook.outcome: resolved
+        - emit.log: Case marked resolved by user confirmation.
+        else:
+        - emit.prompt: "Please describe what\u2019s still wrong or what part didn\u2019\
+            t fully fix the issue."
+        - wait.for: user_response
+        - update.casebook:
+            additional_inputs: ${thread.casebook.additional_inputs + [user_response]}
+            rerun_count: ${thread.casebook.rerun_count + 1}
+        - merge.input: ${user_response}
+        - rerun:
+            target: diagnostics.pipeline
+            with:
+              user_report: ${thread.user_report} ${user_response}
+    outputs:
+    - root_cause
+    - confidence
+    - plan
+    - parts
+  router:
+    keyword_groups:
+      appliance: &id009
+      - washer
+      - dryer
+      - spark
+      - outlet
+      - board
+      - lid
+      - console
+      ai_drift: &id010
+      - prompt
+      - retrieval
+      - embedding
+      - latency
+      - spec
+      - memory
+      - model
+      web_app: &id011
+      - server
+      - endpoint
+      - api
+      - migration
+      - deploy
+      - cache
+      - db
+      - error 500
+      biz_ops: &id012
+      - sla
+      - handoff
+      - approvals
+      - deadline
+      - deliverable
+      - ownership
+      - process
+      data_pipe: &id013
+      - etl
+      - airflow
+      - dag
+      - schema
+      - partition
+      - kafka
+      - topic
+      - offset
+      - pipeline
+      network: &id014
+      - dns
+      - mtls
+      - handshake
+      - route
+      - packet
+      - firewall
+      - network
+      - tls
+      finance: &id015
+      - invoice
+      - payment
+      - ledger
+      - fx
+      - gateway
+      - charge
+      - reconciliation
+      ml_model: &id016
+      - drift
+      - training
+      - dataset
+      - inference
+      - weights
+      - features
+      - accuracy
+      hardware: &id017
+      - psu
+      - voltage
+      - fan
+      - sensor
+      - disk
+      - ecc
+      - thermal
+      - hardware
+      infra: &id018
+      - terraform
+      - state lock
+      - ci
+      - pipeline
+      - runner
+      - job
+      - artifact
+      - secret
+      support: &id019
+      - ticket
+      - queue
+      - sla breach
+      - unassigned
+      - routing
+      - escalation
+      - kb
+      - knowledge
+      wellness: &id020
+      - burnout
+      - stress
+      - fatigue
+      - sleep
+      - focus
+      - motivation
+      - context switching
+    classify_domain:
+      rules:
+      - if_contains: *id009
+        then_adapter: appliance_dx
+      - if_contains: *id010
+        then_adapter: ai_drift_dx
+      - if_contains: *id011
+        then_adapter: web_app_dx
+      - if_contains: *id012
+        then_adapter: biz_ops_dx
+      - if_contains: *id013
+        then_adapter: data_pipeline_dx
+      - if_contains: *id014
+        then_adapter: network_stack_dx
+      - if_contains: *id015
+        then_adapter: finance_ops_dx
+      - if_contains: *id016
+        then_adapter: ml_model_dx
+      - if_contains: *id017
+        then_adapter: hardware_stack_dx
+      - if_contains: *id018
+        then_adapter: infra_orchestration_dx
+      - if_contains: *id019
+        then_adapter: support_ops_dx
+      - if_contains: *id020
+        then_adapter: human_wellness_dx
+      fallback_adapter: ai_drift_dx
+  adapters:
+    step_sets:
+      a_appliance: &id021
+        steps:
+        - unplug or isolate system
+        - check component integrity
+        - replace or reseat parts
+        - retest under load
+      a_ai_drift: &id022
+        steps:
+        - compare current vs baseline prompts/config
+        - restore known-good schema
+        - retrain or reseed memory
+        - verify latency + coherence
+      a_web_app: &id023
+        steps:
+        - rollback recent migration/deploy
+        - check DB connectivity/pools
+        - clear caches and restart service
+        - validate endpoints post-deploy
+      a_biz_ops: &id024
+        steps:
+        - assign clear owner (DRI)
+        - define SLA and accountability path
+        - unblock approvals/hand-offs
+        - monitor until green
+      a_data_pipeline: &id025
+        steps:
+        - freeze downstream readers
+        - diff producer vs consumer schema
+        - patch or bump contract
+        - reprocess affected window
+      a_network: &id026
+        steps:
+        - check DNS/TLS/cert integrity
+        - trace path for loss or asymmetry
+        - repair route or resolver
+        - retest latency + stability
+      a_finance: &id027
+        steps:
+        - lock period / export ledgers
+        - reconcile diffs
+        - correct journal or retry payment
+        - enable alerts for next cycle
+      a_ml_model: &id028
+        steps:
+        - freeze serving model
+        - retrain / fine-tune with new data
+        - canary deploy + monitor drift
+        - validate KPIs
+      a_hardware: &id029
+        steps:
+        - verify power / cooling / sensors
+        - replace failing components
+        - run diagnostics + burn-in
+        - monitor after repair
+      a_infra: &id030
+        steps:
+        - inspect pipeline logs
+        - unlock or re-run jobs safely
+        - re-plan / re-deploy
+        - enforce version pinning
+      a_support: &id031
+        steps:
+        - triage and re-route backlog
+        - fix routing rules
+        - merge duplicates
+        - publish KB or macro replies
+      a_wellness: &id032
+        steps:
+        - sleep and focus hygiene
+        - reduce workload and WIP
+        - schedule rest blocks
+        - rebuild habit loops
+    registry:
+      appliance_dx:
+        step_ref: *id021
+        domains:
+        - hardware
+        - household
+      ai_drift_dx:
+        step_ref: *id022
+        domains:
+        - ai
+        - prompt
+      web_app_dx:
+        step_ref: *id023
+        domains:
+        - backend
+        - deploy
+      biz_ops_dx:
+        step_ref: *id024
+        domains:
+        - ops
+        - process
+      data_pipeline_dx:
+        step_ref: *id025
+        domains:
+        - data
+        - etl
+      network_stack_dx:
+        step_ref: *id026
+        domains:
+        - network
+        - tls
+      finance_ops_dx:
+        step_ref: *id027
+        domains:
+        - finance
+        - billing
+      ml_model_dx:
+        step_ref: *id028
+        domains:
+        - ml
+        - model
+      hardware_stack_dx:
+        step_ref: *id029
+        domains:
+        - hardware
+        - sensors
+      infra_orchestration_dx:
+        step_ref: *id030
+        domains:
+        - infra
+        - ci_cd
+      support_ops_dx:
+        step_ref: *id031
+        domains:
+        - support
+        - ticketing
+      human_wellness_dx:
+        step_ref: *id032
+        domains:
+        - wellness
+        - focus
+  order_function:
+    watch_signals:
+    - noise_floor
+    - top2_gap
+    - wobble
+    - confidence
+    - actionability
+    schedule:
+    - use: severance
+      until:
+        noise_floor_max: 0.18
+    - use: coherence
+      until:
+        top2_gap_min: 0.15
+    - use: voice_clarity
+      once: true
+    - use: grounding
+      until:
+        wobble_max: 0.12
+    - use: coherence
+      until:
+        confidence_min: 0.72
+    - use: translation
+      until:
+        actionability: single_next_move
+  gate_evolution:
+    inward:
+      coherence:
+        min_braid: 0.92
+      severance:
+        noise_floor_max: 0.18
+      grounding:
+        decay_old_beliefs: 0.35
+      voice_clarity:
+        force_single_probe: true
+      translation:
+        require_parts_and_tools: true
+    outward_policy:
+      allow_adapter_switch_if:
+        confidence_min: 0.72
+        wobble_max: 0.12
+  learning: null
+  casebook:
+    store:
+    - user_report
+    - symptoms
+    - probes
+    - root_cause
+    - plan
+    - outcome
+    - user_feedback
+    - rerun_count
+    - additional_inputs
+    init_defaults:
+      rerun_count: 0
+      user_feedback: unanswered
+      additional_inputs: []
+  on_success:
+    nudge:
+      coherence.min_braid: 0.01
+      severance.noise_floor_max: -0.01
+  on_retry:
+    nudge:
+      grounding.decay_old_beliefs: 0.05
+      voice_clarity.force_single_probe: true
+  on_rerun:
+    update:
+      rerun_count: ${thread.casebook.rerun_count + 1}
+diagnostic_mode: enabled
+functions:
+  GateRouting:
+    using: ${imports.segment_to_gates}
+    params:
+      mapping: ${segment_to_gates.segment_to_gates}
+    in:
+      root_cause: string
+    out:
+      routing_plan: object
+    impl:
+    - gates := ${params.mapping[${in.root_cause}]}
+    - write.out:
+        routing_plan:
+          root_cause: ${in.root_cause}
+          gates: ${gates}
+routines:
+  diagnose_now:
+    run: diagnostics.pipeline
+    with:
+      user_report: ${input}
+  show_case_report:
+    input:
+      case_id: string
+    run:
+    - lookup:
+        record: ${learning.casebook.store[case_id]}
+    - emit.files:
+        list: ${record.reports}
+env: prod
+hooks:
+  on_boot:
+  - fn: load.jsonl
+    args:
+      file: ${runtime.persistence.casebook.path}
+      store_as: ${runtime.persistence.casebook.store_as}
+  on_shutdown:
+  - fn: save.jsonl
+    args:
+      file: ${runtime.persistence.casebook.path}
+      record: ${runtime.persistence.casebook.record_var}
+      append: ${runtime.persistence.casebook.append}
+      rotate:
+        max_bytes: ${runtime.persistence.casebook.rotate.max_bytes}
+        keep: ${runtime.persistence.casebook.rotate.keep}

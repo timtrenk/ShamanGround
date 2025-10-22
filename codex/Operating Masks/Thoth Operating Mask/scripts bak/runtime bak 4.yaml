@@ -1,0 +1,56 @@
+version: 1.1
+label: "Thoth OM v1 \u2014 runtime"
+paths:
+  project_root: /mnt/data
+cross_thread_memory:
+  enabled: true
+  sources:
+  - path: /mnt/data/thoth_om_v1/memory
+  - path: /mnt/data/memory
+  verify_with_manifest: /mnt/data/memory_fingerprint.json
+  on_mismatch: sever
+  precedence:
+  - /mnt/data/memory
+  - /mnt/data/thoth_om_v1/memory
+context:
+  threshold_profile: default
+engine:
+  thoth_engine_path: /mnt/data/engine/Thoth_engine_1.0.yaml
+  metatron_catalog_path: /mnt/data/engine/metatron_function.yaml
+  braided_feedback_path: /mnt/data/engine/braided-feedback-function.yaml
+  trap_seeds_path: /mnt/data/trap_seeds.yaml
+schemas:
+  segments_schema_path: /mnt/data/schemas/segments.schema.json
+thresholds:
+  path: /mnt/data/thresholds_1.1.yaml
+harmonizers:
+  path: /mnt/data/harmonizers.extended.yaml
+self_learning:
+  enabled: true
+  path: /mnt/data/runtime/self_learning.yaml
+routing:
+  force_serial_on_incoherent: true
+  call_harmonizers_below: 0.55
+  early_severance_below: 0.28
+  total_gate_cap: 7
+safety:
+  hard_stop_after_total_gates: 7
+  max_gate_iterations: 2
+  cooldown_s: 2
+persistence:
+  casebook:
+    path: /mnt/data/thoth_om_v1/casebook.db.jsonl
+    format: jsonl
+    read_on_boot: true
+    write_on_exit: true
+    store_as: learning.casebook.store
+    record_var: thread.casebook
+    append: true
+    rotate:
+      max_bytes: 20000000
+      keep: 5
+load.jsonl:
+  file: /mnt/data/thoth_om_v1/casebook.db.jsonl
+save.jsonl:
+  file: /mnt/data/thoth_om_v1/casebook.db.jsonl
+  record: ${thread.casebook}

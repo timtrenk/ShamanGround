@@ -1,0 +1,11 @@
+# policies/harmonizers.yaml
+harmonizers:
+  - id: H01
+    name: Equalize Family Coverage
+    effect: >-
+      If one family dominates >60% of selections within a session window,
+      bias next pick toward a different family to reduce oscillation.
+  - id: H02
+    name: Residual Cooldown
+    effect: >-
+      If residual_index stays >0.5 for two cycles, increase cooldown_ms by 50% for next gate.

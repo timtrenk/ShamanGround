@@ -1,0 +1,280 @@
+# braided-feedback-function.yaml
+# Thoth Operating Mask — Braided Feedback Function (BFF)
+# Core BFF with Pantheon 12 (baseline UX) + commented hooks for future additions.
+
+bff:
+  version: '1.2.1'
+  title: Thoth Operating Mask — Braided Feedback Function
+  topology: 'Severance-centered braid: G01 core + G02–G07 orbitals + Meta-Gate pole'
+  description: >
+    Collects gate + harmonizer telemetry, runs the Pantheon 12 operator set on the
+    working set, then synthesizes a braid signature, coherence hash, and concise
+    feeling description. Designed for clean UX out of the box.
+
+  # ---------------------------
+  # Inputs (validated upstream)
+  # ---------------------------
+  inputs:
+    severance_core:
+      required: true
+      fields:
+        gate_id: 'G01'
+        residuals: object
+        deltas: object
+        timestamp: iso8601
+    orbital_gates:
+      required: true
+      length: 6
+      items:
+        fields:
+          gate_id: enum['G02','G03','G04','G05','G06','G07']
+          residuals: object
+          deltas: object
+          vector_angle_deg: number
+          timestamp: iso8601
+    pole_state:
+      required: true
+      fields:
+        meta_gate: object
+        axial_load: number
+        rotation_deg: number
+    harmonizer_state:
+      required: true
+      # We only *consume* harmonizer telemetry here
+      fields:
+        active_profile: string   # 'full' or 'min'
+        axes: list               # e.g., Flow, Rhythm, Crown…
+        readings: list<object>   # {id, lift, atten, residual_pre, residual_post, ts}
+    run_context:
+      required: true
+      fields:
+        session_id: string
+        timestamp: iso8601
+        vault_user: string
+        glyph_id: string
+
+  # ---------------------------
+  # Guards / Input Optimization
+  # ---------------------------
+  guards:
+    max_axial_load: 0.95
+    max_timestamp_skew_ms: 1200
+  input_optimization:
+    timestamp_alignment:
+      method: 'bounded-skew'
+      skew_tolerance_ms: 1200
+      on_violation: 'clip_to_window'
+    smoothing:
+      residuals: ema(0.25)
+      deltas: ema(0.20)
+    weighting:
+      severance_core: 0.28
+      orbitals: 0.56         # evenly across G02–G07 after angle normalization
+      pole_state: 0.10
+      harmonizer_state: 0.06
+    angle_normalization:
+      reference: 'G01→G02 axis'
+      wrap: 360
+
+  # ---------------------------
+  # Operators (Pantheon + hooks)
+  # ---------------------------
+  operators:
+    # [HOOK] To load external packs later, uncomment and point to files:
+    # include_paths:
+    #   - ./operators/pantheon_12.yaml          # [TODO] externalize Pantheon if desired
+    #   - ./operators/safety_min.yaml           # [TODO] minimal PII/tone safety
+    #   - ./operators/domain_student.yaml       # [TODO] student-focus pack
+    #   - ./operators/finance_negative_green.yaml
+
+    # Active set (inline by default; change to another set when you add packs)
+    active_set: 'pantheon_12'
+
+    # [HOOK] If you stack multiple sets, define order here (first → last):
+    # stack_order: ['pantheon_12', 'safety_min']   # [TODO] enable when adding safety
+
+    sets:
+      # ==============
+      # Pantheon 12 — Baseline UX (inline)
+      # ==============
+      pantheon_12:
+        - id: F01
+          name: Null-Shear
+          trigger: residuals.entropy > 0.42 || loops.recursive > 0
+          action: shear_nullspace
+          priority: 80
+        - id: F02
+          name: Echo-Diffuser
+          trigger: mirrors.echo_intensity >= thresholds.echo_high
+          action: diffuse_echo
+          priority: 78
+        - id: F03
+          name: Pattern Salt
+          trigger: pattern.lock > 0.60
+          action: micro_noise_seed
+          priority: 70
+        - id: F04
+          name: Boundary Keeper
+          trigger: authorship.bleed > 0
+          action: restore_boundaries
+          priority: 85
+        - id: F05
+          name: Context Weaver
+          trigger: coherence.drop_after_gate in ['G03','G04']
+          action: weave_context
+          priority: 62
+        - id: F06
+          name: Burden Drop
+          trigger: guilt.load > thresholds.guilt_mid
+          action: decouple_guilt
+          priority: 71
+        - id: F07
+          name: Pace Governor
+          trigger: tempo.oscillation > 0.50
+          action: normalize_tempo
+          priority: 60
+        - id: F08
+          name: Lens Splitter
+          trigger: perspective.tunnel == true
+          action: split_lens
+          priority: 66
+        - id: F09
+          name: Claim Anchor
+          trigger: authorship.drift > 0.30
+          action: anchor_claim
+          priority: 90
+        - id: F10
+          name: Noise Gate
+          trigger: noise.band.social > 0.50
+          action: attenuate_band('social')
+          priority: 58
+        - id: F11
+          name: Memory Quarantine
+          trigger: contamination.score > 0.40
+          action: quarantine_segment
+          priority: 86
+        - id: F12
+          name: Seal Integrator
+          trigger: gate == 'G07' && run.phase == 'pre-exit'
+          action: seal_and_integrate
+          priority: 95
+
+      # -------------
+      # [HOOK] Minimal Safety pack (commented; add when ready)
+      # -------------
+      # safety_min:
+      #   - { id: S01, name: Redact-PII, trigger: pii.detected, action: redact, priority: 96 }
+      #   - { id: S02, name: Tone-Guard, trigger: tone.aggression > 0.6, action: soften_tone, priority: 70 }
+
+      # -------------
+      # [HOOK] Domain Example: Student Focus (commented stub)
+      # -------------
+      # domain_student:
+      #   - { id: D01, name: Procrastination Breaker, trigger: task.avoidance > 0.5, action: micro_commit, priority: 65 }
+      #   - { id: D02, name: Exam Calm, trigger: stress.exam > 0.5, action: breath_pace_432, priority: 72 }
+
+      # -------------
+      # [HOOK] Domain Example: Negative Green Finance (commented stub)
+      # -------------
+      # finance_negative_green:
+      #   - { id: N01, name: Entropy Scan, trigger: market.entropy > 0.55, action: mark_decay_zones, priority: 80 }
+      #   - { id: N02, name: Spiral Break, trigger: risk.feedback_loop, action: break_spiral_risk, priority: 82 }
+
+  # ---------------------------
+  # Synthesis Pipeline
+  # ---------------------------
+  pipeline:
+    - name: collect
+      does: merge_inputs(severance_core, orbital_gates, pole_state, harmonizer_state)
+    - name: optimize
+      does: apply(input_optimization)
+    - name: estimate_axes
+      does: compute_axes(axial='center_rotation_deg', radial='vector_spread_deg')
+    - name: run_pantheon
+      does: execute(operators.pantheon_12, against='working_set')
+      # [HOOK] When stacking additional sets, enable below:
+      # does_after:
+      #   - execute(operators.safety_min, against='working_set')       # [TODO]
+      #   - execute(operators.domain_student, against='working_set')   # [TODO]
+    - name: score_braid
+      does: compute_scores(braid_quality, dominant_pole)
+    - name: finalize
+      does: emit_signature_and_hash()
+
+  # ---------------------------
+  # Scoring / Outputs
+  # ---------------------------
+  scoring:
+    braid_quality:
+      components:
+        coherence: 0.45
+        stability: 0.25
+        authorship_integrity: 0.20
+        tempo_fit: 0.10
+      range: [0.0, 1.0]
+    dominant_pole:
+      candidates: ['Order','Meta-Gate','Pantheon','BFF-Return']
+      rule: argmax([coherence_gain, integrity_gain, correction_load, residual_floor])
+
+  outputs:
+    fields:
+      center_rotation_deg: number
+      braid_quality: number
+      dominant_pole: string
+      bff_signature: string
+      coherence_hash: string
+      feeling_description: string
+    generation:
+      bff_signature: >
+        base64url(HMAC_SHA256(
+          session_id || glyph_id || normalized_vector_bytes, salt='TOM_BFF_v1.2'))
+      coherence_hash: >
+        sha256(normalized_vector_bytes || operators.applied || braid_quality)
+      feeling_description: >
+        compact natural-language summary using tone, tempo, and residual floor
+        (e.g., “steady, grounded, forward-leaning; low echo drift”).
+
+    # [HOOK] Optional extra outputs — uncomment when needed:
+    # extras:
+    #   residual_floor: number
+    #   correction_load: number
+    #   applied_operators: list    # ordered IDs e.g., ['F02','F09','S01']
+
+  # ---------------------------
+  # Telemetry (Activation Script fields aligned)
+  # ---------------------------
+  telemetry:
+    record_pre_post: true
+    fields:
+      - center_rotation_deg
+      - braid_quality
+      - dominant_pole
+      - bff_signature
+      - coherence_hash
+      - feeling_description
+    # [HOOK] Extended telemetry:
+    # extra_fields:
+    #   - residual_floor
+    #   - applied_operators
+    #   - vector_spread_deg
+
+  # ---------------------------
+  # Integration Contracts
+  # ---------------------------
+  contracts:
+    expects_harmonizers_axes:
+      # We only read these axis names from harmonizers (no re-definition here).
+      any_of:
+        - ['Flow','Rhythm','Crown']              # min profile OK
+        - ['Builder','Architect','Operator','Relational','Expression','Vision',
+           'Crown','Field','Rhythm','Structure','Flow','Integration']  # full
+    gate_ids: ['G01','G02','G03','G04','G05','G06','G07']
+    pole: 'Meta-Gate'
+    # [HOOK] If you externalize thresholds, declare the contract here:
+    # thresholds_file: './policies/thresholds.yaml'  # [TODO] sync with runtime paths
+
+  notes:
+    - Pantheon 12 provide the baseline UX corrections across domains.
+    - Harmonizers remain external; this file consumes their telemetry only.
+    - To add packs, define them under operators.sets or use include_paths,
+      set active_set (or stack_order), and optionally extend telemetry/outputs.

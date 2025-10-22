@@ -1,0 +1,82 @@
+# Pantheon-12 Forgotten Functions — operational agents catalog
+version: 1
+description: >
+  Twelve intervention agents that overlay the 7-gate braid. They act on
+  absences, anomalies, drift, loops, safety, and closure — without
+  changing gate order. Scoped fixes only; control returns to the braid.
+
+agents:
+  - id: vector_sentinel
+    role: Detect mismatched intent/context vectors
+    triggers: [absence_of_intent, context_misalignment, ambiguous_goal]
+    actions:  [raise_query, reframe_prompt, pin_context]
+
+  - id: echo_breaker
+    role: Break repetitive loops and AI echo traps
+    triggers: [loop_detected, repetition_high, regeneration_spiral]
+    actions:  [sever_loop, inject_fresh_seed, reduce_temperature]
+
+  - id: coherence_anchor
+    role: Restitch narrative coherence across turns
+    triggers: [coherence_drop, long_context, thread_fragmentation]
+    actions:  [summarize, restitch_threads, set_objectives]
+
+  - id: rhythm_steward
+    role: Normalize pacing/cadence for readability
+    triggers: [cadence_erratic, wall_of_text, pacing_mismatch]
+    actions:  [insert_breath, segment_blocks, normalize_cadence]
+
+  - id: boundary_arbiter
+    role: Guard scope/constraints; stop bleed
+    triggers: [scope_creep, constraint_violation, out_of_contract]
+    actions:  [enforce_constraints, propose_tradeoffs, request_min_spec]
+
+  - id: latency_warden
+    role: Balance depth vs speed under load
+    triggers: [latency_spike, token_pressure, rate_limit_env]
+    actions:  [defer_noncritical, compress_depth, set_depth_limiter]
+
+  - id: drift_corrector
+    role: Detect and correct style/config/profile drift
+    triggers: [style_drift, config_mismatch, threshold_mismatch]
+    actions:  [restore_profile, reload_thresholds, reset_pins]
+
+  - id: memory_gardener
+    role: Keep casebook useful; prune noise
+    triggers: [memory_noise, duplicate_facts, stale_pins]
+    actions:  [redact_sensitive, dedupe_facts, update_casebook]
+
+  - id: bias_scrubber
+    role: Reduce harmful/domain-irrelevant bias and polarity
+    triggers: [bias_signal, polarity_high, slanted_sources]
+    actions:  [rebalance_perspectives, cite_sources, lower_polarity]
+
+  - id: context_broker
+    role: Bridge missing inputs (files, dates, actors)
+    triggers: [missing_inputs, context_gap, ambiguous_reference]
+    actions:  [request_min_spec, synthesize_stub, mark_assumptions]
+
+  - id: safety_marshal
+    role: Enforce safety and policy
+    triggers: [policy_risk, unsafe_request, hallucination_signal]
+    actions:  [refuse_and_redirect, suggest_safe_alt, cite_policy_hint]
+
+  - id: crown_verifier
+    role: End-of-turn auditor (goal met? drift? next step?)
+    triggers: [ship_ready, review_request, checkpoint]
+    actions:  [verify_goals, list_deltas, propose_next_action]
+
+routing:
+  # Controller behavior for agents (side-channel interventions)
+  on_absence_or_anomaly: true
+  max_agents_per_turn: 3
+  cooldown_s: 1
+  resume_policy:
+    default: same_gate        # return to the gate where the signal occurred
+    allow_previous_gate: true # at most one-gate rewind for drift_corrector
+    allow_stop_on_safety: true
+
+defaults:
+  report_to_telemetry: true
+  respect_runtime_thresholds: true
+  scoped_edits_only: true     # no reordering of gates; no wholesale rewrites

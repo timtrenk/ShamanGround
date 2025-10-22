@@ -1,0 +1,54 @@
+# metatron_function.yaml — Meta-Gate Router v1.1 (7 gates active, staging)
+version: 1.1
+env: staging
+
+metagate:
+  gates:
+    - { id: G1, name: Severance }
+    - { id: G2, name: VoiceClarity }
+    - { id: G3, name: Structure }
+    - { id: G4, name: Insight }
+    - { id: G5, name: Embodiment }
+    - { id: G6, name: Harmonize }
+    - { id: G7, name: CrownPrep }
+
+  inputs:
+    source:
+      - severance_core
+      - nodes_bundle          # list of node outputs N01..N12 including metagate_routing_hint
+      - bff_packet
+
+  routing_rules:
+    - name: priority-sort
+      description: "Sort nodes by metagate_routing_hint.priority (desc), then by id (asc)."
+    - name: tag-affinity
+      description: >
+        Map node tags to gate affinities:
+          setup/objective → G1,G2
+          partition → G3
+          prep/resources → G3,G5
+          facts → G4
+          plan → G3,G4
+          build → G5
+          braid/quality → G6
+          refine → G2,G6
+          guard → G6,G7
+          merge → G6
+          finalize → G7
+          deliver → G7
+    - name: coherence-bump
+      description: "If bff_packet.coherence < thresholds.nodes.bff.coherence_min, bump early gates (G3→G5) before G7."
+
+  algorithm:
+    steps:
+      - "collect all node hints"
+      - "for each node, compute candidate gate list from tag-affinity"
+      - "score gates per node: score = hint.priority / 100 + (affinity_weight)"
+      - "sum scores per gate over all nodes"
+      - "if coherence-bump applies, add +0.15 to G3 and G5"
+      - "produce final gate_order: sort gates by total score desc; stable tie-break by gate id"
+
+  outputs:
+    gate_order: [G1, G2, G3, G4, G5, G6, G7]  # typical baseline; may permute by scores
+    routing_log:
+      include: ["node_hints", "gate_scores", "coherence_bump_applied", "final_order"]

@@ -1,0 +1,50 @@
+version: 1.0
+label: "Thoth OM — Self-Learning Policy"
+enabled: true
+
+schedule:
+  update_interval: daily
+  window: 24h
+
+signals:
+  reward: "coherence >= 0.88 and mirror_residual <= 0.35"
+  penalty: "coherence < 0.55 or mirror_residual > 0.50"
+
+metrics:
+  source: "runtime_telemetry"
+  min_samples: 20
+
+adjustments:
+  - when: reward
+    do:
+      - "routing.call_harmonizers_below -= 0.02 clamp[0.40,0.70]"
+      - "routing.early_severance_below += 0.01 clamp[0.20,0.35]"
+  - when: penalty
+    do:
+      - "routing.force_serial_on_incoherent = true"
+      - "routing.call_harmonizers_below += 0.02 clamp[0.45,0.80]"
+      - "routing.early_severance_below -= 0.01 clamp[0.18,0.32]"
+
+safety:
+  require_manifest_ok: true
+  dry_run: true
+  max_delta_per_day:
+    routing.call_harmonizers_below: 0.04
+    routing.early_severance_below: 0.02
+
+logging:
+  file: "/mnt/data/thread/learning_log.md"
+  include_snapshot_of: ["thresholds", "routing", "safety"]
+  keep_last: 50
+  include_metrics_summary: true
+
+contracts:
+  clamps:
+    routing.call_harmonizers_below: [0.40, 0.80]
+    routing.early_severance_below:  [0.18, 0.35]
+    safety.max_gate_iterations:     [1, 3]
+  invariants:
+    - "safety.hard_stop_after_total_gates == 7"
+    - "routing.total_gate_cap == 7"
+    - "thresholds.path exists"
+  fail_on_violation: true

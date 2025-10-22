@@ -1,0 +1,26 @@
+# runtime.yaml — NO-TEMPLATES MODE (Tier-1)
+version: 1.0.0
+env: prod
+receipts: true
+paths:
+  outputs_dir: ./outputs
+  receipts_dir: ./receipts
+  logs_dir: ./logs
+defaults:
+  sc_k: 7
+  residual_target:
+    copy: 0.08
+    plan: 0.06
+    spec: 0.06
+  crown_verify: true
+  template_required: false   # <-- key change
+policies:
+  on_fail: [regenerate_once]
+  tie_break: [constraints_score, mirror_residual, logic_score]
+freeform_artifacts:
+  - name: distortion_report.md
+    required: true
+  - name: final_output.md
+    required: true
+notes: |
+  No templates shipped. Outputs are freeform but must pass Crown Verify and residual targets.

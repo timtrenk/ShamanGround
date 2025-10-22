@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Thoth Segments",
+  "type": "object",
+  "properties": {
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "content": {"type": "string"},
+          "mirror_flags": {"type": "array", "items": {"type": "string"}},
+          "normalized": {"type": "object"}
+        },
+        "required": ["id","name","content"]
+      }
+    }
+  },
+  "required": ["segments"]
+}
